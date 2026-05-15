@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborations — KBI Hong Kong</title>
+  <meta name="description" content="KBI Hong Kong's academic and industry collaborations — partner institutions, joint research initiatives, and the organisations that contribute to our programme quality.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+
+    /* ── COLLAB CARDS ── */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .collab-card {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .collab-card:hover {
+      box-shadow: 0 10px 40px rgba(0,49,83,0.10);
+      transform: translateY(-3px);
+    }
+    .collab-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .collab-card--academic::before { background: var(--prussian); }
+    .collab-card--industry::before { background: var(--yellow); }
+    .collab-card--civic::before { background: var(--cyan); }
+
+    .collab-card-type {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .collab-card--academic .collab-card-type { color: var(--prussian); }
+    .collab-card--industry .collab-card-type { color: #b08900; }
+    .collab-card--civic .collab-card-type { color: #1a7abf; }
+
+    .collab-card-org {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .collab-card-dept {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      margin-bottom: 20px;
+    }
+    .collab-card-desc {
+      font-size: 0.875rem;
+      color: var(--text-faint);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .collab-card-contributions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .collab-contribution {
+      display: flex;
+      gap: 10px;
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      align-items: flex-start;
+    }
+    .collab-contribution::before {
+      content: '→';
+      color: var(--prussian);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .collab-card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 18px;
+      border-top: 1px solid var(--stone);
+    }
+
+    /* ── WHAT WE LOOK FOR ── */
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .criteria-card {
+      background: var(--mist);
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .criteria-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .criteria-card h4 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .criteria-card p {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      line-height: 1.7;
+    }
+
+    /* ── RESEARCH PROJECTS STRIP ── */
+    .research-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .research-item {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .research-item-status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .research-item-status--active { background: rgba(34,197,94,0.1); color: #15803d; border: 1px solid rgba(34,197,94,0.3); }
+    .research-item-status--completed { background: var(--mist); color: var(--text-faint); border: 1px solid var(--stone); }
+    .research-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .research-item p {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      line-height: 1.7;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="page-hero page-hero--night" aria-label="Collaborations page">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncsXFCOWZ6NOSr6fVMNLNx2uJPOm7xlLeUPFgVZqB1BZrOkao95BKn1edlZGYCTt4YDISWnVp9b5UlHtD4pA2o8yoq9WJ5s6XzvzKerC%2FxNit7vMK4Gq7%2BH89o0c4AyPwME%3D&u2=IFWKAVhnRHUHlzA%2B&width=2560');background-size:cover;background-position:center;opacity:0.12;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <nav class="page-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span aria-hidden="true">›</span> <a href="eto2026.html">Programmes</a> <span aria-hidden="true">›</span> <span>Collaborations</span>
+      </nav>
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Academic &amp; Industry Partnerships</span></div>
+      <h1 class="page-hero-heading">The Partners Who<br>Make This Rigorous.</h1>
+      <p class="page-hero-sub">KBI HK's programme quality depends on the institutions and individuals who contribute their expertise — as mentors, judges, curriculum advisors, and research collaborators.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+        <a href="#partners" class="btn btn-yellow btn--sm">View Partners</a>
+        <a href="#research" class="btn btn-outline-white btn--sm">Joint Research</a>
+        <a href="#collaborate" class="btn btn-outline-white btn--sm">Work With Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ CURRENT PARTNERS ═══ -->
+  <section class="section-wrap section-wrap--white" id="partners" aria-labelledby="partners-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Current Collaborators</span></div>
+      <h2 class="section-heading reveal" id="partners-heading">Who We Work With</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:620px;">Our collaborations are active, not decorative. Each partner listed here has contributed substantively to KBI HK's programme design, judging panels, curriculum development, or applied research work.</p>
+
+      <div class="collab-grid">
+
+        <div class="collab-card collab-card--academic reveal">
+          <div class="collab-card-type">Academic Partner</div>
+          <div class="collab-card-org">HKUST</div>
+          <div class="collab-card-dept">Centre for Quantum Technologies</div>
+          <p class="collab-card-desc">Faculty members from HKUST's Centre for Quantum Technologies serve as technical reviewers, curriculum advisors, and guest mentors for the Quantum Primer Workshop series. Their input ensures IQCOL HK problem sets reflect current research directions in quantum information science.</p>
+          <div class="collab-card-contributions">
+            <div class="collab-contribution">Technical review of IQCOL HK competition problems</div>
+            <div class="collab-contribution">Guest lectures for the Quantum Primer Workshop series</div>
+            <div class="collab-contribution">Curriculum advisory for ISFRETIC quantum certification content</div>
+          </div>
+          <div class="collab-card-footer">
+            <span class="tag tag--stone">IQCOL HK</span>
+            <span class="tag tag--stone">Quantum Primer</span>
+            <span class="tag tag--sky">Active</span>
+          </div>
+        </div>
+
+        <div class="collab-card collab-card--academic reveal reveal-delay-1">
+          <div class="collab-card-type">Academic Partner</div>
+          <div class="collab-card-org">HKU</div>
+          <div class="collab-card-dept">Department of Computer Science</div>
+          <p class="collab-card-desc">An ongoing faculty advisory relationship supporting IBCOL HK judging, ISFRETIC blockchain certification content development, and KBI HK's applied research projects. Several KBI HK alumni are now postgraduate researchers within the department.</p>
+          <div class="collab-card-contributions">
+            <div class="collab-contribution">Faculty judges for IBCOL HK final presentations</div>
+            <div class="collab-contribution">Advisory review of ISFRETIC blockchain certification syllabus</div>
+            <div class="collab-contribution">Co-supervision of KBI HK applied research projects</div>
+          </div>
+          <div class="collab-card-footer">
+            <span class="tag tag--stone">IBCOL HK</span>
+            <span class="tag tag--stone">Certification</span>
+            <span class="tag tag--sky">Active</span>
+          </div>
+        </div>
+
+        <div class="collab-card collab-card--academic reveal reveal-delay-2">
+          <div class="collab-card-type">Academic Partner</div>
+          <div class="collab-card-org">CUHK</div>
+          <div class="collab-card-dept">Department of Statistics</div>
+          <p class="collab-card-desc">CUHK Statistics faculty contribute to IDSOL HK's methodology review and provide guest sessions on statistical rigour for the Data Science Skillsprint programme. Their feedback has been central to raising the standard of data science submissions.</p>
+          <div class="collab-card-contributions">
+            <div class="collab-contribution">Methodology review for IDSOL HK qualifying submissions</div>
+            <div class="collab-contribution">Guest sessions on statistical inference and reproducibility</div>
+            <div class="collab-contribution">ISFRETIC data science content advisory</div>
+          </div>
+          <div class="collab-card-footer">
+            <span class="tag tag--stone">IDSOL HK</span>
+            <span class="tag tag--stone">Data Science</span>
+            <span class="tag tag--sky">Active</span>
+          </div>
+        </div>
+
+        <div class="collab-card collab-card--industry reveal reveal-delay-3">
+          <div class="collab-card-type">Industry Partner</div>
+          <div class="collab-card-org">HashKey Group</div>
+          <div class="collab-card-dept">Research &amp; Innovation Division</div>
+          <p class="collab-card-desc">HashKey Group provides industry mentorship and practitioner judges for IBCOL HK final presentations, contributing real-world perspective on blockchain use cases, regulatory considerations in Hong Kong, and DeFi protocol design challenges.</p>
+          <div class="collab-card-contributions">
+            <div class="collab-contribution">Industry judge panel for IBCOL HK finals</div>
+            <div class="collab-contribution">Mentor access for IBCOL HK finalist teams</div>
+            <div class="collab-contribution">Guest speaker at KBI HK blockchain workshops</div>
+          </div>
+          <div class="collab-card-footer">
+            <span class="tag tag--stone">IBCOL HK</span>
+            <span class="tag tag--stone">Industry Mentorship</span>
+            <span class="tag tag--sky">Active</span>
+          </div>
+        </div>
+
+        <div class="collab-card collab-card--industry reveal reveal-delay-4">
+          <div class="collab-card-type">Industry Partner</div>
+          <div class="collab-card-org">KPMG Hong Kong</div>
+          <div class="collab-card-dept">Data &amp; Analytics Practice</div>
+          <p class="collab-card-desc">KPMG's Data &amp; Analytics team contributes real dataset challenges for IDSOL HK's advanced rounds and provides practitioner judges who evaluate projects on professional standards of analysis quality and stakeholder communication.</p>
+          <div class="collab-card-contributions">
+            <div class="collab-contribution">Real-world dataset sourcing for IDSOL HK challenges</div>
+            <div class="collab-contribution">Practitioner judges for IDSOL HK advanced and final rounds</div>
+            <div class="collab-contribution">Workshop guest speaker on data science in professional services</div>
+          </div>
+          <div class="collab-card-footer">
+            <span class="tag tag--stone">IDSOL HK</span>
+            <span class="tag tag--stone">Data Science</span>
+            <span class="tag tag--sky">Active</span>
+          </div>
+        </div>
+
+        <div class="collab-card collab-card--civic reveal" style="border-style:dashed;border-color:var(--prussian);background:rgba(0,49,83,0.02);">
+          <div class="collab-card-type" style="color:var(--prussian);">Open Collaboration</div>
+          <div class="collab-card-org" style="color:var(--prussian);">Your Institution</div>
+          <div class="collab-card-dept">Academic, Industry, or Civic Body</div>
+          <p class="collab-card-desc">We are always open to substantive collaborations — where a partner contributes expertise and KBI HK contributes programme infrastructure and student reach. If you have a research project, a dataset, or subject matter expertise to contribute, we would like to hear from you.</p>
+          <div class="collab-card-contributions">
+            <div class="collab-contribution">Technical judging or curriculum advisory</div>
+            <div class="collab-contribution">Dataset or research challenge contribution</div>
+            <div class="collab-contribution">Guest mentorship or workshop facilitation</div>
+          </div>
+          <div class="collab-card-footer">
+            <a href="contact.html" class="btn btn-prussian btn--sm">Get in Touch →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ JOINT RESEARCH ═══ -->
+  <section class="section-wrap section-wrap--mist" id="research" aria-labelledby="research-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Joint Research</span></div>
+      <h2 class="section-heading reveal" id="research-heading">Research We've Done Together</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:600px;">Beyond programme support, KBI HK collaborates with academic and industry partners on applied research — producing publications, working papers, and datasets that contribute to the broader field.</p>
+
+      <div class="research-strip">
+        <div class="research-item reveal">
+          <div class="research-item-status research-item-status--completed">Completed · 2024</div>
+          <h4>East Asia Emerging Technology Report</h4>
+          <p>A joint research publication with KBI Taiwan examining the state of blockchain, data science, and quantum computing education across Hong Kong, Taiwan, and Singapore — including survey data from over 400 student participants.</p>
+          <div style="margin-top:14px;"><a href="contact.html" style="font-size:0.8125rem;font-weight:600;color:var(--prussian);">Request a copy →</a></div>
+        </div>
+        <div class="research-item reveal reveal-delay-1">
+          <div class="research-item-status research-item-status--completed">Completed · 2023</div>
+          <h4>DeFi Transparency Research Project</h4>
+          <p>Student-led applied research project examining on-chain transparency mechanisms in decentralised finance protocols — co-supervised by HKU CS faculty. Findings presented at the 2023 KBI HK Annual Gathering.</p>
+          <div style="margin-top:14px;"><a href="contact.html" style="font-size:0.8125rem;font-weight:600;color:var(--prussian);">Request a copy →</a></div>
+        </div>
+        <div class="research-item reveal reveal-delay-2">
+          <div class="research-item-status research-item-status--active">Active · 2025–2026</div>
+          <h4>Quantum Computing Readiness in HK Education</h4>
+          <p>An ongoing survey and analysis project in collaboration with HKUST examining the current state of quantum literacy among Hong Kong university students and the barriers to quantum computing education adoption.</p>
+          <div style="margin-top:14px;"><a href="contact.html" style="font-size:0.8125rem;font-weight:600;color:var(--prussian);">Learn more →</a></div>
+        </div>
+        <div class="research-item reveal reveal-delay-3">
+          <div class="research-item-status research-item-status--active">Active · 2026</div>
+          <h4>KBI HK Insight — Annual Student Publication</h4>
+          <p>Our annual publication featuring student-authored research, analysis, and commentary on emerging technology developments. The 2026 edition focuses on AI policy, quantum hardware progress, and DeFi regulation in Asia.</p>
+          <div style="margin-top:14px;"><a href="news.html" style="font-size:0.8125rem;font-weight:600;color:var(--prussian);">Read latest issue →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT WE LOOK FOR ═══ -->
+  <section class="section-wrap section-wrap--white" id="collaborate" aria-labelledby="collab-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">New Collaborations</span></div>
+      <h2 class="section-heading reveal" id="collab-heading">What We Look For<br>in a Collaboration</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:600px;">We are selective about partnerships. The right collaborator contributes substantive expertise that genuinely improves what our students experience — not just a logo on a page.</p>
+
+      <div class="criteria-grid">
+        <div class="criteria-card reveal">
+          <span class="criteria-card-icon" aria-hidden="true">🎯</span>
+          <h4>Substantive Contribution</h4>
+          <p>We are looking for partners who contribute real expertise — as judges, curriculum advisors, dataset providers, or research co-supervisors. Logo-only arrangements are not meaningful to us.</p>
+        </div>
+        <div class="criteria-card reveal reveal-delay-1">
+          <span class="criteria-card-icon" aria-hidden="true">🔬</span>
+          <h4>Technical Depth</h4>
+          <p>Preferred partners have genuine depth in one of our three technology domains — blockchain, data science, or quantum computing — at an academic or applied professional level.</p>
+        </div>
+        <div class="criteria-card reveal reveal-delay-2">
+          <span class="criteria-card-icon" aria-hidden="true">👥</span>
+          <h4>Student Focus</h4>
+          <p>The collaboration should ultimately benefit our student members — through better programme quality, access to datasets, exposure to professional-level feedback, or research opportunities.</p>
+        </div>
+        <div class="criteria-card reveal reveal-delay-3">
+          <span class="criteria-card-icon" aria-hidden="true">🤝</span>
+          <h4>Long-Term Relationship</h4>
+          <p>We prefer collaborations that develop over time — where mutual familiarity allows us to work more effectively together and where both sides genuinely benefit from the arrangement.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;background:var(--prussian);border-radius:var(--radius-lg);padding:48px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;" class="reveal">
+        <div>
+          <div style="font-size:0.6875rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;">Get in Touch</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.375rem;font-weight:600;color:#fff;margin-bottom:10px;">Interested in Working With KBI HK?</h3>
+          <p style="font-size:0.875rem;color:rgba(255,255,255,0.72);line-height:1.75;max-width:540px;">Send us a brief description of your organisation, your area of expertise, and what kind of collaboration you have in mind. We review all proposals and respond within one week.</p>
+        </div>
+        <div style="flex-shrink:0;">
+          <a href="contact.html" class="btn btn-yellow">Contact Us →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

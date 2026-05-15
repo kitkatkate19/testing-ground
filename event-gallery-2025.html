@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025–26 Event Gallery — KBI Hong Kong</title>
+  <meta name="description" content="Photos from KBI Hong Kong events in 2025 and 2026 — ETO HK 2025 Finals, Nine-Year Community Gathering, Quantum Primer Workshops, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .gallery-event-section { margin-bottom: 72px; scroll-margin-top: 100px; }
+    .gallery-event-header { padding-bottom: 24px; border-bottom: 1px solid var(--stone); margin-bottom: 32px; }
+    .gallery-event-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+    .gallery-event-title { font-family: 'Playfair Display', serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 600; color: var(--ink); margin-bottom: 12px; }
+    .gallery-event-desc { font-size: 0.9375rem; color: var(--text-faint); line-height: 1.8; max-width: 680px; }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .photo-card { border-radius: var(--radius-md); overflow: hidden; position: relative; aspect-ratio: 4/3; background: var(--mist); cursor: pointer; }
+    .photo-card--wide { grid-column: span 2; aspect-ratio: 16/9; }
+    .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .photo-card:hover img { transform: scale(1.05); }
+    .photo-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,7,10,0.7) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 20px; }
+    .photo-card:hover .photo-card-overlay { opacity: 1; }
+    .photo-card-caption { color: #fff; font-size: 0.8125rem; font-weight: 500; line-height: 1.5; }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(5,7,10,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.active { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 85vh; border-radius: var(--radius-md); object-fit: contain; }
+    .lightbox-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; }
+    .lightbox-caption { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.875rem; text-align: center; }
+    @media (max-width: 640px) { .photo-card--wide { grid-column: span 1; aspect-ratio: 4/3; } }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" role="banner">
+    <p class="announcement-bar-text">
+      <span class="announcement-bar-badge">2026</span>
+      ETO Hong Kong 2026 applications are open —
+      <a href="eto2026.html" class="announcement-bar-link">Apply before 31 May&nbsp;→</a>
+    </p>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="22" height="22" rx="5" fill="#003153"/>
+            <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+          </svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero page-hero--night" style="position:relative;overflow:hidden;">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=JRmpi3xnsEFHuNK8TkzKGnTJkpu0R8xDAiyLiE3r%2Bn%2BOp1CdQ4K0iXuIQEzIjloJX08MdPDhPjrJzqRYShst8S1yIl7gNAJBoZ4Cpzr0WdlokbOA%2BNO7XHZB8Ndd%2FAjGhcPmMvuurUfhXDLvlpxaQ15CBEpCKyJbhe02XEV2n2J%2F1eX%2FjJaCXJY%2FHCAkA8MaZ7d%2F9PmWb0cX20276omReQiU839qJ3gt&u2=mzynAtzMjn%2FSUv4G&width=2560');background-size:cover;background-position:center;opacity:0.18;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <nav class="page-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span aria-hidden="true">›</span>
+        <a href="about-history.html">Our History</a> <span aria-hidden="true">›</span>
+        <span>2025–26 Gallery</span>
+      </nav>
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Event Archive</span></div>
+      <h1 class="page-hero-heading">2025–26 Photo Gallery</h1>
+      <p class="page-hero-sub">ETO HK 2025 Finals, the Nine-Year Community Gathering, Quantum Primer Workshops, and more — the full visual record of KBI Hong Kong's most recent year.</p>
+      <div style="margin-top:28px;">
+        <a href="about-history.html" class="btn btn-outline-white btn--sm">← Back to History Archive</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- GALLERY CONTENT -->
+  <section class="section-wrap section-wrap--white">
+    <div class="section-inner">
+
+      <!-- EVENT 1: ETO HK 2026 LAUNCH -->
+      <div class="gallery-event-section" id="eto2026-launch">
+        <div class="gallery-event-header">
+          <div class="gallery-event-meta">
+            <span class="tag tag--sky">Flagship</span>
+            <span style="font-size:0.8125rem;color:var(--text-faint);">April 2026 · Hong Kong</span>
+          </div>
+          <div class="gallery-event-title">ETO HK 2026 — Interest Registration Opens</div>
+          <p class="gallery-event-desc">KBI Hong Kong opens registration for the Emerging Technologies Olympiad 2026, spanning all three tracks — blockchain, data science, and quantum computing. The registration launch marked the beginning of the biggest KBI HK programme yet, with record interest from secondary and tertiary institutions.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)" data-caption="ETO HK 2026 — Registration Launch Event · April 2026">
+            <img src="https://sspark.genspark.ai/cfimages?u1=JRmpi3xnsEFHuNK8TkzKGnTJkpu0R8xDAiyLiE3r%2Bn%2BOp1CdQ4K0iXuIQEzIjloJX08MdPDhPjrJzqRYShst8S1yIl7gNAJBoZ4Cpzr0WdlokbOA%2BNO7XHZB8Ndd%2FAjGhcPmMvuurUfhXDLvlpxaQ15CBEpCKyJbhe02XEV2n2J%2F1eX%2FjJaCXJY%2FHCAkA8MaZ7d%2F9PmWb0cX20276omReQiU839qJ3gt&u2=mzynAtzMjn%2FSUv4G&width=2560" alt="ETO HK 2026 Launch">
+            <div class="photo-card-overlay"><div class="photo-card-caption">ETO HK 2026 — Registration Launch · April 2026</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Committee briefing for ETO HK 2026 programme leads">
+            <img src="https://sspark.genspark.ai/cfimages?u1=mA%2FHGWZCb4tFGCFeXT8OSkcE%2FRTe1%2FfbNKbqlVwKp4wjqweTQNqlPsCznPq8KOU3gF9KnrlSl1ra%2F3h1SY%2FYqHAWYsQhCRZO4HZl8iZrukZ6cn%2FyM%2FIuN3XBAvmQuW2vOcaJ00JepkKlAswkAf6KDiPYJbVQgdLk&u2=qHvRWOGlD0vDk4cz&width=2560" alt="Committee briefing">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Committee briefing — ETO HK 2026 programme leads</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Interest registration information session for prospective participants">
+            <img src="https://sspark.genspark.ai/cfimages?u1=NwTPWKsd0Ke%2Fe7jlRHvZ99ot8A2XjIXrWMKRb%2FbnF7zVn2%2B%2FooXTxueWTh8JcKkkl11d%2BpGmh3Q%2BIXqTdLRQkG32ZysJQzGm2OvtSUb%2BlyDipw%3D%3D&u2=rCuR3wNGwWxYzt4C&width=2560" alt="Information session">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Interest registration information session</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 2: NINE-YEAR GATHERING -->
+      <div class="gallery-event-section" id="nine-year">
+        <div class="gallery-event-header">
+          <div class="gallery-event-meta">
+            <span class="tag tag--stone">Community</span>
+            <span style="font-size:0.8125rem;color:var(--text-faint);">February 2026 · Hong Kong</span>
+          </div>
+          <div class="gallery-event-title">KBI HK Nine-Year Community Gathering</div>
+          <p class="gallery-event-desc">Marking nine years of continuous operation — the largest KBI HK community gathering to date, bringing together current members, alumni, mentors, and partners. Featured the nine-year retrospective presentation, alumni speakers, and the 2025 scholarship awards.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)" data-caption="Nine-Year Community Gathering — main hall · February 2026">
+            <img src="https://sspark.genspark.ai/cfimages?u1=fH2QmZM54XDqmFpVCPaAGB33SwPIKBpldvU7rE1erSLQgabl6PgUd%2BeIfyTFcYcanIhvmn%2FIWJtGAHdGkdUm7Cm5JsxN8ttyMOmd3IK9VIzNGCbfQ7Yo4juSsxBfr6gOMrEe0dtjpxiNYKT21l1Hfmoq&u2=aiudgBFomHUgdByW&width=2560" alt="Nine-Year Community Gathering">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Nine-Year Community Gathering — Main Hall · February 2026</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Alumni panel — where are they now? Three returning KBI HK alumni">
+            <img src="https://sspark.genspark.ai/cfimages?u1=mQ9t9fCrTlYifVwwgbSBCuwaZCA7TbZdD7PRtUZGGR7LyGd1LhPOt8IYyrurO2IDKLSKyhPpo%2FbtxEcwnnTtd%2B%2FPfLgzoXoMyYpX8%2F3OkbI%3D&u2=XAeDRVgTBr4NS5qw&width=2560" alt="Alumni panel">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Alumni panel — where are they now?</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="2025 Scholarship Awards — recipients and committee">
+            <img src="https://sspark.genspark.ai/cfimages?u1=jH%2FsKQJQWcQ%2BztA7GWnHoKb1zovxcP%2BaLfLrzIvA3AVCHSdR5ANN%2FIAgGxh4%2FBNK17MumvScu0bsqiVuy8tcVJ4xX8UY7c0LGKUF5YK%2BD3xplkbsuGlvlkT8unzsCW8yki37hfrCQw%3D%3D&u2=MudXHgT%2FWeEYn7S1&width=2560" alt="Scholarship Awards">
+            <div class="photo-card-overlay"><div class="photo-card-caption">2025 Scholarship Awards — recipients and committee</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 3: ETO HK 2025 FINALS -->
+      <div class="gallery-event-section" id="eto2025-finals">
+        <div class="gallery-event-header">
+          <div class="gallery-event-meta">
+            <span class="tag tag--sky">Competition · Flagship</span>
+            <span style="font-size:0.8125rem;color:var(--text-faint);">December 2025 · HKUST, Clear Water Bay</span>
+          </div>
+          <div class="gallery-event-title">ETO HK 2025 — Finals Day</div>
+          <p class="gallery-event-desc">The second edition of ETO HK Finals Day — cross-track challenge presentations from 38 qualifying teams, judged by industry and academic panels. The event drew 280+ attendees including sponsors, institutional partners, and the broader KBI HK community.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)" data-caption="ETO HK 2025 Finals Day — team presentations · December 2025">
+            <img src="https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncsXFCOWZ6NOSr6fVMNLNx2uJPOm7xlLeUPFgVZqB1BZrOkao95BKn1edlZGYCTt4YDISWnVp9b5UlHtD4pA2o8yoq9WJ5s6XzvzKerC%2FxNit7vMK4Gq7%2BH89o0c4AyPwME%3D&u2=IFWKAVhnRHUHlzA%2B&width=2560" alt="ETO HK 2025 Finals">
+            <div class="photo-card-overlay"><div class="photo-card-caption">ETO HK 2025 Finals Day — team presentations · December 2025</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Judging panel deliberation — blockchain and quantum tracks">
+            <img src="https://sspark.genspark.ai/cfimages?u1=ERRYJ71shAJIHHQaUQqy%2F%2BbiByoRdFeJn4acO07jAuhBeJplYshY3sY235pzyforDUgsZbhV9rnvxCrg6jztJ3q8oC3Uw6%2FAPcO0LnD1VNg%2FJ43q0OPLUSwUznpKl%2F3Kp4mowEH5WDpPBu4urWC6lw%3D%3D&u2=KRIjYyhgCuNH%2BkEP&width=2560" alt="Judging panel">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Judging panel deliberation — blockchain and quantum tracks</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Student teams at work — ETO HK 2025 challenge round">
+            <img src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40EcFM9JtbOQjA6FW%2BsrF1n3JJpqvpDxvPNZm5NFEbX9bsofkPePct3RY%2FsisqOOXKIHozKYzdQ6pR2XgPtGfCFulsh0ZNLA%3D%3D&u2=%2BGA2I5GSdWp%2BPdE1&width=2560" alt="Student teams at work">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Student teams — ETO HK 2025 challenge round</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Awards and recognition — ETO HK 2025 winning teams">
+            <img src="https://sspark.genspark.ai/cfimages?u1=kDsRa4VmHQAR6r1njXf%2Fbu515qt7GV4zpTyfB3dir1nbxdNFt0oslW7ukrZVP%2B0bYN0i2vOtBpfIMxSaSoAONQ0Kv9z2ZGO5%2BwsGY65c7bRZslawVZ5SrDunn2cloSg%2FZ%2BzLt9WD&u2=LublDGiiuEfjuoh6&width=2560" alt="Awards ceremony">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Awards and recognition — ETO HK 2025 winning teams</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 4: QUANTUM PRIMER 2025 -->
+      <div class="gallery-event-section" id="quantum-primer-2025">
+        <div class="gallery-event-header">
+          <div class="gallery-event-meta">
+            <span class="tag tag--stone">Workshop</span>
+            <span style="font-size:0.8125rem;color:var(--text-faint);">October 2025 · CUHK, Sha Tin</span>
+          </div>
+          <div class="gallery-event-title">Quantum Primer Workshop Series 2025</div>
+          <p class="gallery-event-desc">Three-session deep-dive into quantum circuit design and Qiskit fundamentals for IQCOL HK 2025 preparation. 45 students attended across four Hong Kong universities. Sessions covered quantum gates, variational quantum eigensolvers, and Qiskit noise models.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)" data-caption="Quantum Primer Workshop — Session 1 · October 2025">
+            <img src="https://sspark.genspark.ai/cfimages?u1=I9DV%2FDRVz8O5a8rNzJMVZUR1Y4z5aGLaio8L9tP6TexyoaLobo2eVb5aKh3wSEoeTaqiAvddqhzXf22GYXLG6NhMVrWvkVqSXRYCl9MnjBTMLWmM5hMXm3Y%3D&u2=NkdGEy1mL7cIMR9c&width=2560" alt="Quantum Primer Workshop 2025">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Quantum Primer Workshop Series — Session 1 · October 2025</div></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)" data-caption="Hands-on Qiskit session — students building quantum circuits">
+            <img src="https://sspark.genspark.ai/cfimages?u1=zxWwdhiTkaxRoAld%2FxY6ZYdNywPGxOkOIUFClotopOiQMSgogtGTWPXg0qEgtofZCBkLgYS1dx5lH544DTURGF3BfnQwDvnT7q7N%2BJlWuKhRhQ%3D%3D&u2=YFYkj%2BVFYXB91VWm&width=2560" alt="Qiskit hands-on session">
+            <div class="photo-card-overlay"><div class="photo-card-caption">Hands-on Qiskit — students building quantum circuits</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;padding:40px 0;border-top:1px solid var(--stone);margin-top:24px;">
+        <p style="font-size:0.875rem;color:var(--text-faint);margin-bottom:20px;">For high-resolution images or media enquiries, please <a href="contact.html" style="color:var(--prussian);font-weight:600;">contact our communications team</a>.</p>
+        <a href="about-history.html" class="btn btn-prussian">← Back to History Archive</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close photo viewer">&#x2715;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Bridging emerging technology and rigorous academic inquiry — one student at a time.</p>
+        <p class="footer-copyright">© 2016–2026 Königsberger Bridges Institute, Hong Kong Chapter. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter under the Königsberger Bridges Institute global network.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+  <script>
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      const caption = card.getAttribute('data-caption');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightboxImg').alt = img.alt;
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    document.getElementById('lightboxClose').addEventListener('click', () => {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('lightbox')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>

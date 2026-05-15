@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certifications — KBI Hong Kong</title>
+  <meta name="description" content="ISFRETIC certifications and KBI HK training programmes in blockchain, data science, and quantum computing — internationally recognised credentials for Hong Kong students.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+
+    /* ── CERT TRACK CARDS ── */
+    .cert-track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .cert-track-card {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .cert-track-card:hover {
+      box-shadow: 0 10px 40px rgba(0,49,83,0.10);
+      transform: translateY(-3px);
+    }
+    .cert-track-header {
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid var(--stone);
+    }
+    .cert-track-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .cert-track-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .cert-track-sub {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+    }
+    .cert-track-body {
+      padding: 24px 32px;
+      flex: 1;
+    }
+    .cert-track-desc {
+      font-size: 0.875rem;
+      color: var(--text-faint);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .cert-module-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cert-module {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+    }
+    .cert-module-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--mist);
+      border: 1.5px solid var(--prussian);
+      color: var(--prussian);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .cert-track-footer {
+      padding: 20px 32px;
+      border-top: 1px solid var(--stone);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── ISFRETIC BOX ── */
+    .isfretic-box {
+      background: var(--prussian);
+      border-radius: var(--radius-lg);
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: center;
+      margin-top: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 860px) { .isfretic-box { grid-template-columns: 1fr; } }
+    .isfretic-box::before {
+      content: 'ISFRETIC';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      letter-spacing: 0.1em;
+    }
+    .isfretic-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 14px;
+    }
+    .isfretic-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .isfretic-desc {
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+    }
+    .isfretic-cert-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      text-align: center;
+    }
+    .isfretic-cert-badge-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .isfretic-cert-badge-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .isfretic-cert-badge-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    .isfretic-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .isfretic-feature {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .isfretic-feature-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .isfretic-feature p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .pathway-steps {
+      display: flex;
+      gap: 0;
+      margin-top: 40px;
+      position: relative;
+    }
+    .pathway-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      right: 28px;
+      height: 2px;
+      background: var(--stone);
+      z-index: 0;
+    }
+    @media (max-width: 720px) {
+      .pathway-steps { flex-direction: column; }
+      .pathway-steps::before { display: none; }
+    }
+    .pathway-step {
+      flex: 1;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .pathway-step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--prussian);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 3px solid #fff;
+    }
+    .pathway-step h4 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .pathway-step p {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      line-height: 1.65;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="page-hero page-hero--night" aria-label="Certifications page">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=NwTPWKsd0Ke%2Fe7jlRHvZ99ot8A2XjIXrWMKRb%2FbnF7zVn2%2B%2FooXTxueWTh8JcKkkl11d%2BpGmh3Q%2BIXqTdLRQkG32ZysJQzGm2OvtSUb%2BlyDipw%3D%3D&u2=rCuR3wNGwWxYzt4C&width=2560');background-size:cover;background-position:center;opacity:0.12;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <nav class="page-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span aria-hidden="true">›</span> <a href="eto2026.html">Programmes</a> <span aria-hidden="true">›</span> <span>Certifications</span>
+      </nav>
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Training &amp; Credentials</span></div>
+      <h1 class="page-hero-heading">Build the Foundation.<br>Earn the Credential.</h1>
+      <p class="page-hero-sub">KBI HK's training programmes and ISFRETIC certification pathway — structured, verifiable credentials in blockchain, data science, and quantum computing for Hong Kong students.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+        <a href="#training" class="btn btn-yellow btn--sm">View Training Programmes</a>
+        <a href="#isfretic" class="btn btn-outline-white btn--sm">ISFRETIC Certification</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ TRAINING PROGRAMMES ═══ -->
+  <section class="section-wrap section-wrap--white" id="training" aria-labelledby="training-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Training Programmes</span></div>
+      <h2 class="section-heading reveal" id="training-heading">Three Tracks.<br>Real Technical Depth.</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:640px;">Our training programmes are designed for students who want to build serious foundations — whether you are preparing for competition, planning a research project, or simply want verifiable credentials that reflect genuine understanding.</p>
+
+      <div class="cert-track-grid">
+
+        <!-- BLOCKCHAIN -->
+        <div class="cert-track-card reveal">
+          <div class="cert-track-header">
+            <span class="cert-track-icon" aria-hidden="true">⛓️</span>
+            <div class="cert-track-name">Blockchain Foundations</div>
+            <div class="cert-track-sub">6-session structured clinic · Certificate on completion</div>
+          </div>
+          <div class="cert-track-body">
+            <p class="cert-track-desc">A rigorous introduction to blockchain technology — from the cryptographic primitives that make it work to the smart contract patterns that make it useful. Designed for students who want to understand how the technology actually functions, not just what it is for.</p>
+            <div style="font-size:0.6875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--prussian);margin-bottom:12px;">6 Sessions Cover</div>
+            <div class="cert-module-list">
+              <div class="cert-module"><div class="cert-module-num">1</div>Cryptographic fundamentals — hash functions, digital signatures, Merkle trees</div>
+              <div class="cert-module"><div class="cert-module-num">2</div>Blockchain architecture — blocks, chains, nodes, mempool</div>
+              <div class="cert-module"><div class="cert-module-num">3</div>Consensus mechanisms — PoW, PoS, BFT variants</div>
+              <div class="cert-module"><div class="cert-module-num">4</div>Smart contract programming — Solidity basics and patterns</div>
+              <div class="cert-module"><div class="cert-module-num">5</div>DeFi and tokenomics — protocols, governance, economic design</div>
+              <div class="cert-module"><div class="cert-module-num">6</div>Use-case analysis and project presentation</div>
+            </div>
+          </div>
+          <div class="cert-track-footer">
+            <span class="tag tag--stone">Blockchain</span>
+            <span class="tag tag--sky">IBCOL Prep</span>
+            <a href="events.html" class="btn btn-prussian btn--sm" style="margin-left:auto;">Upcoming Sessions</a>
+          </div>
+        </div>
+
+        <!-- DATA SCIENCE -->
+        <div class="cert-track-card reveal reveal-delay-1">
+          <div class="cert-track-header">
+            <span class="cert-track-icon" aria-hidden="true">📊</span>
+            <div class="cert-track-name">Data Science Skillsprint</div>
+            <div class="cert-track-sub">Intensive workshop series · Certificate on completion</div>
+          </div>
+          <div class="cert-track-body">
+            <p class="cert-track-desc">An intensive, Python-based data science programme covering the full pipeline from raw data to presented insights. Calibrated to IDSOL competition requirements but useful for any student building applied data skills.</p>
+            <div style="font-size:0.6875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--prussian);margin-bottom:12px;">Sessions Cover</div>
+            <div class="cert-module-list">
+              <div class="cert-module"><div class="cert-module-num">1</div>Python for data science — Pandas, NumPy, Matplotlib foundations</div>
+              <div class="cert-module"><div class="cert-module-num">2</div>Exploratory data analysis — cleaning, visualisation, feature engineering</div>
+              <div class="cert-module"><div class="cert-module-num">3</div>Supervised learning — regression, classification, model selection</div>
+              <div class="cert-module"><div class="cert-module-num">4</div>Unsupervised learning — clustering, dimensionality reduction</div>
+              <div class="cert-module"><div class="cert-module-num">5</div>Statistical inference — hypothesis testing, confidence intervals</div>
+              <div class="cert-module"><div class="cert-module-num">6</div>Project pipeline and presentation to non-technical stakeholders</div>
+            </div>
+          </div>
+          <div class="cert-track-footer">
+            <span class="tag tag--stone">Data Science</span>
+            <span class="tag tag--sky">IDSOL Prep</span>
+            <a href="events.html" class="btn btn-prussian btn--sm" style="margin-left:auto;">Upcoming Sessions</a>
+          </div>
+        </div>
+
+        <!-- QUANTUM -->
+        <div class="cert-track-card reveal reveal-delay-2">
+          <div class="cert-track-header">
+            <span class="cert-track-icon" aria-hidden="true">⚛️</span>
+            <div class="cert-track-name">Quantum Computing Primer</div>
+            <div class="cert-track-sub">Workshop series · Certificate on completion · No physics required</div>
+          </div>
+          <div class="cert-track-body">
+            <p class="cert-track-desc">An accessible but rigorous introduction to quantum computing — from the mathematics of qubits to hands-on Qiskit programming. No physics background required. Mathematical foundations are provided and built from scratch.</p>
+            <div style="font-size:0.6875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--prussian);margin-bottom:12px;">Sessions Cover</div>
+            <div class="cert-module-list">
+              <div class="cert-module"><div class="cert-module-num">1</div>Linear algebra for quantum — vectors, matrices, inner products</div>
+              <div class="cert-module"><div class="cert-module-num">2</div>Qubits and quantum states — superposition, measurement, Bloch sphere</div>
+              <div class="cert-module"><div class="cert-module-num">3</div>Quantum gates and circuits — single-qubit and two-qubit operations</div>
+              <div class="cert-module"><div class="cert-module-num">4</div>Entanglement and quantum protocols — Bell states, teleportation</div>
+              <div class="cert-module"><div class="cert-module-num">5</div>Qiskit programming — building and running circuits on simulators</div>
+              <div class="cert-module"><div class="cert-module-num">6</div>Quantum algorithms — Grover's, Deutsch-Jozsa, variational approaches</div>
+            </div>
+          </div>
+          <div class="cert-track-footer">
+            <span class="tag tag--stone">Quantum Computing</span>
+            <span class="tag tag--sky">IQCOL Prep</span>
+            <a href="events.html" class="btn btn-prussian btn--sm" style="margin-left:auto;">Upcoming Sessions</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ISFRETIC ═══ -->
+  <section class="section-wrap section-wrap--mist" id="isfretic" aria-labelledby="isfretic-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Certification</span></div>
+      <h2 class="section-heading reveal" id="isfretic-heading">ISFRETIC Certification Pathway</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:640px;">Successful completion of KBI HK's training programmes provides a pathway to ISFRETIC certification — internationally recognised credentials validating your knowledge in emerging technology fields. Certifications are assessed and issued by the Königsberger Bridges Institute.</p>
+
+      <div class="isfretic-box reveal">
+        <div>
+          <div class="isfretic-label">ISFRETIC — International Standard Framework for Recognising Emerging Technology Credentials</div>
+          <h3 class="isfretic-heading">A credential that means something.</h3>
+          <p class="isfretic-desc">ISFRETIC is the KBI's international certification standard for emerging technology competencies. Unlike generic platform badges, ISFRETIC certifications are issued based on assessed performance in structured KBI programmes — not just course completion clicks.</p>
+          <div class="isfretic-features">
+            <div class="isfretic-feature">
+              <div class="isfretic-feature-dot"></div>
+              <p>Issued by the Königsberger Bridges Institute — the same body that runs 40+ international competitions and programmes across 12 chapters worldwide</p>
+            </div>
+            <div class="isfretic-feature">
+              <div class="isfretic-feature-dot"></div>
+              <p>Verifiable by employers and universities via the KBI certification registry — a URL and certificate ID that anyone can check</p>
+            </div>
+            <div class="isfretic-feature">
+              <div class="isfretic-feature-dot"></div>
+              <p>Three domain certifications available: Blockchain Technology, Data Science, and Quantum Computing</p>
+            </div>
+            <div class="isfretic-feature">
+              <div class="isfretic-feature-dot"></div>
+              <p>Competition performance can be cited alongside certification — demonstrating applied ability, not just theoretical understanding</p>
+            </div>
+          </div>
+        </div>
+        <div class="isfretic-cert-badge">
+          <span class="isfretic-cert-badge-icon" aria-hidden="true">🏅</span>
+          <div class="isfretic-cert-badge-name">ISFRETIC Certificate</div>
+          <div class="isfretic-cert-badge-sub">Issued by the<br>Königsberger Bridges Institute<br><br>Verifiable · International · Performance-Based</div>
+          <div style="margin-top:20px;">
+            <span class="tag tag--stone" style="margin:3px;">Blockchain</span>
+            <span class="tag tag--stone" style="margin:3px;">Data Science</span>
+            <span class="tag tag--stone" style="margin:3px;">Quantum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW TO GET CERTIFIED ═══ -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="pathway-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Certification Pathway</span></div>
+      <h2 class="section-heading reveal" id="pathway-heading">How Certification Works</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:580px;">From membership to verified credential — four steps to an ISFRETIC certification in your chosen technology track.</p>
+
+      <div class="pathway-steps reveal">
+        <div class="pathway-step">
+          <div class="pathway-step-num">1</div>
+          <h4>Join KBI HK</h4>
+          <p>Register for KBI HK membership to access training programmes and track your progress toward certification.</p>
+        </div>
+        <div class="pathway-step">
+          <div class="pathway-step-num">2</div>
+          <h4>Attend Training</h4>
+          <p>Complete the 6-session training programme in your chosen track — blockchain, data science, or quantum computing.</p>
+        </div>
+        <div class="pathway-step">
+          <div class="pathway-step-num">3</div>
+          <h4>Assessment</h4>
+          <p>Complete the assessed component of the programme — typically a technical submission and short presentation to programme facilitators.</p>
+        </div>
+        <div class="pathway-step">
+          <div class="pathway-step-num">4</div>
+          <h4>Receive Certification</h4>
+          <p>Successful participants receive an ISFRETIC certificate issued by the KBI — verifiable, shareable, and internationally recognised.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;text-align:center;">
+        <a href="membership.html" class="btn btn-prussian">Join Membership to Get Started</a>
+        <p style="font-size:0.8125rem;color:var(--text-faint);margin-top:14px;">Questions about certification? <a href="contact.html" style="color:var(--prussian);font-weight:600;">Contact us directly</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="section-wrap section-wrap--prussian" aria-label="Competition link">
+    <div class="section-inner" style="text-align:center;">
+      <div class="label-row" style="justify-content:center;"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">From Training to Competition</span></div>
+      <h2 class="section-heading reveal" style="color:#fff;">Ready to Put Your Skills to the Test?</h2>
+      <p class="reveal reveal-delay-1" style="color:rgba(255,255,255,0.75);max-width:540px;margin:16px auto 32px;line-height:1.8;">Training programmes are designed to feed directly into KBI HK's competition tracks. Our top-performing competition participants often completed the corresponding certification programme first.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-2">
+        <a href="competitions.html" class="btn btn-yellow">View Competitions →</a>
+        <a href="eto2026.html" class="btn btn-outline-white btn--sm">ETO HK 2026</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

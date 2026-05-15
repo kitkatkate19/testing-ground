@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Contract Developer Workshop 2023 Recap | KBI Hong Kong</title>
+  <meta name="description" content="Recap of KBI HK's Smart Contract Developer Workshop — a hands-on coding workshop introducing Solidity development, testing, and deployment on Ethereum testnets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .event-hero { background: var(--night); padding: calc(var(--nav-h) + 72px) 24px 64px; position: relative; overflow: hidden; }
+    .event-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,49,83,0.6) 0%, rgba(5,7,10,0.5) 60%); pointer-events: none; }
+    .event-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(60,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(60,180,255,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .event-hero-inner { max-width: var(--max-width); margin: 0 auto; position: relative; z-index: 2; }
+    .event-breadcrumb { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
+    .event-breadcrumb a { color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .event-breadcrumb a:hover { color: var(--cyan); }
+    .event-breadcrumb span { color: rgba(255,255,255,0.2); }
+    .past-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 14px; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+    .past-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+    .event-hero h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .event-hero h1 em { font-style: italic; color: var(--cyan); }
+    .event-hero-desc { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: rgba(255,255,255,0.6); max-width: 600px; line-height: 1.8; margin-bottom: 28px; }
+    .event-meta-row { display: flex; gap: 24px; flex-wrap: wrap; }
+    .event-meta-item { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.875rem; color: rgba(255,255,255,0.45); }
+    .event-meta-item svg { width: 14px; height: 14px; color: var(--cyan); flex-shrink: 0; }
+    .event-body-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
+    .event-sidebar-sticky { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; }
+    .sidebar-card-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+    .sidebar-detail-row { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--stone); }
+    .sidebar-detail-row:last-child { border-bottom: none; }
+    .sidebar-detail-icon { color: var(--prussian); flex-shrink: 0; margin-top: 1px; }
+    .sidebar-detail-icon svg { width: 14px; height: 14px; }
+    .sidebar-detail-label { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1px; }
+    .sidebar-detail-value { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text-main); line-height: 1.4; }
+    .related-event-link { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--stone); transition: color var(--t); }
+    .related-event-link:last-child { border-bottom: none; }
+    .related-event-link:hover .related-event-title { color: var(--prussian); }
+    .related-event-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+    .related-event-title { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--text-main); margin-bottom: 2px; transition: color var(--t); }
+    .related-event-date { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .stat-box { padding: 24px 20px; background: var(--prussian); border-radius: var(--radius-lg); text-align: center; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--yellow); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+    .module-item { padding: 20px; background: var(--mist); border: 1px solid var(--stone); border-radius: var(--radius-lg); margin-bottom: 12px; }
+    .module-label { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--prussian); margin-bottom: 4px; }
+    .module-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+    .module-desc { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+    @media (max-width: 960px) { .event-body-layout { grid-template-columns: 1fr; } .event-sidebar-sticky { position: static; } .stat-row { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg></div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link active">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <header class="event-hero">
+    <div class="event-hero-grid" aria-hidden="true"></div>
+    <div class="event-hero-inner">
+      <nav class="event-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span>›</span>
+        <a href="events.html">Events</a><span>›</span>
+        <span aria-current="page">Smart Contract Developer Workshop 2023</span>
+      </nav>
+      <div class="past-badge">Past Event — May 2023</div>
+      <h1>Smart Contract<br><em>Developer Workshop</em></h1>
+      <p class="event-hero-desc">KBI HK's most technically demanding event to date — a full-day workshop taking participants from zero Solidity experience to a deployed, tested smart contract on an Ethereum testnet.</p>
+      <div class="event-meta-row">
+        <div class="event-meta-item"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 1v4M11 1v4M2 7h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> 20 May 2023</div>
+        <div class="event-meta-item"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg> Cyberport, Pok Fu Lam</div>
+        <div class="event-meta-item"><svg viewBox="0 0 16 16" fill="none"><circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 13c0-2.76 2.24-5 5-5h1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M10 8c2.76 0 5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> 40 participants · coding prerequisite required</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-wrap section-wrap--white">
+      <div class="section-inner">
+        <div class="event-body-layout">
+          <article>
+            <figure class="event-inline-figure reveal" style="margin:0 0 40px;border-radius:var(--radius-lg);overflow:hidden;">
+              <img src="https://sspark.genspark.ai/cfimages?u1=rRLva5wTOxsu5OeLn8Ap%2FMVb2xb9z9W3cR%2Bbkwr2xr4%2FQCZtLHOpyDZDQQenDkC6UirkbID6vy%2B0r3G2q8%2FsNYvyT%2FGOYkeHJRMe8h%2FT1e8ma9bPlU4XWAvqOy9OHJdR0Xo45kj9mHsGF%2FeASlNfHVF%2FMJpSYvTTal4%3D&u2=c%2FLZB8bFm28UUEFQ&width=2560" alt="Smart contract developer certification — code editor with Solidity smart contract" style="width:100%;height:320px;object-fit:cover;display:block;">
+              <figcaption style="padding:10px 16px;background:var(--mist);font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-faint);">Of 112 applicants, 40 were admitted to this prerequisite-gated workshop — by day's end, every participant had deployed a tested ERC-20 contract to the Sepolia testnet.</figcaption>
+            </figure>
+
+            <div style="margin-bottom:48px;">
+              <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Event Recap</span></div>
+              <h2 class="section-heading reveal">A Workshop With Prerequisites</h2>
+              <p class="section-body reveal reveal-delay-1">The Smart Contract Developer Workshop was KBI HK's first explicitly technical hands-on event — and the first to require prerequisites. Applicants had to demonstrate basic Python or JavaScript knowledge before being accepted. Of 112 applicants, 40 were admitted.</p>
+              <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">The decision to gate entry was deliberate. Previous workshops had suffered from the "developer gap" — attendees with varying levels of technical background made it impossible to pitch the session correctly. By requiring prerequisites, the 2023 Smart Contract Workshop could go deep, fast.</p>
+              <p class="section-body reveal reveal-delay-3" style="margin-top:16px;">By 5 PM, every participant had deployed a tested ERC-20 token contract to the Sepolia testnet, audited a deliberately vulnerable contract, and submitted a written post-mortem on the vulnerability they found. The feedback was the highest of any KBI HK event to that point — 94% of participants rated it "excellent" or "outstanding."</p>
+            </div>
+
+            <div class="stat-row reveal">
+              <div class="stat-box"><div class="stat-number">40</div><div class="stat-label">Participants</div></div>
+              <div class="stat-box"><div class="stat-number">112</div><div class="stat-label">Applicants</div></div>
+              <div class="stat-box"><div class="stat-number">94%</div><div class="stat-label">Excellent / Outstanding</div></div>
+            </div>
+
+            <div style="margin-bottom:48px;">
+              <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Curriculum</span></div>
+              <h2 class="section-heading reveal">What Was Built</h2>
+              <div class="module-item reveal">
+                <div class="module-label">Morning Session 1</div>
+                <div class="module-title">Solidity Fundamentals: Types, Functions, and State</div>
+                <div class="module-desc">Syntax, variable types, modifiers, events, and the EVM execution model. Participants wrote and tested their first contract — a simple counter — in Remix IDE within the first 90 minutes.</div>
+              </div>
+              <div class="module-item reveal reveal-delay-1">
+                <div class="module-label">Morning Session 2</div>
+                <div class="module-title">ERC-20 Token Standard: Building from Scratch</div>
+                <div class="module-desc">Walking through the OpenZeppelin ERC-20 implementation, then building a custom token contract with mint, burn, and transfer controls. Each participant deployed their token to Sepolia before lunch.</div>
+              </div>
+              <div class="module-item reveal reveal-delay-2">
+                <div class="module-label">Afternoon Session 1</div>
+                <div class="module-title">Testing with Hardhat: Writing Automated Contract Tests</div>
+                <div class="module-desc">Introduction to Hardhat test framework, writing unit tests in JavaScript, fork testing against mainnet state. Emphasis on the testing mindset — why a contract with 100% test coverage can still be exploitable.</div>
+              </div>
+              <div class="module-item reveal reveal-delay-3">
+                <div class="module-label">Afternoon Session 2</div>
+                <div class="module-title">Smart Contract Security: Find the Bug</div>
+                <div class="module-desc">Participants received a deliberately vulnerable ERC-20 contract and had 90 minutes to identify the vulnerability (a reentrancy attack vector), write an exploit, and produce a written post-mortem. Led by Arjun Sharma.</div>
+              </div>
+            </div>
+
+            <div style="margin-bottom:20px;">
+              <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Next Steps</span></div>
+              <h2 class="section-heading reveal">IBCOL 2026 Preparation</h2>
+              <p class="section-body reveal reveal-delay-1">Smart contract development skills are directly applicable to IBCOL project work. Teams that can prototype their blockchain solution — even at a basic level — consistently score higher on technical credibility during judging. The Blockchain Foundations Clinic in March 2026 is the first step for those building toward IBCOL.</p>
+              <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="event1.html" class="btn btn-prussian">Blockchain Foundations Clinic 2026 <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="competitions.html#ibcol" class="btn btn-outline-prussian">IBCOL HK 2026</a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="event-sidebar-sticky">
+            <div class="sidebar-card">
+              <div class="sidebar-card-title">Event Details</div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 1v4M11 1v4M2 7h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+                <div><div class="sidebar-detail-label">Date</div><div class="sidebar-detail-value">20 May 2023</div></div>
+              </div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg></div>
+                <div><div class="sidebar-detail-label">Venue</div><div class="sidebar-detail-value">Cyberport<br>Pok Fu Lam</div></div>
+              </div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 13c0-2.76 2.24-5 5-5h1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M10 8c2.76 0 5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+                <div><div class="sidebar-detail-label">Participants</div><div class="sidebar-detail-value">40 (selected from 112)</div></div>
+              </div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+                <div><div class="sidebar-detail-label">Level</div><div class="sidebar-detail-value">Intermediate · Coding prereq</div></div>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <div class="sidebar-card-title">Related Events</div>
+              <a href="event1.html" class="related-event-link">
+                <div class="related-event-dot" style="background:var(--cyan);"></div>
+                <div><div class="related-event-title">Blockchain Foundations Clinic</div><div class="related-event-date">March 2026 · HKUST</div></div>
+              </a>
+              <a href="event11.html" class="related-event-link">
+                <div class="related-event-dot" style="background:var(--yellow);"></div>
+                <div><div class="related-event-title">Industry Panel: Blockchain in FS</div><div class="related-event-date">September 2024</div></div>
+              </a>
+              <a href="competitions.html#ibcol" class="related-event-link">
+                <div class="related-event-dot" style="background:var(--stone);"></div>
+                <div><div class="related-event-title">IBCOL HK 2026</div><div class="related-event-date">Competition info</div></div>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="competitions.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Competitions</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

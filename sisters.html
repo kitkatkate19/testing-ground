@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sibling Organisations — KBI Hong Kong</title>
+  <meta name="description" content="KBI Hong Kong's sibling organisations — including Ladies of Lovelace and other KBI-affiliated groups sharing our mission of rigorous emerging-technology education.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .sister-card { background: #fff; border: 1px solid var(--stone); border-radius: var(--radius-lg); overflow: hidden; }
+    .sister-card-header { padding: 40px 40px 32px; border-bottom: 1px solid var(--stone); }
+    .sister-card-logo { width: 64px; height: 64px; border-radius: var(--radius-md); background: var(--prussian); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .sister-card-name { font-size: 1.5rem; font-weight: 600; font-family: 'Playfair Display', serif; color: var(--ink); margin-bottom: 6px; }
+    .sister-card-tagline { font-size: 0.875rem; color: var(--text-faint); font-style: italic; }
+    .sister-card-body { padding: 32px 40px; }
+    .sister-card-body p { font-size: 0.9rem; color: var(--text-faint); line-height: 1.85; margin-bottom: 16px; }
+    .sister-card-body p:last-of-type { margin-bottom: 0; }
+    .sister-card-footer { padding: 24px 40px; background: var(--mist); border-top: 1px solid var(--stone); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .sister-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+    .sister-meta-item { display: flex; gap: 8px; align-items: center; font-size: 0.8125rem; color: var(--text-faint); }
+    .sister-meta-icon { width: 16px; height: 16px; color: var(--prussian); flex-shrink: 0; }
+    .kbi-network-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 32px; }
+    .kbi-node { background: var(--mist); border: 1px solid var(--stone); border-radius: var(--radius-md); padding: 20px; }
+    .kbi-node--active { background: var(--prussian); border-color: var(--prussian); }
+    .kbi-node-name { font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .kbi-node--active .kbi-node-name { color: #fff; }
+    .kbi-node-region { font-size: 0.75rem; color: var(--text-faint); }
+    .kbi-node--active .kbi-node-region { color: rgba(255,255,255,0.65); }
+    .kbi-node-badge { display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--yellow); color: var(--ink); }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero page-hero--night" aria-label="Sibling Organisations">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=EaeiBJu4crOmgK%2BAQYdCZNtlZi38GqMNkizUFE3tqmYJgjfqn4wBz13GtmElOrgxSMiCxmV9CNpSJrhXhwOLWy4D%2FORDN4uoIRmB64uK1V2Qng%3D%3D&u2=S9F3JcxZG%2BB6Z3%2Fj&width=2560');background-size:cover;background-position:center;opacity:0.15;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Community &amp; Network</span></div>
+      <h1 class="page-hero-heading">Sibling Organisations</h1>
+      <p class="page-hero-sub">KBI Hong Kong is part of a broader ecosystem. These are the organisations we collaborate with, share values with, and consider part of our extended community.</p>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="sisters-intro">
+    <div class="section-inner">
+      <div style="max-width:720px;">
+        <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">About This Page</span></div>
+        <h2 class="section-heading reveal" id="sisters-intro">We Don't Work Alone</h2>
+        <p class="section-body reveal reveal-delay-1">Building a technology education ecosystem in Hong Kong requires collaboration — not just within KBI HK, but with the wider organisations that share our commitment to rigour, inclusion, and student development. This page introduces the organisations we consider sibling groups: those who are affiliated with the KBI network, aligned with our values, or actively partnering with us on specific programmes.</p>
+        <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">If your organisation believes you should be listed here, or if you would like to explore a formal affiliation with KBI HK, please <a href="contact.html" style="color:var(--prussian);font-weight:600;">get in touch</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LADIES OF LOVELACE — FEATURED -->
+  <section class="section-wrap section-wrap--mist" id="ladies-of-lovelace" aria-labelledby="lol-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Featured Sibling Organisation</span></div>
+      <div class="sister-card reveal">
+        <div class="sister-card-header">
+          <div class="sister-card-logo" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" width="32" height="32" aria-hidden="true">
+              <circle cx="20" cy="14" r="8" stroke="#FFD166" stroke-width="2"/>
+              <path d="M6 36c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 28v8M16 32h8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h2 class="sister-card-name" id="lol-heading">Ladies of Lovelace</h2>
+          <p class="sister-card-tagline">Empowering women and girls in emerging technology — education, mentorship, and community</p>
+          <div class="sister-meta">
+            <div class="sister-meta-item">
+              <svg class="sister-meta-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 0 8 14.5 6.5 6.5 0 0 0 8 1.5z" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              KBI-Affiliated Organisation
+            </div>
+            <div class="sister-meta-item">
+              <svg class="sister-meta-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6c0-2.5-2-4.5-4.5-4.5z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+              Hong Kong
+            </div>
+            <div class="sister-meta-item">
+              <svg class="sister-meta-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4zM5 4V2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5V4" stroke="currentColor" stroke-width="1.2"/></svg>
+              Active — Events & Mentorship
+            </div>
+          </div>
+        </div>
+        <div class="sister-card-body">
+          <p>Ladies of Lovelace is a Hong Kong-based organisation dedicated to increasing the participation, visibility, and advancement of women and girls in emerging technology fields. Named after Ada Lovelace — widely recognised as the world's first computer programmer — the organisation builds community, mentorship structures, and educational programming for women across secondary schools, universities, and the professional technology sector.</p>
+          <p>KBI HK and Ladies of Lovelace share a commitment to rigorous, non-commercial technology education and to ensuring that Hong Kong's emerging-technology ecosystem is genuinely diverse and inclusive. We collaborate on joint events, support each other's programme participants, and share relevant opportunities with our respective communities.</p>
+          <p>Ladies of Lovelace runs its own event series, mentorship matching programme, and community gatherings — separate from KBI HK's competition and certification programmes, but complementary to them. We encourage KBI HK members to explore Ladies of Lovelace's programming, and vice versa.</p>
+        </div>
+        <div class="sister-card-footer">
+          <span class="tag tag--sky">Women in Tech</span>
+          <span class="tag tag--stone">Mentorship</span>
+          <span class="tag tag--stone">KBI-Affiliated</span>
+          <span class="tag tag--stone">Hong Kong</span>
+          <div style="margin-left:auto;">
+            <a href="contact.html" class="btn btn-outline-prussian btn--sm">Connect via KBI HK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER KBI CHAPTERS -->
+  <section class="section-wrap section-wrap--white" id="kbi-network" aria-labelledby="network-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">The KBI Global Network</span></div>
+      <h2 class="section-heading reveal" id="network-heading">KBI Chapters Around the World</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:640px;">As part of the Königsberger Bridges Institute, KBI HK is one of a growing number of regional chapters sharing the KBI competition framework, training curriculum, and research agenda. The following chapters are our global sibling organisations — each operating independently in their local context, but connected through the KBI global network.</p>
+      <div class="kbi-network-map reveal reveal-delay-2">
+        <div class="kbi-node kbi-node--active">
+          <div class="kbi-node-name">KBI Hong Kong</div>
+          <div class="kbi-node-region">Hong Kong, China</div>
+          <div class="kbi-node-badge">You are here</div>
+        </div>
+        <div class="kbi-node">
+          <div class="kbi-node-name">KBI Singapore</div>
+          <div class="kbi-node-region">Singapore</div>
+        </div>
+        <div class="kbi-node">
+          <div class="kbi-node-name">KBI United Kingdom</div>
+          <div class="kbi-node-region">London, United Kingdom</div>
+        </div>
+        <div class="kbi-node">
+          <div class="kbi-node-name">KBI Germany</div>
+          <div class="kbi-node-region">Berlin, Germany</div>
+        </div>
+        <div class="kbi-node">
+          <div class="kbi-node-name">KBI Canada</div>
+          <div class="kbi-node-region">Toronto, Canada</div>
+        </div>
+        <div class="kbi-node">
+          <div class="kbi-node-name">KBI Australia</div>
+          <div class="kbi-node-region">Sydney, Australia</div>
+        </div>
+        <div class="kbi-node">
+          <div class="kbi-node-name">KBI India</div>
+          <div class="kbi-node-region">Mumbai, India</div>
+        </div>
+        <div class="kbi-node" style="background:var(--mist);border-style:dashed;">
+          <div class="kbi-node-name" style="color:var(--text-faint);">More chapters</div>
+          <div class="kbi-node-region">Network expanding</div>
+        </div>
+      </div>
+      <p style="font-size:0.8125rem;color:var(--text-faint);margin-top:20px;">Chapter information is indicative. For the current list of active KBI chapters, visit the KBI global website or contact KBI HK for an introduction.</p>
+    </div>
+  </section>
+
+  <!-- COLLABORATION OPPORTUNITIES -->
+  <section class="section-wrap section-wrap--prussian" aria-labelledby="collab-heading">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Cross-Organisation Collaboration</span></div>
+          <h2 class="section-heading reveal" id="collab-heading" style="color:#fff;">How We Work with<br>Sibling Organisations</h2>
+          <p class="reveal reveal-delay-1" style="color:rgba(255,255,255,0.75);line-height:1.8;font-size:0.9375rem;margin-top:20px;">Our relationships with sibling organisations are based on shared values, not formal agreements alone. We collaborate in ways that make sense for participants — not just for institutional optics. Typical forms of collaboration include:</p>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;" class="reveal reveal-delay-2">
+            <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;"><strong style="color:#fff;">Joint events</strong> — co-organised workshops, panels, or networking sessions that serve both communities</p></div>
+            <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;"><strong style="color:#fff;">Cross-promotion</strong> — sharing each other's relevant opportunities with our respective member communities</p></div>
+            <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;"><strong style="color:#fff;">Mentorship pathways</strong> — connecting participants across organisations to broaden mentorship access</p></div>
+            <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;"><strong style="color:#fff;">Resource sharing</strong> — jointly developing educational materials, speaker networks, and programme resources</p></div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:36px;">
+            <h3 style="color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:16px;font-family:'Playfair Display',serif;">Propose a Partnership</h3>
+            <p style="color:rgba(255,255,255,0.7);font-size:0.875rem;line-height:1.8;margin-bottom:24px;">Is your organisation working in the technology education space in Hong Kong or globally? If you share our values of rigour, inclusion, and student development, we would like to hear from you. We approach each potential partnership on its merits — the alignment of values matters more than the size or resources of the organisation.</p>
+            <a href="contact.html" class="btn btn-yellow btn--sm" style="display:inline-block;">Get in Touch →</a>
+            <p style="color:rgba(255,255,255,0.4);font-size:0.75rem;margin-top:16px;">Please include a brief description of your organisation, your current programmes, and why you think collaboration with KBI HK would benefit both communities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

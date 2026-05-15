@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Blockchain Education Matters for Hong Kong Students — KBI Hong Kong</title>
+  <meta name="description" content="An in-depth look at why blockchain literacy is becoming a critical skill for students in Hong Kong — and how competition-based learning accelerates genuine understanding.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .article-hero {
+      background: var(--ink);
+      padding: calc(var(--nav-h) + 72px) 24px 64px;
+      position: relative; overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,49,83,0.5) 0%, rgba(5,7,10,0.7) 70%);
+      pointer-events: none;
+    }
+    .article-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(60,180,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60,180,255,0.035) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+    .article-hero-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      color: rgba(255,255,255,0.35); margin-bottom: 28px;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: var(--cyan); }
+    .article-breadcrumb span { color: rgba(255,255,255,0.2); }
+    .article-hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .article-hero h1 {
+      font-size: clamp(1.875rem, 4.5vw, 3rem);
+      color: var(--white); line-height: 1.12;
+      margin-bottom: 24px; letter-spacing: -0.02em;
+    }
+    .article-hero h1 em { font-style: italic; color: var(--cyan); }
+    .article-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;
+    }
+    .article-author { display: flex; align-items: center; gap: 10px; }
+    .article-author-photo {
+      width: 36px; height: 36px; border-radius: 50%;
+      object-fit: cover; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .article-author-name {
+      font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600;
+      color: rgba(255,255,255,0.8);
+    }
+    .article-author-role { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+    .article-meta-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
+    .article-meta-item { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.38); }
+    .article-meta-item strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+    /* Article layout */
+    .article-layout {
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 56px; align-items: start;
+      max-width: var(--max-width); margin: 0 auto;
+    }
+    .article-body { max-width: 680px; }
+    .article-body h2 {
+      font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+      color: var(--text-main); margin: 40px 0 16px; letter-spacing: -0.015em;
+    }
+    .article-body h3 { font-size: 1.125rem; color: var(--text-main); margin: 28px 0 12px; }
+    .article-body p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.0625rem; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px;
+    }
+    .article-body ul, .article-body ol {
+      padding-left: 0; margin-bottom: 20px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .article-body li {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.0625rem; color: var(--text-muted);
+      line-height: 1.75; padding-left: 20px; position: relative;
+    }
+    .article-body li::before { content: '–'; position: absolute; left: 0; color: var(--prussian); font-weight: 700; }
+    .article-body strong { color: var(--text-main); font-weight: 600; }
+    .article-body a { color: var(--prussian); text-decoration: underline; text-decoration-color: rgba(0,49,83,0.3); }
+    .article-body a:hover { color: var(--prussian-glow); }
+
+    .article-pullquote {
+      border-left: 3px solid var(--cyan); padding: 20px 28px;
+      background: var(--mist); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 32px 0;
+    }
+    .article-pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1875rem; font-style: italic;
+      color: var(--text-main); line-height: 1.7; margin-bottom: 10px;
+    }
+    .article-pullquote cite {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem; color: var(--text-faint); font-style: normal;
+    }
+
+    /* Stats callout */
+    .article-stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 32px 0;
+    }
+    .article-stat-box {
+      background: var(--prussian); border-radius: var(--radius-lg);
+      padding: 24px; text-align: center;
+    }
+    .article-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem; font-weight: 700; color: var(--white);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .article-stat-num span { color: var(--yellow); font-size: 1.5rem; }
+    .article-stat-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      color: rgba(255,255,255,0.5); line-height: 1.4;
+    }
+
+    .article-callout {
+      background: var(--mist); border: 1px solid var(--stone);
+      border-radius: var(--radius-lg); padding: 28px 32px; margin: 32px 0;
+    }
+    .article-callout-title {
+      font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 12px;
+    }
+    .article-callout p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 0;
+    }
+
+    /* Sidebar */
+    .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card {
+      background: var(--white); border: 1px solid var(--stone);
+      border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px;
+    }
+    .sidebar-card-title {
+      font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 16px;
+    }
+    .related-article-link {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 12px 0; border-bottom: 1px solid var(--stone);
+      transition: color var(--t);
+    }
+    .related-article-link:last-child { border-bottom: none; }
+    .related-article-title {
+      font-family: 'Playfair Display', serif; font-size: 0.9375rem;
+      font-weight: 600; color: var(--text-main); line-height: 1.35; transition: color var(--t);
+    }
+    .related-article-link:hover .related-article-title { color: var(--prussian); }
+    .related-article-meta { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .article-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .article-share-bar {
+      display: flex; gap: 12px; align-items: center;
+      padding: 20px 0; border-top: 1px solid var(--stone);
+      border-bottom: 1px solid var(--stone); margin: 40px 0 0;
+    }
+    .article-share-label { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--text-faint); }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border: 1px solid var(--stone);
+      border-radius: var(--radius-sm); background: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem;
+      font-weight: 500; color: var(--text-muted);
+      transition: background var(--t), border-color var(--t), color var(--t);
+    }
+    .share-btn:hover { background: var(--mist); border-color: var(--text-faint); color: var(--text-main); }
+    .share-btn svg { width: 13px; height: 13px; }
+
+    @media (max-width: 960px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .article-stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link active">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="article-hero" aria-label="Article header">
+    <div class="article-hero-grid" aria-hidden="true"></div>
+    <div class="article-hero-inner">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span>›</span>
+        <a href="news.html">News &amp; Insights</a><span>›</span>
+        <span aria-current="page">Why Blockchain Education Matters</span>
+      </nav>
+      <div class="article-hero-tags">
+        <span class="tag tag--sky">Insights</span>
+        <span class="tag tag--prussian">Blockchain</span>
+        <span class="tag tag--night">Education</span>
+      </div>
+      <h1>Why Blockchain Education<br>Matters for <em>Hong Kong Students</em></h1>
+      <div class="article-hero-meta">
+        <div class="article-author">
+          <img src="images/headshot-male-1.jpg" alt="Arjun Sharma" class="article-author-photo">
+          <div>
+            <div class="article-author-name">Arjun Sharma</div>
+            <div class="article-author-role">Blockchain Engineer &amp; KBI HK Mentor</div>
+          </div>
+        </div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item"><strong>28 April 2026</strong></div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item">6 min read</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main>
+    <section class="section-wrap section-wrap--white" aria-label="Article content">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <p>
+            There is a persistent misconception about blockchain: that it is primarily a technology for cryptocurrency speculation, and therefore unsuitable as a subject for serious academic study. This misunderstanding has, over the past several years, prevented a generation of Hong Kong students from engaging with one of the most genuinely significant advances in distributed computing since the internet itself.
+          </p>
+
+          <p>
+            As someone who builds blockchain infrastructure professionally — and who mentors students preparing for IBCOL through KBI HK — I want to make the case plainly: <strong>blockchain literacy is not a niche skill. It is quickly becoming a foundational one.</strong>
+          </p>
+
+          <h2>The Hype Has Cleared. What Remains Is Real.</h2>
+
+          <p>
+            The years between 2020 and 2023 were, to put it charitably, chaotic. NFT speculation, exchange collapses, and relentless media cycles around token prices created a cultural environment in which "blockchain" was almost synonymous with financial risk and unserious behaviour.
+          </p>
+
+          <p>
+            That period has passed. What has emerged in its wake is a cleaner, more substantive conversation about what blockchain actually is: a solution to a deep and longstanding problem in computer science — the problem of trust between parties who do not know or necessarily trust each other.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"The question was never 'can we make digital tokens?' The question was always: can two parties transact, share data, or coordinate — without a trusted intermediary? That question is still worth answering."</p>
+            <cite>— Dr. Michelle Lam, HKUST Research Fellow</cite>
+          </div>
+
+          <p>
+            This is the question at the heart of every serious blockchain application — from supply chain provenance and digital identity through to tokenised real-world assets and cross-border settlement. These are not hypothetical use cases. They are live deployments, many of them in Hong Kong and across Asia.
+          </p>
+
+          <h2>The Hong Kong Context</h2>
+
+          <p>
+            Hong Kong occupies a genuinely unusual position. As a global financial centre with a strong rule-of-law tradition and sophisticated regulatory institutions, it is both well-positioned to lead in blockchain-adjacent finance — and deeply incentivised to do so.
+          </p>
+
+          <p>
+            The Hong Kong Monetary Authority, the Securities and Futures Commission, and a growing cluster of licensed digital asset businesses have all made explicit commitments to developing a regulated, legitimate blockchain ecosystem in the city. Meanwhile, Hong Kong's universities — HKU, HKUST, CUHK, PolyU — are producing research output in cryptographic protocols and distributed systems that ranks among the best globally.
+          </p>
+
+          <div class="article-stats-row">
+            <div class="article-stat-box">
+              <div class="article-stat-num">HK<span>$</span></div>
+              <div class="article-stat-label">Billions invested in blockchain infrastructure in HK 2023–2025</div>
+            </div>
+            <div class="article-stat-box">
+              <div class="article-stat-num">7<span>+</span></div>
+              <div class="article-stat-label">Licensed VATP operators under HKMA/SFC framework</div>
+            </div>
+            <div class="article-stat-box">
+              <div class="article-stat-num">Top<span>5</span></div>
+              <div class="article-stat-label">Global ranking for blockchain research output from HK universities</div>
+            </div>
+          </div>
+
+          <p>
+            Against this backdrop, a student who understands how consensus protocols work, what smart contracts can and cannot do, and how to evaluate a blockchain proposal critically — is not someone with a niche interest. They are someone who has equipped themselves for a sector that is actively building in this city.
+          </p>
+
+          <h2>Why Competition-Based Learning Accelerates Understanding</h2>
+
+          <p>
+            Textbooks and courses can explain blockchain. Competitions make you understand it.
+          </p>
+
+          <p>
+            The difference is accountability. When you're preparing an IBCOL submission — a written project paper that will be read and critiqued by a panel of academics and industry professionals — you cannot hide behind vague statements. You have to know what you're talking about. You have to be able to defend your technical choices under live questioning.
+          </p>
+
+          <p>
+            This is, in my experience as a mentor, where real learning happens. Not in the months of preparation, but in the ten minutes of Q&amp;A with a judge who spotted the flaw in your consensus mechanism design.
+          </p>
+
+          <div class="article-callout">
+            <div class="article-callout-title">What IBCOL Competition Experience Develops</div>
+            <p>Technical depth in distributed ledger design · Critical evaluation of real blockchain proposals · Communication of complex technical concepts to non-specialist audiences · Collaborative project management under time pressure · Research methodology and citation practice · Resilience in adversarial intellectual environments</p>
+          </div>
+
+          <h2>The Curriculum Gap</h2>
+
+          <p>
+            Hong Kong's school and university curricula have made genuine progress in incorporating computing and data science content. Blockchain, however, remains conspicuously absent from most programmes — for understandable reasons. The field moves fast, educators are understandably cautious about associating their curriculum with volatile assets, and quality teaching resources are scarce.
+          </p>
+
+          <p>
+            This is precisely where KBI HK and programmes like IBCOL fill a gap that formal education cannot easily address. We are not a curriculum replacement — we are a curriculum extension. Our workshops, clinics, and competition preparation materials give students access to practitioner knowledge and intellectual rigour that sits beyond the classroom.
+          </p>
+
+          <p>
+            A secondary school student who participates in the Blockchain Foundations Clinic and then competes in IBCOL has, by the end of the process, a practical understanding of distributed ledgers that most computer science undergraduates do not possess.
+          </p>
+
+          <h2>Where to Start</h2>
+
+          <p>
+            For students who are curious but uncertain where to begin, my practical advice is:
+          </p>
+
+          <ul>
+            <li>Attend the <a href="event1.html">Blockchain Foundations Clinic</a> — no prior knowledge required, and the Q&amp;A alone is worth the morning</li>
+            <li>Register interest for <a href="eto2026.html">ETO HK 2026</a> — even if you're not sure which track to compete in, registration gets you the prospectus and access to team formation support</li>
+            <li>Join the KBI community — the <a href="event2.html">quarterly meet-ups</a> are the fastest way to find teammates, mentors, and peers who are serious about this</li>
+            <li>Read critically — not crypto news sites, but academic papers and regulatory publications. The HKMA website alone contains more useful blockchain content than most courses</li>
+          </ul>
+
+          <p>
+            Blockchain is not going away. Hong Kong is actively building in this space. The students who take the time to understand it properly — at a technical and conceptual level — are positioning themselves for opportunities that will be genuinely difficult to access without that foundation.
+          </p>
+
+          <p>
+            The hype is over. The work begins now.
+          </p>
+
+          <!-- Share bar -->
+          <div class="article-share-bar">
+            <span class="article-share-label">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?text=Why%20Blockchain%20Education%20Matters%20for%20HK%20Students&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M14 3a5.4 5.4 0 01-1.54.42 2.7 2.7 0 001.18-1.49 5.4 5.4 0 01-1.71.65A2.69 2.69 0 009.46 2a2.7 2.7 0 00-2.63 3.3A7.65 7.65 0 012 2.67a2.7 2.7 0 00.84 3.6 2.68 2.68 0 01-1.22-.34v.04A2.7 2.7 0 003.78 8.7a2.7 2.7 0 01-1.22.05 2.7 2.7 0 002.52 1.87A5.4 5.4 0 012 11.73 7.63 7.63 0 006.14 13c4.98 0 7.7-4.12 7.7-7.7l-.01-.35A5.5 5.5 0 0014 3Z" fill="currentColor"/></svg>
+              Twitter / X
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2V6zm5 0h2.9v1.1h.05C10.4 6.4 11.3 6 12.4 6 14.7 6 15 7.5 15 9.5V14h-3v-4c0-1 0-2.3-1.4-2.3S9 11 9 11v3H6V6z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <div class="sidebar-card" style="background:var(--prussian);border-color:var(--prussian);">
+            <div class="sidebar-card-title" style="color:rgba(255,255,255,0.3);">About the Author</div>
+            <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px;">
+              <img src="images/headshot-male-1.jpg" alt="Arjun Sharma" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.15);">
+              <div>
+                <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:var(--white);">Arjun Sharma</div>
+                <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.4);">KBI HK Mentor &amp; Alumni</div>
+              </div>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:0;">Blockchain engineer at a Hong Kong fintech firm. IBCOL 2020 Gold Medallist. KBI HK community mentor since 2021.</p>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Related Articles</div>
+            <a href="news1.html" class="related-article-link">
+              <div class="related-article-title">ETO Hong Kong 2026 Is Now Open</div>
+              <div class="related-article-meta">Announcement · 5 min read</div>
+            </a>
+            <a href="news3.html" class="related-article-link">
+              <div class="related-article-title">KBI HK Alumni Spotlight: From Competition to Career</div>
+              <div class="related-article-meta">Community · 4 min read</div>
+            </a>
+            <a href="news.html" class="related-article-link">
+              <div class="related-article-title">All News &amp; Insights →</div>
+              <div class="related-article-meta">View archive</div>
+            </a>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Explore</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a href="competitions.html#ibcol" class="btn btn-prussian btn--sm" style="justify-content:center;">IBCOL Competition →</a>
+              <a href="event1.html" class="btn btn-outline-prussian btn--sm" style="justify-content:center;">Blockchain Clinic →</a>
+              <a href="eto2026.html" class="btn btn-outline-prussian btn--sm" style="justify-content:center;">ETO HK 2026 →</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Tags</div>
+            <div class="article-tag-cloud">
+              <span class="tag tag--prussian">Blockchain</span>
+              <span class="tag tag--sky">Education</span>
+              <span class="tag tag--stone">IBCOL</span>
+              <span class="tag tag--stone">Hong Kong</span>
+              <span class="tag tag--mist">Insights</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="news.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">News</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

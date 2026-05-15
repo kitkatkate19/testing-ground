@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2017 Event Gallery — KBI Hong Kong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .gallery-page-hero {
+      background: var(--prussian);
+      padding: 100px 0 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(60,180,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60,180,255,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .gallery-page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .gallery-page-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 20px;
+    }
+    .gallery-page-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cyan);
+    }
+    .gallery-page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+    .gallery-page-hero h1 em { font-style: italic; color: var(--cyan); }
+    .gallery-page-hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin: 0 0 36px;
+    }
+    .gallery-year-badge {
+      display: inline-block;
+      background: rgba(60,180,255,0.15);
+      border: 1px solid rgba(60,180,255,0.35);
+      color: var(--cyan);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 6px 18px;
+      border-radius: 100px;
+    }
+
+    .gallery-year-nav {
+      background: var(--night);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 14px 0;
+    }
+    .gallery-year-nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .gallery-nav-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .gallery-nav-arrow:hover {
+      color: #fff;
+      border-color: rgba(60,180,255,0.5);
+      background: rgba(60,180,255,0.08);
+    }
+    .gallery-nav-arrow svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .gallery-nav-center {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .gallery-nav-center:hover { color: var(--cyan); }
+
+    /* Milestone banner */
+    .gallery-milestone-banner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--prussian);
+      border-radius: 12px;
+      padding: 20px 28px;
+      margin-bottom: 48px;
+    }
+    .gallery-milestone-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(60,180,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .gallery-milestone-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin: 0 0 4px;
+    }
+    .gallery-milestone-banner p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+
+    .gallery-main {
+      background: var(--mist);
+      padding: 64px 0 96px;
+    }
+    .gallery-main-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .gallery-event-section { margin-bottom: 72px; }
+    .gallery-event-section:last-child { margin-bottom: 0; }
+    .gallery-event-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .gallery-event-num {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--prussian);
+      color: var(--cyan);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+    }
+    .gallery-event-header-body { flex: 1; }
+    .gallery-event-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .gallery-event-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--prussian);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .gallery-event-tag--cyan { background: var(--cyan); color: var(--prussian); }
+    .gallery-event-tag--first {
+      background: rgba(255,209,102,0.2);
+      color: #a07800;
+      border: 1px solid rgba(255,209,102,0.5);
+    }
+    .gallery-event-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(5,7,10,0.5);
+    }
+    .gallery-event-venue {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(5,7,10,0.5);
+    }
+    .gallery-event-venue::before { content: '·'; margin-right: 12px; }
+    .gallery-event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700;
+      color: var(--prussian);
+      margin: 0 0 8px;
+      line-height: 1.3;
+    }
+    .gallery-event-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(5,7,10,0.62);
+      margin: 0;
+      max-width: 680px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .photo-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--prussian);
+    }
+    .photo-card--wide { grid-column: span 2; aspect-ratio: 16/9; }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .photo-card:hover img { transform: scale(1.05); }
+    .photo-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,49,83,0.82) 0%, rgba(0,49,83,0.18) 55%, transparent 100%);
+      transition: opacity 0.3s;
+    }
+    .photo-card:hover .photo-card-overlay { opacity: 0.85; }
+    .photo-card-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+      z-index: 2;
+    }
+    .photo-card-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255,209,102,0.9);
+      color: var(--night);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+    .photo-card-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 2;
+    }
+    .photo-card:hover .photo-card-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .photo-card-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+    .gallery-section-divider {
+      border: none;
+      border-top: 1px solid var(--stone);
+      margin: 72px 0;
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,7,10,0.93);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 24px;
+    }
+    #lightbox.active { display: flex; }
+    #lightboxImg {
+      max-width: 90vw;
+      max-height: 78vh;
+      border-radius: 8px;
+      object-fit: contain;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    }
+    #lightboxCaption {
+      margin-top: 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      max-width: 600px;
+    }
+    #lightboxClose {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+    #lightboxClose:hover { background: rgba(255,255,255,0.2); }
+
+    @media (max-width: 700px) {
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-card--wide { grid-column: span 2; aspect-ratio: 4/3; }
+      .gallery-event-header { flex-direction: column; gap: 12px; }
+      .gallery-year-nav-inner { flex-direction: column; gap: 10px; text-align: center; }
+      .gallery-milestone-banner { flex-direction: column; gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-card--wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" role="banner">
+    <p class="announcement-bar-text">
+      <span class="announcement-bar-badge">2026</span>
+      ETO Hong Kong 2026 applications are open —
+      <a href="eto2026.html" class="announcement-bar-link">Apply before 31 May&nbsp;→</a>
+    </p>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="22" height="22" rx="5" fill="#003153"/>
+            <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+          </svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu" role="menu">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        <a href="programmes.html" class="nav-link" role="menuitem">Programmes</a>
+        <a href="events.html" class="nav-link" role="menuitem">Events</a>
+        <a href="news.html" class="nav-link" role="menuitem">News</a>
+        <a href="about-who-we-are.html" class="nav-link" role="menuitem">About</a>
+        <a href="eto2026.html" class="nav-cta" role="menuitem">Apply Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="gallery-page-hero">
+    <div class="gallery-page-hero-inner">
+      <p class="gallery-page-eyebrow">Event Gallery</p>
+      <h1>Highlights from <em>2017</em></h1>
+      <p class="gallery-page-hero-sub">The chapter's second year — KBI Hong Kong entered its first IBCOL competition, held a blockchain fundamentals workshop series that drew students from five universities, and ran its inaugural annual symposium.</p>
+      <span class="gallery-year-badge">3 Events · 2017 · Year Two</span>
+    </div>
+  </header>
+
+  <!-- Year Navigation -->
+  <div class="gallery-year-nav">
+    <div class="gallery-year-nav-inner">
+      <a href="event-gallery-2016.html" class="gallery-nav-arrow">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        2016 Gallery
+      </a>
+      <a href="events.html#past-events" class="gallery-nav-center">↑ Back to History Archive</a>
+      <a href="event-gallery-2018.html" class="gallery-nav-arrow">
+        2018 Gallery
+        <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Gallery Main -->
+  <main class="gallery-main" id="main-content">
+    <div class="gallery-main-inner">
+
+      <!-- Milestone Banner -->
+      <div class="gallery-milestone-banner">
+        <div class="gallery-milestone-icon">🌐</div>
+        <div>
+          <p class="gallery-milestone-title">2017 Milestone</p>
+          <p>KBI Hong Kong entered the International Blockchain Olympiad for the first time in 2017, participating in the inaugural global edition. Two Hong Kong teams representing the chapter competed at the international finals — marking the beginning of a long IBCOL tradition for the chapter.</p>
+        </div>
+      </div>
+
+      <!-- Event 1: IBCOL HK 2017 — First Qualifying Round -->
+      <section class="gallery-event-section reveal">
+        <div class="gallery-event-header">
+          <div class="gallery-event-num">01</div>
+          <div class="gallery-event-header-body">
+            <div class="gallery-event-meta">
+              <span class="gallery-event-tag gallery-event-tag--cyan">Competition</span>
+              <span class="gallery-event-tag gallery-event-tag--first">First Ever</span>
+              <span class="gallery-event-date">October 2017</span>
+              <span class="gallery-event-venue">The University of Hong Kong</span>
+            </div>
+            <h2 class="gallery-event-title">IBCOL HK 2017 — Inaugural Qualifying Round</h2>
+            <p class="gallery-event-desc">KBI Hong Kong's first-ever competition event — eight teams competed for the right to represent Hong Kong at the inaugural International Blockchain Olympiad. The qualifying format was simple: a two-hour written examination followed by a team oral presentation. The atmosphere was charged with the energy of something genuinely new. Two teams qualified and went on to participate in the historic first global IBCOL finals.</p>
+          </div>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)"
+               data-caption="IBCOL HK 2017 — the chapter's very first competition, held at HKU. Eight teams vying for two spots at the inaugural international finals.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncs3htDiPAiZY6ZFqhkFpNTtfrS9YaWr9MDqMq4%2FWOfLW%2BAO&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=900&height=506" alt="IBCOL HK 2017 first competition">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-badge">First Ever</div>
+            <div class="photo-card-caption">IBCOL HK 2017 — the chapter's inaugural competition, HKU</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)"
+               data-caption="Teams presenting their blockchain solutions during the oral defence component — the founding generation of KBI HK competitors.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=kDsRa4VmHQAR6r1aFCG2CbwCWtST2y5rBvCqlL3wCDnJcTlMmqZlI4vEWKiCrLGJ&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=600&height=450" alt="IBCOL 2017 team presentations">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Team oral defence — first generation of KBI HK competitors</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)"
+               data-caption="The two qualifying teams celebrating before departing for the inaugural International Blockchain Olympiad global finals.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=jH%2FsKQJQWcQ%2BEKLEaqQNlrJGn2sO4gGc%2Fp9Zyl23dQ5XBzlYaFm6vlMWF5ioauT3&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=600&height=450" alt="IBCOL 2017 qualifying teams">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Qualifying teams — bound for the first global IBCOL finals</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="gallery-section-divider">
+
+      <!-- Event 2: Blockchain Fundamentals Workshop Series -->
+      <section class="gallery-event-section reveal reveal-delay-1">
+        <div class="gallery-event-header">
+          <div class="gallery-event-num">02</div>
+          <div class="gallery-event-header-body">
+            <div class="gallery-event-meta">
+              <span class="gallery-event-tag">Workshop Series</span>
+              <span class="gallery-event-date">March – May 2017</span>
+              <span class="gallery-event-venue">HKU + CUHK + HKUST</span>
+            </div>
+            <h2 class="gallery-event-title">Blockchain Fundamentals Workshop Series</h2>
+            <p class="gallery-event-desc">A five-session workshop series rotating across three campuses — HKU, CUHK, and HKUST — making blockchain education geographically accessible for the first time. Each two-hour session introduced one foundational topic: cryptographic hashing, distributed consensus, the UTXO model, smart contract basics, and real-world use case analysis. The series was deliberately beginner-friendly, aimed at students with no prior exposure to the technology.</p>
+          </div>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card" onclick="openLightbox(this)"
+               data-caption="Session 1 at HKU: Introduction to cryptographic hashing — the first KBI HK workshop to open its doors to the public, with 45 attendees.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=I9DV%2FDRVz8O5a8m7Z2QIvFIR3j9fSfSL9DL9C5KjNtekR%2BFJxLs3d8dYCxCDpkef&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=600&height=450" alt="Blockchain fundamentals workshop HKU">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Session 1: Cryptographic hashing, HKU — 45 attendees</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)"
+               data-caption="Session 3 at HKUST: Distributed consensus — the largest session of the series, drawing over 70 students from five universities.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=mA%2FHGWZCb4tFGoxaxGVFifkHB8Kxw%2BSPL0bJO3KVkjcl%2Fcd7Qk2TidNdyp2bAqA0&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=900&height=506" alt="Blockchain workshop HKUST">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Session 3: Distributed consensus, HKUST — 70+ from 5 universities</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)"
+               data-caption="Session 5 at CUHK: Real-world use case analysis — participants applying blockchain thinking to healthcare, supply chain, and identity scenarios.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=zxWwdhiTkaxRoa4XKrJqPdixVnq9iYD2VnSb7JoibLpZtEDpBT2H1Nj1QJJQHnEI&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=600&height=450" alt="Blockchain workshop use cases CUHK">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Session 5: Use case analysis, CUHK</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="gallery-section-divider">
+
+      <!-- Event 3: Inaugural Annual Symposium -->
+      <section class="gallery-event-section reveal reveal-delay-2">
+        <div class="gallery-event-header">
+          <div class="gallery-event-num">03</div>
+          <div class="gallery-event-header-body">
+            <div class="gallery-event-meta">
+              <span class="gallery-event-tag">Symposium</span>
+              <span class="gallery-event-tag gallery-event-tag--first">Inaugural Edition</span>
+              <span class="gallery-event-date">July 2017</span>
+              <span class="gallery-event-venue">Science Park, Sha Tin</span>
+            </div>
+            <h2 class="gallery-event-title">Inaugural Annual Blockchain Symposium</h2>
+            <p class="gallery-event-desc">The first of what would become KBI Hong Kong's annual flagship gathering — a half-day symposium at Hong Kong Science Park bringing together students, researchers, and practitioners to discuss the state of blockchain technology. The agenda included four practitioner presentations, a student panel, and a networking session. The 2017 edition drew 90 attendees and established the template for all subsequent annual symposia.</p>
+          </div>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card photo-card--wide" onclick="openLightbox(this)"
+               data-caption="The inaugural KBI Hong Kong Annual Blockchain Symposium at Science Park — 90 attendees for a half-day of talks, panels, and networking.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=fH2QmZM54XDqmFpPDK%2BYMp4UYxgT3TvhCPnAk%2FjZREGDJkXvlXMWHjISdm0%2BCH5&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=900&height=506" alt="Inaugural symposium 2017">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-badge">Inaugural</div>
+            <div class="photo-card-caption">Inaugural Annual Symposium — Science Park, July 2017</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)"
+               data-caption="Industry practitioner presenting on enterprise blockchain adoption in Hong Kong's financial sector — one of four keynote presentations.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=HDGHUe4B3A6RkNRPGZI1EsEYlTt3d%2FdRMhMbYnfq5b1H8UdVH7%2Bpf7iR6rMTSXF&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=600&height=450" alt="Symposium 2017 practitioner talk">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Keynote: Enterprise blockchain in HK financial sector</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+          <div class="photo-card" onclick="openLightbox(this)"
+               data-caption="Post-symposium networking — attendees exchanging contacts and continuing conversations from the afternoon's sessions.">
+            <img src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40UmJNWefbR1RlNNhJW7kEt7W7yZ6nUAQJN2eRCuWN9AMG8lAm&u2=UvgJMbzFVBl9Y39bPZq3nJi3JjyqHJBuBrS%2FJMU3K7bDlqSNXqbqiV%2B%2BvGDANgOp&width=600&height=450" alt="Symposium 2017 networking">
+            <div class="photo-card-overlay"></div>
+            <div class="photo-card-caption">Post-symposium networking — connections made</div>
+            <div class="photo-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom Year Navigation -->
+  <div class="gallery-year-nav" style="border-bottom:none; border-top:1px solid rgba(255,255,255,0.07);">
+    <div class="gallery-year-nav-inner">
+      <a href="event-gallery-2016.html" class="gallery-nav-arrow">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        2016 Gallery
+      </a>
+      <a href="events.html#past-events" class="gallery-nav-center">↑ Back to History Archive</a>
+      <a href="event-gallery-2018.html" class="gallery-nav-arrow">
+        2018 Gallery
+        <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Bridging emerging technology and rigorous academic inquiry — one student at a time.</p>
+        <p class="footer-copyright">© 2016–2026 Königsberger Bridges Institute, Hong Kong Chapter. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO Hong Kong</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-who-we-are.html#team">Our Team</a></li>
+            <li><a href="about-who-we-are.html#advisors">Advisors</a></li>
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Archive</h3>
+          <ul role="list">
+            <li><a href="events.html#past-events">Event History</a></li>
+            <li><a href="event-gallery-2025.html">2025 Gallery</a></li>
+            <li><a href="event-gallery-2024.html">2024 Gallery</a></li>
+            <li><a href="event-gallery-2023.html">2023 Gallery</a></li>
+            <li><a href="event-gallery-2022.html">2022 Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Contact</h3>
+          <ul role="list">
+            <li><a href="mailto:hongkong@kbi.earth">hongkong@kbi.earth</a></li>
+            <li><a href="about-who-we-are.html#contact">Contact Form</a></li>
+            <li><a href="about-who-we-are.html#press">Press & Media</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter under the Königsberger Bridges Institute global network.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button id="lightboxClose" aria-label="Close photo viewer">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!expanded));
+        navMenu.classList.toggle('nav-menu--open');
+      });
+    }
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = card.getAttribute('data-caption') || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBCOL HK 2024 — National Qualifying Round Recap | KBI Hong Kong</title>
+  <meta name="description" content="Recap of the IBCOL Hong Kong 2024 National Qualifying Round — 35 teams competed for 6 finalist spots at ETO Hong Kong 2024.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .event-hero { background: var(--night); padding: calc(var(--nav-h) + 72px) 24px 64px; position: relative; overflow: hidden; }
+    .event-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,49,83,0.6) 0%, rgba(5,7,10,0.5) 60%); pointer-events: none; }
+    .event-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(60,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(60,180,255,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .event-hero-inner { max-width: var(--max-width); margin: 0 auto; position: relative; z-index: 2; }
+    .event-breadcrumb { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
+    .event-breadcrumb a { color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .event-breadcrumb a:hover { color: var(--cyan); }
+    .event-breadcrumb span { color: rgba(255,255,255,0.2); }
+    .past-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 14px; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+    .past-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+    .event-hero h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .event-hero h1 em { font-style: italic; color: var(--cyan); }
+    .event-hero-desc { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: rgba(255,255,255,0.6); max-width: 600px; line-height: 1.8; margin-bottom: 28px; }
+    .event-meta-row { display: flex; gap: 24px; flex-wrap: wrap; }
+    .event-meta-item { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.875rem; color: rgba(255,255,255,0.45); }
+    .event-meta-item svg { width: 14px; height: 14px; color: var(--cyan); flex-shrink: 0; }
+    .event-body-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
+    .event-sidebar-sticky { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; }
+    .sidebar-card-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+    .sidebar-detail-row { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--stone); }
+    .sidebar-detail-row:last-child { border-bottom: none; }
+    .sidebar-detail-icon { color: var(--prussian); flex-shrink: 0; margin-top: 1px; }
+    .sidebar-detail-icon svg { width: 14px; height: 14px; }
+    .sidebar-detail-label { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1px; }
+    .sidebar-detail-value { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text-main); line-height: 1.4; }
+    .related-event-link { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--stone); transition: color var(--t); }
+    .related-event-link:last-child { border-bottom: none; }
+    .related-event-link:hover .related-event-title { color: var(--prussian); }
+    .related-event-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+    .related-event-title { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--text-main); margin-bottom: 2px; transition: color var(--t); }
+    .related-event-date { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .stat-box { padding: 24px 20px; background: var(--prussian); border-radius: var(--radius-lg); text-align: center; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--yellow); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+    .insight-box { padding: 24px; background: var(--mist); border-left: 3px solid var(--prussian); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin-bottom: 16px; }
+    .insight-box h4 { font-size: 0.9375rem; margin-bottom: 8px; color: var(--text-main); }
+    .insight-box p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+    @media (max-width: 960px) { .event-body-layout { grid-template-columns: 1fr; } .event-sidebar-sticky { position: static; } .stat-row { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg></div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link active">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <header class="event-hero">
+    <div class="event-hero-grid" aria-hidden="true"></div>
+    <div class="event-hero-inner">
+      <nav class="event-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span>›</span>
+        <a href="events.html">Events</a><span>›</span>
+        <span aria-current="page">IBCOL HK 2024 — Qualifying Round</span>
+      </nav>
+      <div class="past-badge">Past Event — March 2024</div>
+      <h1>IBCOL HK 2024<br><em>National Qualifying Round</em></h1>
+      <p class="event-hero-desc">The qualifying round for the inaugural ETO Hong Kong — 35 teams, one day, six finalist spots. A snapshot of where blockchain education stood in Hong Kong at the start of 2024.</p>
+      <div class="event-meta-row">
+        <div class="event-meta-item"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 1v4M11 1v4M2 7h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> 16 March 2024</div>
+        <div class="event-meta-item"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg> PolyU, Hung Hom</div>
+        <div class="event-meta-item"><svg viewBox="0 0 16 16" fill="none"><circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 13c0-2.76 2.24-5 5-5h1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M10 8c2.76 0 5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> 35 teams · 6 finalists selected</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-wrap section-wrap--white">
+      <div class="section-inner">
+        <div class="event-body-layout">
+          <article>
+            <figure class="event-inline-figure reveal" style="margin:0 0 40px;border-radius:var(--radius-lg);overflow:hidden;">
+              <img src="https://sspark.genspark.ai/cfimages?u1=%2BidpnpDMAl6eSOSKYjC7U6REjwj7f2wi%2B6xlYdzyDUCr4R5wwFNeC545zA62dUA2hojvgOD8hN3jiESVdsILB5NUFcW%2Fw9pFQQpgzNvwZXN3%2FMiAI6WEXCMjxg5sdql8dlAXRb9OqfNv5kYv&u2=TUuz87mbRjfBhguw&width=2560" alt="HKU Web3 Competition teams presenting blockchain projects" style="width:100%;height:320px;object-fit:cover;display:block;">
+              <figcaption style="padding:10px 16px;background:var(--mist);font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-faint);">IBCOL HK 2024's inaugural qualifying round at PolyU set the competitive standard — 35 teams presented blockchain proposals to a multi-sector judging panel.</figcaption>
+            </figure>
+
+            <div style="margin-bottom:48px;">
+              <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Event Recap</span></div>
+              <h2 class="section-heading reveal">The Inaugural Qualifying Round</h2>
+              <p class="section-body reveal reveal-delay-1">IBCOL HK 2024's qualifying round was the first competitive blockchain event KBI HK had run at this scale. Thirty-five teams — drawn from universities across Hong Kong, with a handful of secondary school participants — submitted project proposals and presented before a panel of judges at PolyU's Hung Hom campus.</p>
+              <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">The judging panel included academics from HKUST and CUHK, a fintech practitioner from a Hong Kong-licensed virtual bank, and a representative from the IBCOL international secretariat. The bar was intentionally high: KBI HK wanted to signal from the outset that this was not a participation-ribbon competition.</p>
+              <p class="section-body reveal reveal-delay-3" style="margin-top:16px;">Six teams advanced. The remaining 29 received written feedback from the panel — many cited that feedback as the most actionable input they'd received on their blockchain projects in any academic context.</p>
+            </div>
+
+            <div class="stat-row reveal">
+              <div class="stat-box"><div class="stat-number">35</div><div class="stat-label">Teams Competed</div></div>
+              <div class="stat-box"><div class="stat-number">6</div><div class="stat-label">Finalists</div></div>
+              <div class="stat-box"><div class="stat-number">4</div><div class="stat-label">Judges</div></div>
+            </div>
+
+            <div style="margin-bottom:48px;">
+              <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">What We Learned</span></div>
+              <h2 class="section-heading reveal">Key Observations from the Panel</h2>
+              <div class="insight-box reveal">
+                <h4>The "blockchain for everything" problem</h4>
+                <p>Nearly a third of submissions proposed blockchain solutions for problems that did not require a distributed ledger. The judging panel's most common note: "Why does this need to be on blockchain?" — a question teams need to answer before they enter the room.</p>
+              </div>
+              <div class="insight-box reveal reveal-delay-1">
+                <h4>Technical depth varied dramatically</h4>
+                <p>The gap between the strongest and weakest technical submissions was wider than expected. The top six teams demonstrated genuine understanding of consensus mechanisms, gas costs, and smart contract limitations. Others had not progressed beyond buzzword-level familiarity.</p>
+              </div>
+              <div class="insight-box reveal reveal-delay-2">
+                <h4>Secondary school participants outperformed expectations</h4>
+                <p>Two secondary school teams submitted proposals that made it to the final selection shortlist. Though neither ultimately advanced, the panel noted their work as exceptional given their level — prompting KBI HK to formalise the Schoolers Stream for 2025.</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom:20px;">
+              <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">What Changed Next</span></div>
+              <h2 class="section-heading reveal">The Schoolers Stream Begins</h2>
+              <p class="section-body reveal reveal-delay-1">The 2024 qualifying round's surprise finding — that secondary school students could compete at a meaningful level — directly led to the creation of the Schoolers Stream in 2025. IBCOL HK now runs two parallel streams, with dedicated judging criteria calibrated to each ISCED level range.</p>
+              <div style="margin-top:24px;">
+                <a href="competitions.html#ibcol" class="btn btn-prussian">IBCOL HK 2026 — Enter Now <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="event-sidebar-sticky">
+            <div class="sidebar-card">
+              <div class="sidebar-card-title">Event Details</div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 1v4M11 1v4M2 7h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+                <div><div class="sidebar-detail-label">Date</div><div class="sidebar-detail-value">16 March 2024</div></div>
+              </div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg></div>
+                <div><div class="sidebar-detail-label">Venue</div><div class="sidebar-detail-value">PolyU, Hung Hom</div></div>
+              </div>
+              <div class="sidebar-detail-row">
+                <div class="sidebar-detail-icon"><svg viewBox="0 0 16 16" fill="none"><circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 13c0-2.76 2.24-5 5-5h1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M10 8c2.76 0 5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+                <div><div class="sidebar-detail-label">Teams</div><div class="sidebar-detail-value">35 competing · 6 finalists</div></div>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <div class="sidebar-card-title">Related Events</div>
+              <a href="event8.html" class="related-event-link">
+                <div class="related-event-dot" style="background:var(--yellow);"></div>
+                <div><div class="related-event-title">ETO HK 2024 — Finals Day</div><div class="related-event-date">June 2024 · CUHK</div></div>
+              </a>
+              <a href="event5.html" class="related-event-link">
+                <div class="related-event-dot" style="background:var(--cyan);"></div>
+                <div><div class="related-event-title">IBCOL HK 2025 — Qualifying</div><div class="related-event-date">March 2025 · HKU</div></div>
+              </a>
+              <a href="event15.html" class="related-event-link">
+                <div class="related-event-dot" style="background:var(--stone);"></div>
+                <div><div class="related-event-title">IBCOL HK 2022 — Qualifying</div><div class="related-event-date">March 2022</div></div>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="competitions.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Competitions</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

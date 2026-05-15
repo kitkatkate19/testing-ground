@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBI Hong Kong</title>
+  <meta name="description"
+    content="KBI Hong Kong is the regional chapter of the Königsberger Bridges Institute — building Hong Kong's pipeline of emerging technology talent through competitions, training, research, and community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    /* ── SPONSOR MARQUEE ── */
+    .sponsor-marquee-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+
+    .sponsor-marquee-wrap::before,
+    .sponsor-marquee-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .sponsor-marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, #05070A, transparent);
+    }
+
+    .sponsor-marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, #05070A, transparent);
+    }
+
+    .sponsor-marquee {
+      overflow: hidden;
+    }
+
+    .sponsor-marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marquee 38s linear infinite;
+    }
+
+    .sponsor-marquee:hover .sponsor-marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sponsor-marquee-track {
+        animation: none;
+      }
+    }
+
+    .sponsor-logo-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      padding: 0 28px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.55);
+      transition: border-color 0.25s, color 0.25s;
+      flex-shrink: 0;
+    }
+
+    .sponsor-logo-pill:hover {
+      border-color: rgba(255, 209, 102, 0.4);
+      color: rgba(255, 209, 102, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p>
+        <span class="ab-badge">New</span>
+        ETO Hong Kong 2026 is open. Registration closes soon.
+        <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a>
+      </p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="22" height="22" rx="5" fill="#003153" />
+            <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF" />
+          </svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg
+              viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false"
+            aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div><a href="competitions.html#ibcol" role="menuitem">IBCOL
+              HK</a><a href="competitions.html#idsol" role="menuitem">IDSOL HK</a><a href="competitions.html#iqcol"
+              role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div><a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div><a href="certifications.html" role="menuitem">Certifications</a><a
+              href="collaborations.html" role="menuitem">Collaborations</a><a href="projects.html" role="menuitem">Tech
+              Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <!-- <li class="hide-md"><a href="sponsors.html">Sponsors</a></li> -->
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false"
+        aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video class="hero-video" autoplay muted loop playsinline
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%2305070A' width='1920' height='1080'/%3E%3C/svg%3E">
+        <source src="motionplaces.com-0038-c007.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-noise" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+
+    <div class="hero-body">
+      <div class="hero-content">
+        <div class="kbi-chapter-badge">
+          <div class="badge-dot"></div>
+          <span>Hong Kong Chapter · Est. 2016 · Youth-Run</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Where Hong Kong's Sharpest Minds Tackle <br>
+          <em>Emerging Technologies</em>
+        </h1>
+
+        <p class="hero-sub">
+          We are the Hong Kong chapter of the Königsberger Bridges Institute — a nonprofit connecting students,
+          educators, practitioners, and partners to turn rigorous thinking into practical opportunity.
+        <div class="hero-actions">
+          <a href="programmes.html" class="btn btn-yellow btn--lg">
+            See What's On
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <!-- <a href="membership.html" class="btn btn-outline-white">Join Membership</a> -->
+          <!-- <a href="sponsors.html#enquiry" class="btn btn-ghost-light">Become a Sponsor</a> -->
+        </div>
+
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════════ -->
+  <section class="stats-bar" aria-label="Key statistics">
+    <div class="stats-bar-inner">
+      <div class="stats-bar-item reveal">
+        <div class="stats-bar-number">9<span>+</span></div>
+        <div class="stats-bar-label">Years Running</div>
+        <div class="stats-bar-desc">Est. 2016 — longest-running KBI chapter globally</div>
+      </div>
+      <div class="stats-bar-item reveal reveal-delay-1">
+        <div class="stats-bar-number">1,000<span>+</span></div>
+        <div class="stats-bar-label">Community & Growing</div>
+        <div class="stats-bar-desc">Students, grads, mentors & partners across HK</div>
+      </div>
+      <div class="stats-bar-item reveal reveal-delay-2">
+        <div class="stats-bar-number">30<span>+</span></div>
+        <div class="stats-bar-label">Programmes &amp; Counting</div>
+        <div class="stats-bar-desc">Competitions, clinics, certs &amp; community events</div>
+      </div>
+      <div class="stats-bar-item reveal reveal-delay-3">
+        <div class="stats-bar-number">3</div>
+        <div class="stats-bar-label">Technology Tracks</div>
+        <div class="stats-bar-desc">Blockchain · Data Science · Quantum Computing</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     ABOUT PREVIEW
+════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap section-wrap--white" id="about" aria-labelledby="about-heading">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="label-row">
+            <div class="u-rule" aria-hidden="true"></div><span class="u-label">About KBI Hong Kong</span>
+          </div>
+          <h2 class="section-heading reveal" id="about-heading">Who We Are</h2>
+          <p class="section-body reveal reveal-delay-1">KBI Hong Kong is part of the <strong><a
+                href="https://www.kb.institute/" target="_blank" rel="noopener noreferrer">Königsberger Bridges
+                Institute (KBI)</a></strong>, an international nonprofit named after the Königsberg Bridges Problem —
+            the
+            mathematical puzzle that Euler solved in 1736 by inventing an entirely new field. We've been doing the same
+            with students ever since.</p>
+          <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">We bring together students, educators,
+            researchers, and industry leaders to do what most institutions don't: connect rigorous thinking with
+            real-world application, from day one.</p>
+
+
+
+
+
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-5">
+            <a href="about.html" class="btn btn-prussian btn--sm">Our Story
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+            <!--<a href="impact.html" class="btn btn-outline-prussian btn--sm">View Impact</a>-->
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     WHAT WE DO
+════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap section-wrap--mist" aria-labelledby="what-heading">
+    <div class="section-inner">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+        <div class="section-intro">
+          <div class="label-row">
+            <div class="u-rule" aria-hidden="true"></div><span class="u-label">Our Work</span>
+          </div>
+          <h2 class="section-heading reveal" id="what-heading">Compete. Learn. Build. Connect.</h2>
+          <p>Four pillars. One community. Designed for students who want more than just a classroom.</p>
+        </div>
+        <!--<a href="programmes.html" class="btn btn-outline-prussian btn--sm reveal" style="flex-shrink:0;">All Programmes
+          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>-->
+      </div>
+      <div class="what-grid" role="list">
+        <article class="what-card reveal" role="listitem">
+          <div class="what-card-num" aria-hidden="true">01</div>
+          <div class="what-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 22 22" fill="none">
+              <path d="M11 3L14.5 9.5H20L15.5 13.5L17.5 20L11 16.5L4.5 20L6.5 13.5L2 9.5H7.5L11 3Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Compete</h3>
+          <p>
+            Challenge yourself at olympiad level. KBI Hong Kong runs Hong Kong's qualifying pathways for
+            <span class="tooltip">
+              IBCOL
+              <span class="tooltiptext">International Blockchain Olympiad</span>
+            </span>,
+            <span class="tooltip">
+              IDSOL
+              <span class="tooltiptext">International Data Science Olympiad</span>
+            </span>,
+            and
+            <span class="tooltip">
+              IQCOL
+              <span class="tooltiptext">International Quantum Computing Olympiad</span>
+            </span>
+            — brought together under the
+            <span class="tooltip">
+              ETO
+              <span class="tooltiptext">Emerging Technologies Olympiad (ETO) flagship.</span>
+            </span>
+          </p>
+          <a href="competitions.html" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none"
+              aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></a>
+        </article>
+        <article class="what-card reveal reveal-delay-1" role="listitem">
+          <div class="what-card-num" aria-hidden="true">02</div>
+          <div class="what-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 22 22" fill="none">
+              <path d="M4 6h14M4 11h10M4 16h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <circle cx="17" cy="15.5" r="3.5" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+          <h3>Learn</h3>
+          <p>
+            Get hands-on before you compete — or simply because you want to stay sharp. We teach
+            <span class="tooltip">
+              BCIT
+              <span class="tooltiptext">Blockchain and Trust Technology</span>
+            </span>,
+            <span class="tooltip">
+              DSAL
+              <span class="tooltiptext">Data Science and AI</span>
+            </span>,
+            and
+            <span class="tooltip">
+              QCIT
+              <span class="tooltiptext">Quantum Computing and Information Theory</span>
+            </span>
+            from first principles and applied to real problems from day one.
+          </p>
+
+          <a href="certfications.html" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none"
+              aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></a>
+        </article>
+        <article class="what-card reveal reveal-delay-2" role="listitem">
+          <div class="what-card-num" aria-hidden="true">03</div>
+          <div class="what-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 22 22" fill="none">
+              <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" />
+              <rect x="12" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" />
+              <rect x="3" y="12" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" />
+              <rect x="12" y="12" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+          <h3>Build</h3>
+          <p>Go beyond competition. KBI Hong Kong supports student teams through mentorship, project development, and
+            connecting ideas to real industry and academic partners.</p>
+          <a href="collaborations.html" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none"
+              aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></a>
+        </article>
+        <article class="what-card reveal reveal-delay-3" role="listitem">
+          <div class="what-card-num" aria-hidden="true">04</div>
+          <div class="what-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 22 22" fill="none">
+              <circle cx="7" cy="8" r="3" stroke="currentColor" stroke-width="1.5" />
+              <circle cx="15" cy="8" r="3" stroke="currentColor" stroke-width="1.5" />
+              <path d="M1 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" />
+              <path d="M15 13c2.761 0 5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-dasharray="2 2" />
+            </svg>
+          </div>
+          <h3>Connect</h3>
+          <p>The best ideas don't always happen in a competition hall. The Socratic Circle brings people together to
+            interrogate ideas — not just present them. Community Gatherings keep the network active year-round.</p>
+          <a href="community.html" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none"
+              aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     STAKEHOLDER AUDIENCE TABS
+════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="audience-heading">
+    <div class="section-inner">
+      <div class="label-row">
+        <div class="u-rule" aria-hidden="true"></div><span class="u-label">Who We Serve</span>
+      </div>
+      <div
+        style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:36px;">
+        <h2 class="section-heading reveal" id="audience-heading" style="margin-bottom:0;">Where Do You Fit?</h2>
+        <p>Whether you're a student ready to compete, an institution looking to partner, or an employer who wants access
+          to Hong Kong's most motivated emerging-tech talent — there's a place for you here.</p>
+      </div>
+      <div class="audience-tabs" role="tablist" aria-label="Stakeholder groups">
+        <button class="audience-tab active" data-audience="student" role="tab" aria-selected="true">Students</button>
+        <button class="audience-tab" data-audience="parent" role="tab" aria-selected="false">Parents</button>
+        <button class="audience-tab" data-audience="educator" role="tab" aria-selected="false">Educators & Academic
+          Institutions</button>
+        <button class="audience-tab" data-audience="professional" role="tab"
+          aria-selected="false">Professionals</button>
+        <button class="audience-tab" data-audience="sponsor" role="tab" aria-selected="false">Sponsors &amp;
+          Donors</button>
+      </div>
+
+      <!-- Students -->
+      <div class="audience-panel active stakeholder-panel" data-audience="student" role="tabpanel">
+        <div class="label-row">
+          <div class="u-rule" aria-hidden="true"></div><span class="u-label">For Students</span>
+        </div>
+        <h3 style="font-size:1.375rem;margin-bottom:12px;color:var(--text-main);">You don't need to be a coder. You need
+          to be curious, collaborative, and willing to tackle real problems.</h3>
+        <p>KBI
+          Hong Kong gives students structured, credible pathways into emerging technologies — whether you're a secondary
+          school student just starting out, or a university student ready to compete on an international stage.</p>
+        <p style="color:var(--text-muted);font-size:0.9375rem;max-width:600px;margin-bottom:0;line-height:1.75;"></p>
+        <div class="stakeholder-panel-grid">
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M8 2l1.8 4H14l-3.5 2.8L11.8 13 8 10.8 4.2 13 5.5 8.8 2 6h4.2L8 2Z" stroke="currentColor"
+                  stroke-width="1.2" stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>International Competition</h5>
+              <p>Compete in IBCOL, IDSOL, IQCOL, and ETO — internationally recognised olympiad pathways.
+              </p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2" />
+                <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Certifications &amp; Training</h5>
+              <p>Earn ISFRETIC certifications in blockchain, data science, and quantum computing</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.2" />
+                <path d="M2 14c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" stroke-width="1.2"
+                  stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Mentorship &amp; Community</h5>
+              <p>Access to a 1,000+ member network of peers, alumni mentors, and industry professionals.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>University &amp; Career Pathways</h5>
+              <p>Competition records, certifications, and KBI recognition strengthen university applications and CV
+                profiles.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+          <!-- <a href="programmes.html" class="btn btn-prussian btn--sm">View Programmes</a> -->
+          <!-- <a href="membership.html" class="btn btn-outline-prussian btn--sm">Join Membership</a> -->
+        </div>
+      </div>
+
+      <!-- Parents -->
+      <div class="audience-panel stakeholder-panel" data-audience="parent" role="tabpanel">
+        <div class="label-row">
+          <div class="u-rule" aria-hidden="true"></div><span class="u-label">For Parents</span>
+        </div>
+        <h3 style="font-size:1.375rem;margin-bottom:12px;color:var(--text-main);">Serious programmes. Safe environment.
+          Real outcomes.</h3>
+        <p>KBI Hong Kong is a registered nonprofit that has been operating since 2016. We prioritise academic integrity,
+          intellectual rigour, and inclusive community engagement — no financial speculation, no hype, no commercial
+          agenda.</p>
+
+        <div class="stakeholder-panel-grid">
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M8 2L3 5.5v5c0 2.5 2 4.5 5 5 3-0.5 5-2.5 5-5v-5L8 2Z" stroke="currentColor" stroke-width="1.2"
+                  stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>Safe &amp; Credible Environment</h5>
+              <p>Non-profit, non-commercial organisation with an academic governance structure — no hype, no
+                speculation, no financial risk.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>University-Recognised Credentials</h5>
+              <p>KBI competition results and certifications are meaningful additions to university application
+                portfolios and CVs.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2" />
+                <circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2" />
+                <path d="M1 13c0-2.76 2.24-5 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                <path d="M11 8c2.76 0 5 2.24 5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                  stroke-dasharray="2 1.5" />
+              </svg></div>
+            <div>
+              <h5>Peer Community</h5>
+              <p>Students meet like-minded peers across Hong Kong's universities and schools in a structured, mentored
+                environment.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M3 12l2-5 3 2 3-5 3 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>Future-Proof Skills</h5>
+              <p>Blockchain, data science, and quantum computing skills are among the highest-demand capabilities in
+                global technology sectors.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;">
+          <!-- <a href="contact.html" class="btn btn-prussian btn--sm">Ask Us a Question</a> -->
+        </div>
+      </div>
+
+      <!-- Educators -->
+      <div class="audience-panel stakeholder-panel" data-audience="educator" role="tabpanel">
+        <div class="label-row">
+          <div class="u-rule" aria-hidden="true"></div><span class="u-label">For Educators & Academic
+            Institutions</span>
+        </div>
+        <h3 style="font-size:1.375rem;margin-bottom:12px;color:var(--text-main);">Give your students access to something
+          the syllabus can't.</h3>
+        <p>KBI Hong Kong extends learning beyond the classroom — connecting your students to international competition
+          stages, hands-on training, and a community of peers and mentors across Hong Kong and beyond.</p>
+        <!--<p style="color:var(--text-muted);font-size:0.9375rem;max-width:600px;margin-bottom:0;line-height:1.75;">KBI HK
+          provides schools and universities with structured, curriculum-adjacent programmes that extend learning beyond
+          the classroom and connect students to global stages.</p>-->
+        <div class="stakeholder-panel-grid">
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                <path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Curriculum-Adjacent Programmes</h5>
+              <p>Competitions and training that complement STEM, computer science, and business curricula at secondary
+                and tertiary level.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M8 2L2 6v8h12V6L8 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+                <path d="M6 14V9h4v5" stroke="currentColor" stroke-width="1.2" />
+              </svg></div>
+            <div>
+              <h5>Institutional Partnerships</h5>
+              <p>Formal academic partnerships with KBI HK including co-branding, event hosting, and research
+                collaboration.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Teacher Development</h5>
+              <p>Professional development resources, workshops, and community access for educators entering these
+                fields.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M3 13l3-5 3 3 4-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>Student Achievement Recognition</h5>
+              <p>Official KBI certificates and competition results that schools can include in programme records and
+                reporting.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;">
+          <!-- <a href="contact.html" class="btn btn-prussian btn--sm">Partner with KBI HK</a> -->
+        </div>
+      </div>
+
+      <!-- Professionals -->
+      <div class="audience-panel stakeholder-panel" data-audience="professional" role="tabpanel">
+        <div class="label-row">
+          <div class="u-rule" aria-hidden="true"></div><span class="u-label">For Professionals</span>
+        </div>
+        <h3 style="font-size:1.375rem;margin-bottom:12px;color:var(--text-main);">Give back. Find talent. Shape the
+          field.</h3>
+        <p>You know what the industry actually needs. We have the students who want to learn it. Whether you mentor,
+          judge, speak, or collaborate — the community benefits, and so do you.</p>
+        <!--<p style="color:var(--text-muted);font-size:0.9375rem;max-width:600px;margin-bottom:0;line-height:1.75;">
+          Industry professionals are essential to KBI HK's mission — as mentors, judges, guest speakers, and research
+          collaborators, you help shape the next generation of your industry.</p>-->
+        <div class="stakeholder-panel-grid">
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.2" />
+                <path d="M2 14c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" stroke-width="1.2"
+                  stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Mentorship Programme</h5>
+              <p>Mentor competition participants and training cohorts. Direct, meaningful contribution to youth
+                development in your field.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                <path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Speaking &amp; Judging</h5>
+              <p>Contribute as a guest speaker, panel judge at ETO HK 2026, or workshop facilitator to our training
+                programmes.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Research Collaboration</h5>
+              <p>Collaborate with KBI HK research groups on applied technology projects bridging academia and industry.
+              </p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M3 13l3-4 3 2 4-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>Talent Pipeline</h5>
+              <p>Early access to competition finalists and certification graduates for internship and graduate
+                recruitment opportunities.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;">
+          <!--<a href="community.html" class="btn btn-prussian btn--sm">Join the Community</a>-->
+        </div>
+      </div>
+
+      <!-- Sponsors -->
+      <div class="audience-panel stakeholder-panel" data-audience="sponsor" role="tabpanel">
+        <div class="label-row">
+          <div class="u-rule" aria-hidden="true"></div><span class="u-label">For Sponsors &amp; Donors</span>
+        </div>
+        <h3 style="font-size:1.375rem;margin-bottom:12px;color:var(--text-main);">Support Hong Kong's next generation of
+          technology leaders.</h3>
+        <p>Your
+          sponsorship funds serious, rigorous programmes that directly develop the next cohort of Hong Kong's
+          emerging-tech workforce — with brand visibility, talent access, and mission alignment.</p>
+        <!-- <p style="color:var(--text-muted);font-size:0.9375rem;max-width:600px;margin-bottom:0;line-height:1.75;">Your
+          sponsorship funds serious, rigorous programmes that directly develop the next cohort of Hong Kong's
+          emerging-tech workforce — with brand visibility, talent access, and mission alignment.</p> -->
+        <div class="stakeholder-panel-grid">
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M2 14V8l6-6 6 6v6H10v-4H6v4H2Z" stroke="currentColor" stroke-width="1.2"
+                  stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>Brand Visibility</h5>
+              <p>Logo placement, event naming rights, co-branded media, and programme recognition across all KBI HK
+                channels.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="6" r="3.5" stroke="currentColor" stroke-width="1.2" />
+                <path d="M2 14c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" stroke-width="1.2"
+                  stroke-linecap="round" />
+              </svg></div>
+            <div>
+              <h5>Direct Talent Access</h5>
+              <p>Finalist introductions, talent introductions, and recruitment pathways to KBI HK's most accomplished
+                participants.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="6" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.2" />
+                <path d="M5 6V5a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.2" />
+              </svg></div>
+            <div>
+              <h5>Non-Profit Impact</h5>
+              <p>Direct contribution to a registered non-profit delivering structured education that genuinely helps
+                students and Hong Kong's tech sector.</p>
+            </div>
+          </div>
+          <div class="stakeholder-benefit">
+            <div class="stakeholder-benefit-icon"><svg viewBox="0 0 16 16" fill="none">
+                <path d="M8 2l2 4h4l-3.5 2.8 1.3 4.2L8 10.5 4.2 13l1.3-4.2L2 6h4L8 2Z" stroke="currentColor"
+                  stroke-width="1.2" stroke-linejoin="round" />
+              </svg></div>
+            <div>
+              <h5>Flexible Tiers</h5>
+              <p>Bronze, Silver, Gold sponsorship tiers and custom institutional partnership arrangements to match your
+                goals and budget.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+          <!--<a href="sponsors.html" class="btn btn-prussian btn--sm">View Sponsorship Tiers</a>-->
+          <!--<a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Enquire Now</a>-->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     IMPACT
+════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap section-wrap--mist" id="impact" aria-labelledby="impact-heading">
+    <div class="section-inner">
+      <div class="label-row">
+        <div class="u-rule" aria-hidden="true"></div><span class="u-label">Impact &amp; Evidence</span>
+      </div>
+      <h2 class="section-heading reveal" id="impact-heading">Our Impact</h2>
+      <p class="section-body reveal reveal-delay-1">Nine years of operations have produced measurable outcomes across
+        participants, institutions, and programmes. Here is what participants say.</p>
+      <!--<div class="impact-stats-grid reveal reveal-delay-2" style="margin-top:40px;">
+      <div class="impact-stat"><div class="impact-stat-n">9<span>+</span></div><div class="impact-stat-l">Years Active</div></div>
+      <div class="impact-stat"><div class="impact-stat-n">1,000<span>+</span></div><div class="impact-stat-l">Community Members</div></div>
+      <div class="impact-stat"><div class="impact-stat-n">50<span>+</span></div><div class="impact-stat-l">Events Delivered</div></div>
+      <div class="impact-stat"><div class="impact-stat-n">30<span>+</span></div><div class="impact-stat-l">Partner Institutions</div></div>
+    </div>-->
+      <div style="margin-top:64px;">
+        <!--<div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">From Our Community</span></div>
+      <h3 class="section-heading section-heading--sm reveal">What participants say</h3>-->
+        <div class="story-grid" style="margin-top:32px;">
+          <article class="story-card reveal">
+            <p class="story-quote">"Participating in the Emerging Technologies Olympiad (ETO) was an invaluable
+              experience that greatly enhanced my skills and knowledge. The
+              opportunity to network and connect with talented individuals and experts worldwide allowed me to exchange
+              ideas and build meaningful relationships."</p>
+            <div class="story-author">
+              <div class="story-avatar" aria-hidden="true"><img src="kbi-profile-dominic-tam.jpg"
+                  alt="A descriptive text about the image"></div>
+              <div class="story-author-info">
+                <div class="story-author-name">Dominic Tam</div>
+                <div class="story-author-role">🇭🇰 LockChain (2023) · 🇭🇰 Pui Kiu Chollege (PKU)</div>
+              </div>
+            </div>
+          </article>
+          <article class="story-card reveal reveal-delay-1">
+            <p class="story-quote">"Through KBI, I built my network and gained insight into global challenges through
+              various projects, which enhanced my soft skills in presentation and crowd interaction. This experience
+              also taught me how to collaborate effectively within a team of two."</p>
+            <div class="story-author">
+              <div class="story-avatar" aria-hidden="true"><img src="kbi-profile-agnes-chiu.jpg"
+                  alt="A descriptive text about the image"></div>
+              <div class="story-author-info">
+                <div class="story-author-name">Agnes Chiu</div>
+                <div class="story-author-role">🇭🇰 Repro-Trust (2024) · 🇭🇰 Canadian International School (CDNIS)
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="story-card reveal reveal-delay-2">
+            <p class="story-quote">"The IBCOL IDSOL, and KBI network connect me with industry professionals, which
+              helped me get a job in Software Engineering at JP Morgan HK. The experience also inspired me to launch my
+              own startup Talentier, which I recently brought to Silicon Valley."</p>
+            <div class="story-author">
+              <div class="story-avatar" aria-hidden="true"><img src="kbi-profile-sakib-rabbani.jpg"
+                  alt="A descriptive text about the image"></div>
+              <div class="story-author-info">
+                <div class="story-author-name">Sakib Rabbani</div>
+                <div class="story-author-role">🇭🇰 UniMatrix (2021) · 🇭🇰 The Hong Kong Polytechnic University (PolyU)
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="story-card reveal reveal-delay-3">
+            <p class="story-quote">"KBI comprises a great team of professionals with rich
+              academic and enterprise experience. They are very dedicated to advancing students’ knowledge and
+              application skills in blockchain and data science. I am glad to see so many students benefit from their
+              educational initiatives."</p>
+            <div class="story-author">
+              <div class="story-avatar" aria-hidden="true"><img src="kbi-profile-isabel-yan.jpg"
+                  alt="A descriptive text about the image"></div>
+              <div class="story-author-info">
+                <div class="story-author-name">Dr. Prof. Isabel Yan</div>
+                <div class="story-author-role">🇭🇰 Associate Professor, Department of Economics and Finance · 🇭🇰 City
+                  University of Hong Kong (CityU)</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SPONSORS SHOWCASE (dark)
+════════════════════════════════════════════════════════════ -->
+  <section class="sponsors-showcase" aria-labelledby="sponsors-heading">
+    <div class="sponsors-showcase-inner">
+      <div class="sponsors-showcase-header">
+        <div class="label-row" style="justify-content:center;margin-bottom:14px;">
+          <div class="u-rule u-rule--cyan" aria-hidden="true"></div><span class="u-label u-label--cyan">Partners &amp;
+            Sponsors</span>
+        </div>
+        <h2 class="section-heading section-heading--light reveal" id="sponsors-heading">Trusted by Those<br>That
+          Shape Hong Kong's Future.</h2>
+        <p class="reveal reveal-delay-1">KBI Hong Kong gives institutional partners, corporate sponsors, and academic
+          collaborators direct access to Hong Kong's most motivated emerging-tech students — in a structured, credible,
+          non-commercial environment that has been operating for nine years.</p>
+      </div>
+
+      <!-- SPONSOR LOGO MARQUEE -->
+      <div class="sponsor-marquee-wrap reveal reveal-delay-1" aria-label="Our sponsors and partners">
+        <div class="sponsor-marquee" id="sponsorMarquee">
+          <div class="sponsor-marquee-track">
+            <!-- Set 1 -->
+            <div class="sponsor-logo-pill">KBI International</div>
+            <div class="sponsor-logo-pill">Hong Kong University</div>
+            <div class="sponsor-logo-pill">HKUST</div>
+            <div class="sponsor-logo-pill">CUHK</div>
+            <div class="sponsor-logo-pill">InvestHK</div>
+            <div class="sponsor-logo-pill">Cyberport HK</div>
+            <div class="sponsor-logo-pill">Science Park HK</div>
+            <div class="sponsor-logo-pill">HKMA</div>
+            <div class="sponsor-logo-pill">Deloitte</div>
+            <div class="sponsor-logo-pill">PwC Hong Kong</div>
+            <div class="sponsor-logo-pill">IBM Research</div>
+            <div class="sponsor-logo-pill">AWS Educate</div>
+            <!-- Set 2 (duplicate for seamless loop) -->
+            <div class="sponsor-logo-pill" aria-hidden="true">KBI International</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">Hong Kong University</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">HKUST</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">CUHK</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">InvestHK</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">Cyberport HK</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">Science Park HK</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">HKMA</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">Deloitte</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">PwC Hong Kong</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">IBM Research</div>
+            <div class="sponsor-logo-pill" aria-hidden="true">AWS Educate</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Value proposition for sponsors -->
+      <div class="sponsor-value-grid reveal reveal-delay-2">
+        <div class="sponsor-value-card">
+          <div class="sponsor-value-icon"><svg viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="7" r="4" stroke="currentColor" stroke-width="1.4" />
+              <path d="M3 18c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="currentColor" stroke-width="1.4"
+                stroke-linecap="round" />
+            </svg></div>
+          <h4>Access to motivated talent</h4>
+          <p>Direct access to Hong Kong's most motivated and technically serious emerging-tech community across
+            secondary and tertiary education.</p>
+        </div>
+        <div class="sponsor-value-card">
+          <div class="sponsor-value-icon"><svg viewBox="0 0 20 20" fill="none">
+              <path d="M10 2l2.4 5H18l-4.5 3.6L15.3 16 10 13l-5.3 3L6.5 10.6 2 7h5.6L10 2Z" stroke="currentColor"
+                stroke-width="1.4" stroke-linejoin="round" />
+            </svg></div>
+          <h4>Credible, Mission-Driven Brand</h4>
+          <p>Association with a non-profit, academic rigour-focused organisation that is trusted by universities and
+            recognised globally.</p>
+        </div>
+        <div class="sponsor-value-card">
+          <div class="sponsor-value-icon"><svg viewBox="0 0 20 20" fill="none">
+              <path d="M3 13l4-5 4 3 5-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <circle cx="15" cy="15" r="4" stroke="currentColor" stroke-width="1.4" />
+              <path d="M14 15l1 1 1.5-1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg></div>
+          <h4>Visible, year-round presence</h4>
+          <p>From ETO HK 2026 to training workshops and community events, your brand is present throughout the programme
+            calendar — not just a logo on a one-off event.</p>
+        </div>
+      </div>
+
+
+
+      <!--turn into a spining logo thing-->
+      <!--<div class="sponsors-tier reveal reveal-delay-3" style="margin-top:52px;">
+        <div class="sponsors-tier-label">Institutional Partners</div>
+        <div class="sponsors-logos-row">
+          <div class="sponsor-logo-block platinum"><span class="sponsor-logo-text platinum-text">KBI
+              International</span></div>
+          <div class="sponsor-logo-block platinum"><span class="sponsor-logo-text platinum-text">University Partner
+              A</span></div>
+          <div class="sponsor-logo-block platinum"><span class="sponsor-logo-text platinum-text">University Partner
+              B</span></div>
+        </div>
+      </div>-->
+      <!--<div class="sponsors-tier reveal reveal-delay-4">
+        <div class="sponsors-tier-label">Community &amp; Educational Partners</div>
+        <div class="sponsors-logos-row">
+          <div class="sponsor-logo-block"><span class="sponsor-logo-text">Partner A</span></div>
+          <div class="sponsor-logo-block"><span class="sponsor-logo-text">Partner B</span></div>
+          <div class="sponsor-logo-block"><span class="sponsor-logo-text">Partner C</span></div>
+          <div class="sponsor-logo-block"><span class="sponsor-logo-text">Partner D</span></div>
+          <div class="sponsor-logo-block"><span class="sponsor-logo-text">Partner E</span></div>
+        </div>
+      </div>-->
+      <div style="text-align:center;margin-top:48px;" class="reveal reveal-delay-5">
+        <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:rgba(255,255,255,0.35);margin-bottom:24px;">
+          Interested in supporting Hong Kong's next generation of emerging-tech talent?</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="sponsors.html" class="btn btn-yellow">View Sponsorship Tiers
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="sponsors.html#enquiry" class="btn btn-outline-white">Enquire Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     UPCOMING EVENTS
+════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="events-prev-heading">
+    <div class="section-inner">
+      <div class="label-row">
+        <div class="u-rule" aria-hidden="true"></div><span class="u-label">Upcoming Events</span>
+      </div>
+      <div
+        style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:40px;">
+        <h2 class="section-heading reveal" id="events-prev-heading" style="margin-bottom:0;">What's Coming Up</h2>
+        <a href="events.html" class="btn btn-outline-prussian btn--sm reveal" style="flex-shrink:0;">All Events
+          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div class="prog-grid">
+        <article class="event-card reveal">
+          <div class="event-card-visual" style="position:relative;overflow:hidden;">
+            <img
+              src="https://sspark.genspark.ai/cfimages?u1=JRmpi3xnsEFHuNK8TkzKGnTJkpu0R8xDAiyLiE3r%2Bn%2BOp1CdQ4K0iXuIQEzIjloJX08MdPDhPjrJzqRYShst8S1yIl7gNAJBoZ4Cpzr0WdlokbOA%2BNO7XHZB8Ndd%2FAjGhcPmMvuurUfhXDLvlpxaQ15CBEpCKyJbhe02XEV2n2J%2F1eX%2FjJaCXJY%2FHCAkA8MaZ7d%2F9PmWb0cX20276omReQiU839qJ3gt&u2=mzynAtzMjn%2FSUv4G&width=2560"
+              alt="ETO HK 2026 Competition"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;inset:0;background:rgba(0,49,83,0.65);"></div>
+            <div class="event-card-label" style="position:relative;z-index:2;"><span
+                class="tag tag--night">Competition</span></div>
+            <div class="event-card-date-badge" style="position:relative;z-index:2;">June<br>2026</div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta"><span class="event-card-date-text">June 2026 · Hong Kong</span></div>
+            <h4>ETO HK 2026 — Registration Opens</h4>
+            <p>Register your interest for the Emerging Technologies Olympiad HK 2026 across all three tracks.</p>
+            <a href="eto2026.html" class="link-arrow">Register interest <svg viewBox="0 0 12 12" fill="none"
+                aria-hidden="true">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </article>
+        <article class="event-card reveal reveal-delay-1">
+          <div class="event-card-visual" style="position:relative;overflow:hidden;">
+            <img
+              src="https://sspark.genspark.ai/cfimages?u1=I9DV%2FDRVz8O5a8rNzJMVZUR1Y4z5aGLaio8L9tP6TexyoaLobo2eVb5aKh3wSEoeTaqiAvddqhzXf22GYXLG6NhMVrWvkVqSXRYCl9MnjBTMLWmM5hMXm3Y%3D&u2=NkdGEy1mL7cIMR9c&width=2560"
+              alt="Blockchain Foundations Workshop"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;inset:0;background:rgba(0,49,83,0.65);"></div>
+            <div class="event-card-label" style="position:relative;z-index:2;"><span
+                class="tag tag--night">Workshop</span></div>
+            <div class="event-card-date-badge" style="position:relative;z-index:2;">July<br>2026</div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta"><span class="event-card-date-text">July 2026 · Hong Kong</span></div>
+            <h4>Blockchain Foundations Clinic</h4>
+            <p>A hands-on introductory workshop for students new to distributed ledger technology and smart contracts.
+            </p>
+            <a href="event1.html" class="link-arrow">Register <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </article>
+        <article class="event-card reveal reveal-delay-2">
+          <div class="event-card-visual" style="position:relative;overflow:hidden;">
+            <img
+              src="https://sspark.genspark.ai/cfimages?u1=fH2QmZM54XDqmFpVCPaAGB33SwPIKBpldvU7rE1erSLQgabl6PgUd%2BeIfyTFcYcanIhvmn%2FIWJtGAHdGkdUm7Cm5JsxN8ttyMOmd3IK9VIzNGCbfQ7Yo4juSsxBfr6gOMrEe0dtjpxiNYKT21l1Hfmoq&u2=aiudgBFomHUgdByW&width=2560"
+              alt="KBI HK Community Meet-Up"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;inset:0;background:rgba(0,49,83,0.65);"></div>
+            <div class="event-card-label" style="position:relative;z-index:2;"><span
+                class="tag tag--night">Community</span></div>
+            <div class="event-card-date-badge" style="position:relative;z-index:2;">Aug<br>2026</div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta"><span class="event-card-date-text">August 2026 · Hong Kong</span></div>
+            <h4>KBI HK Community Meet-Up</h4>
+            <p>Meet fellow community members, hear from mentors, and discover upcoming opportunities. Open to all.</p>
+            <a href="event2.html" class="link-arrow">RSVP <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     NEWS PREVIEW
+════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap section-wrap--mist" aria-labelledby="news-prev-heading">
+    <div class="section-inner">
+      <div
+        style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:44px;">
+        <div>
+          <div class="label-row">
+            <div class="u-rule" aria-hidden="true"></div><span class="u-label">News &amp; Insights</span>
+          </div>
+          <h2 class="section-heading reveal" id="news-prev-heading" style="margin-bottom:0;">Latest from KBI HK</h2>
+        </div>
+        <a href="news.html" class="btn btn-outline-prussian btn--sm reveal" style="flex-shrink:0;">All News
+          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div class="news-grid">
+        <article class="news-featured reveal">
+          <div class="news-featured-visual" style="position:relative;overflow:hidden;">
+            <img
+              src="https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncsXFCOWZ6NOSr6fVMNLNx2uJPOm7xlLeUPFgVZqB1BZrOkao95BKn1edlZGYCTt4YDISWnVp9b5UlHtD4pA2o8yoq9WJ5s6XzvzKerC%2FxNit7vMK4Gq7%2BH89o0c4AyPwME%3D&u2=IFWKAVhnRHUHlzA%2B&width=2560"
+              alt="ETO Hong Kong 2026"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;inset:0;background:rgba(0,49,83,0.7);"></div>
+            <div class="news-featured-label" style="position:relative;z-index:2;"><span
+                class="tag tag--night">Announcement</span></div>
+          </div>
+          <div class="news-featured-body">
+            <div class="news-meta"><span class="tag tag--cyan">Featured</span><span class="news-date">May 2026</span>
+            </div>
+            <h3>ETO Hong Kong 2026 — Registration Opens This Summer</h3>
+            <p>KBI Hong Kong announces the launch of interest registration for the Emerging Technologies Olympiad HK
+              2026 — spanning blockchain, data science, and quantum computing tracks.</p>
+            <a href="news1.html" class="link-arrow">Read announcement <svg viewBox="0 0 12 12" fill="none"
+                aria-hidden="true">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+          </div>
+        </article>
+        <div class="news-sidebar">
+          <article class="news-card reveal reveal-delay-1">
+            <div class="news-card-visual" style="position:relative;overflow:hidden;">
+              <img
+                src="https://sspark.genspark.ai/cfimages?u1=OvjcsomASP72lTvl6XdXJ48YP4cHuaFMCx7%2FGA%2F6uvWPobrFdYvKNIcIzC6%2FKMv6jZevjXiUKm2LU4%2Fdd8gLmNo0zhKVyCtjyoMiUgADoSZ0WmNiowcjfVCFGJhjFvD1Hi%2Bn5QP84E97j%2FtvXmk0W1CaDeVz0TvV99pbO5yYUwiwQ06pray9fpRKx5CYyOXhGklsJuuGlX6JRg3kM%2BVRixG0kX24BYPhf7ojilhG4nuU%2BimB4Bq7VXGSwht73MXyXK3cwmg%3D&u2=GPMU4kisZiNe7I4S&width=2560"
+                alt="Quantum Computing Education"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);"></div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-meta"><span class="tag tag--stone">Insight</span><span class="news-date">April
+                  2026</span></div>
+              <h4>Why Quantum Computing Education Cannot Wait</h4>
+              <p>The quantum advantage timeline is compressing. Why students who understand quantum mechanics today will
+                be irreplaceable in ten years.</p>
+              <a href="news2.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg
+                  viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></a>
+            </div>
+          </article>
+          <article class="news-card reveal reveal-delay-2">
+            <div class="news-card-visual" style="position:relative;overflow:hidden;">
+              <img
+                src="https://sspark.genspark.ai/cfimages?u1=mA%2FHGWZCb4tFGCFeXT8OSkcE%2FRTe1%2FfbNKbqlVwKp4wjqweTQNqlPsCznPq8KOU3gF9KnrlSl1ra%2F3h1SY%2FYqHAWYsQhCRZO4HZl8iZrukZ6cn%2FyM%2FIuN3XBAvmQuW2vOcaJ00JepkKlAswkAf6KDiPYJbVQgdLk&u2=qHvRWOGlD0vDk4cz&width=2560"
+                alt="KBI HK 2026 Rebuild"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);"></div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-meta"><span class="tag tag--stone">Press</span><span class="news-date">March 2026</span>
+              </div>
+              <h4>KBI HK Chapter Rebuild — New Structure for 2026</h4>
+              <p>KBI Hong Kong announces a rebuilt programme portfolio, membership structure, and sponsor engagement
+                framework for 2026.</p>
+              <a href="news3.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg
+                  viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════════════════ -->
+  <div class="newsletter-band" aria-label="Newsletter signup">
+    <div class="newsletter-inner">
+      <div class="newsletter-left">
+        <h3>Stay in the Loop</h3>
+        <p>Programme announcements, event dates, and KBI insights — directly to your inbox.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter signup form" novalidate>
+        <label for="nl-email" class="sr-only">Email address</label>
+        <input type="email" id="nl-email" name="email" class="newsletter-input" placeholder="Enter your email address"
+          required autocomplete="email">
+        <button type="submit" class="btn btn-yellow btn--sm">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     FINAL CTA
+════════════════════════════════════════════════════════════ -->
+  <section class="cta-band" aria-label="Call to action">
+    <div class="cta-band-inner">
+      <div class="label-row" style="justify-content:center;margin-bottom:20px;">
+        <div class="u-rule u-rule--white" aria-hidden="true"></div>
+        <span class="u-label u-label--light">Your Next Step</span>
+      </div>
+      <h2 class="cta-band-heading reveal">Your Next Step <br>Starts <em>Here.</em></h2>
+      <!-- <p class="cta-band-body reveal reveal-delay-1">Whether you are a student ready to build real skills, an educator
+        looking for credible opportunities, or a partner who wants to support Hong Kong's next generation of
+        emerging-tech talent — KBI Hong Kong has a serious pathway for you.</p> -->
+      <p class="cta-band-tagline reveal reveal-delay-2">Learn for real. Compete for real. Grow with people who get it.
+      </p>
+      <div class="cta-band-actions reveal reveal-delay-3">
+        <!-- <a href="programmes.html" class="btn btn-yellow">Explore Programmes
+          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a> -->
+        <!-- <a href="membership.html" class="btn btn-white">Join Membership</a> -->
+        <a href="community.html" class="btn btn-outline-white">Join the Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153" />
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF" />
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions,
+          research, and community. Regional chapter of the Königsberger Bridges Institute. Est. 2016.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger
+          Bridges Institute.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong is committed to rigour, curiosity, integrity, practicality,
+          inclusion, and collaboration in emerging-technology education. We do not endorse speculative, hype-driven, or
+          financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot" aria-hidden="true"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M7 12V2M2 7l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <script src="kbi-hk.js"></script>
+</body>
+
+</html>

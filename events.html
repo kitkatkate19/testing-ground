@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — KBI Hong Kong</title>
+<meta name="description" content="KBI Hong Kong upcoming and past events: competitions, workshops, clinics, community meet-ups, and networking sessions across blockchain, data science, and quantum computing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kbi-hk.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <!-- <li class="hide-md"><a href="sponsors.html">Sponsors</a></li> -->
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false"
+        aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero page-hero--night" aria-label="Events page header" style="position:relative;overflow:hidden;">
+  <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=beGaK5sDYPeKeydTLscTU34eZiBpbaRG3nSHwJ3d%2BGMrQcj%2B16uxzi34UhEuDkY2PA3FlWjpqjk47LYj2ja18IbHl3LmjLh2EPxSs0rynDqdpcfBb0vXXhl%2FaffYSgvyJJdyx03Z3m4oSoJNX5MXlMo%2B4%2BaCQbxX6QzZOoc%2FNUN5goRrC5KRFw%3D%3D&u2=hFFxo9ik1ZsZMgmb&width=2560');background-size:cover;background-position:center;opacity:0.13;"></div>
+  <div class="page-hero-inner" style="position:relative;z-index:1;">
+    <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Events</span></div>
+    <h1 class="page-hero-heading">KBI HK <em>Events</em><br>2025–2026</h1>
+    <p class="page-hero-sub">Competitions, workshops, community meet-ups, and networking sessions across blockchain, data science, and quantum computing. Open to members and non-members.</p>
+</div>
+</header>
+
+<!-- EVENTS TABS -->
+<div style="border-bottom:1px solid var(--stone);background:var(--white);">
+  <div style="max-width:var(--max-width);margin:0 auto;padding:0 24px;">
+    <div class="events-tabs" role="tablist" aria-label="Event type">
+      <button class="events-tab active" data-tab="upcoming" role="tab" aria-selected="true">Upcoming Events</button>
+      <button class="events-tab" data-tab="past-events" role="tab" aria-selected="false">Past Events</button>
+    </div>
+  </div>
+</div>
+
+<!-- UPCOMING EVENTS -->
+<div class="events-tab-panel active" id="evt-upcoming" role="tabpanel">
+  <section class="section-wrap section-wrap--white" id="upcoming" aria-labelledby="upcoming-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Upcoming Events</span></div>
+      <h2 class="section-heading reveal" id="upcoming-heading" style="margin-bottom:40px;">What's Coming Up in 2026</h2>
+
+      <!-- Featured event -->
+      <div style="background:linear-gradient(135deg,var(--ink),var(--prussian));border-radius:var(--radius-lg);overflow:hidden;margin-bottom:40px;display:grid;grid-template-columns:1fr 2fr;min-height:280px;" class="reveal">
+        <div style="position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:40px;border-right:1px solid rgba(255,255,255,0.06);">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.08;">
+            <svg viewBox="0 0 120 120" fill="none" style="width:120px;"><path d="M60 10L75 40H105L82 62L92 92L60 75L28 92L38 62L15 40H45L60 10Z" stroke="white" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="text-align:center;position:relative;">
+            <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--white);line-height:1;">June</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:500;color:rgba(255,255,255,0.5);">2026</div>
+          </div>
+        </div>
+        <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:center;">
+          <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
+            <span class="tag tag--night">Competition</span>
+            <span class="tag" style="background:rgba(255,209,102,0.15);color:var(--yellow);">Flagship</span>
+          </div>
+          <h3 style="font-size:1.5rem;color:var(--white);margin-bottom:12px;">ETO Hong Kong 2026 — Registration Opens</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:rgba(255,255,255,0.52);line-height:1.8;margin-bottom:24px;">Interest registration opens for the Emerging Technologies Olympiad Hong Kong 2026. All three tracks: blockchain, data science, and quantum computing. Open to secondary and tertiary students across Hong Kong.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-yellow btn--sm">Register Interest</a>
+            <a href="eto2026.html" class="btn btn-ghost-light btn--sm">About ETO HK 2026</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event grid -->
+      <div class="prog-grid stagger-children">
+        <article class="event-card">
+          <div class="event-card-visual" style="background:linear-gradient(135deg,#0a1e2e,var(--prussian));">
+            <div class="event-card-visual-bg" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none"><rect x="14" y="14" width="22" height="22" rx="2" stroke="white" stroke-width="2"/><rect x="44" y="14" width="22" height="22" rx="2" stroke="white" stroke-width="2"/><rect x="14" y="44" width="22" height="22" rx="2" stroke="white" stroke-width="2"/></svg></div>
+            <div class="event-card-label"><span class="tag tag--night">Workshop</span></div>
+            <div class="event-card-date-badge">July<br>2026</div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta"><span class="event-card-date-text">July 2026 · Hong Kong</span></div>
+            <h4>Blockchain Foundations Clinic</h4>
+            <p>Hands-on introductory workshop covering DLT, smart contracts, and blockchain fundamentals. Ideal for students new to the field or preparing for IBCOL.</p>
+            <a href="event1.html" class="link-arrow">View Event <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-card-visual" style="background:linear-gradient(135deg,var(--deep-blue),var(--prussian-glow));">
+            <div class="event-card-visual-bg" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none"><circle cx="30" cy="30" r="15" stroke="white" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="white" stroke-width="2"/><line x1="40" y1="15" x2="40" y2="65" stroke="white" stroke-width="2" stroke-dasharray="4 3"/></svg></div>
+            <div class="event-card-label"><span class="tag tag--night">Community</span></div>
+            <div class="event-card-date-badge">Aug<br>2026</div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta"><span class="event-card-date-text">August 2026 · Hong Kong</span></div>
+            <h4>KBI HK Community Meet-Up</h4>
+            <p>Informal networking session for all community members — students, alumni, mentors, and industry partners. Open to all, no registration fee.</p>
+            <a href="event2.html" class="link-arrow">View Event <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-card-visual" style="background:linear-gradient(135deg,var(--night),var(--prussian));">
+            <div class="event-card-visual-bg" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="40" rx="28" ry="12" stroke="white" stroke-width="2"/><ellipse cx="40" cy="40" rx="28" ry="12" stroke="white" stroke-width="2" transform="rotate(60 40 40)"/><circle cx="40" cy="40" r="5" stroke="white" stroke-width="2"/></svg></div>
+            <div class="event-card-label"><span class="tag tag--night">Workshop</span></div>
+            <div class="event-card-date-badge">Sep<br>2026</div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta"><span class="event-card-date-text">September 2026 · Hong Kong</span></div>
+            <h4>Quantum Computing Primer Workshop</h4>
+            <p>Introductory quantum computing session with live Qiskit exercises. No prior quantum experience required. Ideal IQCOL preparation.</p>
+            <a href="event3.html" class="link-arrow">View Event <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div style="margin-top:48px;background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);padding:32px 36px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;" class="reveal">
+        <div style="flex:1;min-width:220px;">
+          <h4 style="font-size:1.0625rem;margin-bottom:6px;">Don't miss a KBI HK event.</h4>
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--text-muted);">Subscribe to receive event announcements directly in your inbox.</p>
+        </div>
+        <form style="display:flex;gap:10px;flex-shrink:0;" id="newsletterForm" novalidate>
+          <label for="evt-nl-email" class="sr-only">Email address</label>
+          <input type="email" id="evt-nl-email" class="newsletter-input" placeholder="your@email.com" style="min-width:220px;background:rgba(0,49,83,0.06);border-color:var(--stone);color:var(--text-main);" required>
+          <button type="submit" class="btn btn-prussian btn--sm">Notify Me</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PAST EVENTS -->
+<div class="events-tab-panel" id="evt-past-events" role="tabpanel">
+  <section class="section-wrap section-wrap--white" id="past-events" aria-labelledby="past-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Past Events</span></div>
+      <h2 class="section-heading reveal" id="past-heading" style="margin-bottom:40px;">A Track Record of Delivery.</h2>
+
+      <div class="past-events-list">
+        <a href="event4.html" class="past-event-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2025</div>
+          <div class="past-event-title">ETO Hong Kong 2025 — Finals Day</div>
+          <div class="past-event-tag"><span class="tag tag--yellow">Flagship</span></div>
+        </a>
+        <a href="event5.html" class="past-event-item reveal reveal-delay-1" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2025</div>
+          <div class="past-event-title">IBCOL HK 2025 — Qualifying Round</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Blockchain</span></div>
+        </a>
+        <a href="event6.html" class="past-event-item reveal reveal-delay-2" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2025</div>
+          <div class="past-event-title">Data Science Fundamentals Bootcamp</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Data Science</span></div>
+        </a>
+        <a href="event7.html" class="past-event-item reveal reveal-delay-3" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2025</div>
+          <div class="past-event-title">KBI HK Annual Community Gathering</div>
+          <div class="past-event-tag"><span class="tag tag--stone">Community</span></div>
+        </a>
+        <a href="event8.html" class="past-event-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2024</div>
+          <div class="past-event-title">ETO Hong Kong 2024 — Inaugural Edition</div>
+          <div class="past-event-tag"><span class="tag tag--yellow">Flagship</span></div>
+        </a>
+        <a href="event9.html" class="past-event-item reveal reveal-delay-1" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2024</div>
+          <div class="past-event-title">Quantum Computing Introduction Seminar Series</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Quantum</span></div>
+        </a>
+        <a href="event10.html" class="past-event-item reveal reveal-delay-2" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2024</div>
+          <div class="past-event-title">IBCOL HK 2024 — National Qualifying Round</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Blockchain</span></div>
+        </a>
+        <a href="event11.html" class="past-event-item reveal reveal-delay-3" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2024</div>
+          <div class="past-event-title">Industry Panel: Blockchain in Financial Services</div>
+          <div class="past-event-tag"><span class="tag tag--stone">Panel</span></div>
+        </a>
+        <a href="event12.html" class="past-event-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2023</div>
+          <div class="past-event-title">IDSOL HK 2023 — Data Science Olympiad Round</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Data Science</span></div>
+        </a>
+        <a href="event13.html" class="past-event-item reveal reveal-delay-1" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2023</div>
+          <div class="past-event-title">Smart Contract Developer Workshop</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Blockchain</span></div>
+        </a>
+        <a href="event14.html" class="past-event-item reveal reveal-delay-2" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2023</div>
+          <div class="past-event-title">KBI HK Alumni Reunion &amp; Networking Night</div>
+          <div class="past-event-tag"><span class="tag tag--stone">Alumni</span></div>
+        </a>
+        <a href="event15.html" class="past-event-item reveal reveal-delay-3" style="text-decoration:none;color:inherit;">
+          <div class="past-event-date">2022</div>
+          <div class="past-event-title">IBCOL HK 2022 — National Qualifying Round</div>
+          <div class="past-event-tag"><span class="tag tag--cyan">Blockchain</span></div>
+        </a>
+      </div>
+
+      <div style="margin-top:36px;text-align:center;" class="reveal">
+        <a href="impact.html" class="btn btn-outline-prussian btn--sm">View Full Impact Record <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="cta-band" aria-label="Get involved">
+  <div class="cta-band-inner">
+    <h2 class="cta-band-heading reveal">Sponsor an Event.<br>Shape the <em>Future.</em></h2>
+    <p class="cta-band-body reveal reveal-delay-1">Sponsors and partners gain naming rights, booth presence, speaking slots, and direct access to Hong Kong's most motivated emerging-tech students at KBI HK events.</p>
+    <div class="cta-band-actions reveal reveal-delay-2">
+      <a href="sponsors.html" class="btn btn-yellow">View Sponsorship Tiers</a>
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Enquire Now</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-mark" aria-hidden="true"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="12" y="2" width="8" height="8" rx="1" opacity="0.5"/><rect x="2" y="12" width="8" height="8" rx="1" opacity="0.5"/><rect x="12" y="12" width="8" height="8" rx="1"/></svg></div>
+        <span class="footer-logo-name">KBI Hong Kong</span>
+      </div>
+      <p class="footer-tagline">Rigorous emerging-tech education and talent development for Hong Kong's youth. Regional chapter of the K&ouml;nigsberger Bridges Institute. Est. 2016.</p>
+      <p class="footer-copyright">&copy; 2026 KBI Hong Kong<br>Registered non-profit, Hong Kong.</p>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" class="footer-social-btn" aria-label="LinkedIn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 5.5h2.5V14H2V5.5zM3.25 4.5a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zM6.5 5.5H9v1.15S9.75 5 11.5 5C13.5 5 14 6.5 14 8.5V14h-2.5V9c0-1-.25-2-1.25-2s-1.25 1.1-1.25 2v5H6.5V5.5z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg></a>
+        <a href="#" class="footer-social-btn" aria-label="Instagram"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/><circle cx="11.5" cy="4.5" r="0.75" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Programmes</h3>
+        <ul role="list">
+          <li><a href="eto2026.html">ETO Hong Kong 2026</a></li>
+          <li><a href="competitions.html#ibcol">IBCOL Hong Kong</a></li>
+          <li><a href="competitions.html#idsol">IDSOL Hong Kong</a></li>
+          <li><a href="competitions.html#iqcol">IQCOL Hong Kong</a></li>
+          <li><a href="certifications.html">Training &amp; Certifications</a></li>
+          <li><a href="collaborations.html">Collaborations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Organisation</h3>
+        <ul role="list">
+          <li><a href="about-who-we-are.html">Who We Are</a></li>
+          <li><a href="about-history.html">Our History</a></li>
+          <li><a href="about-impact.html">Our Impact</a></li>
+          <li><a href="about-team.html">Our Team</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="news.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Get Involved</h3>
+        <ul role="list">
+          <li><a href="events.html">Upcoming Events</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="scholarships.html">Scholarships</a></li>
+          <li><a href="sponsors.html">Sponsor Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-bottom-text">KBI Hong Kong is committed to rigour, curiosity, integrity, practicality, inclusion, and collaboration in emerging-technology education.</p>
+      <div class="footer-bottom-badge"><div class="footer-bottom-badge-dot" aria-hidden="true"></div>KBI Chapter &middot; Est. 2016</div>
+    </div>
+  </div>
+</footer>
+<button id="backToTop" class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 12V2M2 7l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<script src="kbi-hk.js"></script>
+</body>
+</html>

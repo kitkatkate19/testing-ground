@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBCOL Hong Kong 2026 — Call for Participants Now Open — KBI Hong Kong</title>
+  <meta name="description" content="KBI Hong Kong officially opens participant registration for the IBCOL HK 2026 qualifying round. Teams of 2–5 from secondary schools and tertiary institutions are invited to apply.">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .article-hero {
+      background: var(--night); position: relative;
+      padding: calc(var(--nav-h) + 64px) 24px 72px; overflow: hidden;
+    }
+    .article-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(60,180,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60,180,255,0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .article-hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35); margin-bottom: 24px;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,0.45); transition: color var(--t); }
+    .article-breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .article-hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: #fff;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 28px;
+    }
+    .article-hero h1 em { color: var(--cyan); font-style: italic; }
+    .article-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .article-author { display: flex; align-items: center; gap: 12px; }
+    .article-author-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.15); }
+    .article-author-name { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .article-author-role { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .article-meta-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+    .article-meta-item { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.4); }
+    .article-meta-item strong { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    .article-layout {
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 56px; align-items: start; max-width: var(--max-width); margin: 0 auto;
+    }
+    .article-body { max-width: 680px; }
+    .article-body h2 { font-size: clamp(1.375rem, 2.5vw, 1.75rem); color: var(--text-main); margin: 40px 0 16px; letter-spacing: -0.015em; }
+    .article-body h3 { font-size: 1.125rem; color: var(--text-main); margin: 28px 0 12px; }
+    .article-body p { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .article-body ul, .article-body ol { padding-left: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .article-body li { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+    .article-body li::before { content: '–'; position: absolute; left: 0; color: var(--prussian); font-weight: 700; }
+    .article-body ol { counter-reset: article-ol; }
+    .article-body ol li::before { content: counter(article-ol); counter-increment: article-ol; font-weight: 700; font-size: 0.8125rem; color: var(--prussian); }
+    .article-body strong { color: var(--text-main); font-weight: 600; }
+    .article-body a { color: var(--prussian); text-decoration: underline; text-decoration-color: rgba(0,49,83,0.3); }
+    .article-body a:hover { color: var(--prussian-glow); }
+
+    .article-pullquote {
+      border-left: 3px solid var(--yellow); padding: 20px 28px;
+      background: var(--mist); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 32px 0;
+    }
+    .article-pullquote p { font-family: 'Playfair Display', serif; font-size: 1.1875rem; font-style: italic; color: var(--text-main); line-height: 1.7; margin-bottom: 10px; }
+    .article-pullquote cite { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: var(--text-faint); font-style: normal; }
+
+    .article-fact-box { background: var(--prussian); border-radius: var(--radius-lg); padding: 28px 32px; margin: 32px 0; }
+    .article-fact-box-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .article-fact-list { display: flex; flex-direction: column; gap: 8px; }
+    .article-fact-item { display: flex; gap: 10px; align-items: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .article-fact-item::before { content: '→'; color: var(--yellow); flex-shrink: 0; font-weight: 700; }
+
+    /* Timeline steps */
+    .timeline-steps { display: flex; flex-direction: column; gap: 0; margin: 28px 0; }
+    .timeline-step {
+      display: grid; grid-template-columns: 100px 1fr;
+      gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--stone);
+      align-items: start;
+    }
+    .timeline-step:last-child { border-bottom: none; }
+    .timeline-date {
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 700;
+      color: var(--prussian); line-height: 1.4;
+    }
+    .timeline-desc {
+      font-family: 'Inter', sans-serif; font-size: 0.9375rem;
+      color: var(--text-muted); line-height: 1.6;
+    }
+    .timeline-desc strong { color: var(--text-main); }
+
+    .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; }
+    .sidebar-card-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+    .related-article-link { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--stone); transition: color var(--t); }
+    .related-article-link:last-child { border-bottom: none; }
+    .related-article-title { font-family: 'Playfair Display', serif; font-size: 0.9375rem; font-weight: 600; color: var(--text-main); line-height: 1.35; transition: color var(--t); }
+    .related-article-link:hover .related-article-title { color: var(--prussian); }
+    .related-article-meta { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .article-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .article-share-bar { display: flex; gap: 12px; align-items: center; padding: 20px 0; border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); margin: 40px 0 0; }
+    .article-share-label { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--text-faint); }
+    .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid var(--stone); border-radius: var(--radius-sm); background: var(--white); font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); transition: background var(--t), border-color var(--t), color var(--t); }
+    .share-btn:hover { background: var(--mist); border-color: var(--text-faint); color: var(--text-main); }
+    .share-btn svg { width: 13px; height: 13px; }
+
+    @media (max-width: 960px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .timeline-step { grid-template-columns: 80px 1fr; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link active">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="article-hero" aria-label="Article header">
+    <div class="article-hero-grid" aria-hidden="true"></div>
+    <div class="article-hero-inner">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="news.html">News &amp; Insights</a>
+        <span>›</span>
+        <span aria-current="page">IBCOL HK 2026 — Call for Participants</span>
+      </nav>
+      <div class="article-hero-tags">
+        <span class="tag tag--prussian">Announcement</span>
+        <span class="tag tag--sky">IBCOL HK 2026</span>
+        <span class="tag tag--night">Blockchain</span>
+      </div>
+      <h1>IBCOL Hong Kong 2026 —<br><em>Call for Participants</em> Now Open</h1>
+      <div class="article-hero-meta">
+        <div class="article-author">
+          <img src="images/headshot-female-1.jpg" alt="KBI Hong Kong Editorial" class="article-author-photo">
+          <div>
+            <div class="article-author-name">KBI Hong Kong Editorial</div>
+            <div class="article-author-role">Official KBI HK Announcement</div>
+          </div>
+        </div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item"><strong>15 January 2026</strong></div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item">4 min read</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main>
+    <section class="section-wrap section-wrap--white" aria-label="Article content">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <figure style="margin:0 0 32px;border-radius:var(--radius-lg);overflow:hidden;">
+            <img src="https://sspark.genspark.ai/cfimages?u1=%2BpneuR%2B3Kv55RS6yIIMWxhaPf%2FeI6X9p9Y8YNvzoyjLGSNyKEIpMTo249FAXOPbT1YFfJ3PSfyFpi7vgdyFAJZNzpKXTXcbesbQLG1hPRmZ8Y%2F2IjC%2F2cOWdS0%3D&u2=oy8xujDj2LQhBaRw&width=2560" alt="Student innovation and entrepreneurship competition — teams registering and presenting projects" style="width:100%;height:300px;object-fit:cover;display:block;">
+            <figcaption style="padding:10px 16px;background:var(--mist);font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-faint);">IBCOL HK 2026 is now open — Hong Kong's official qualifying pathway for the International Blockchain Olympiad, the world's premier blockchain competition for students.</figcaption>
+          </figure>
+
+          <p>
+            KBI Hong Kong is pleased to announce that the <strong>International Blockchain Olympiad Hong Kong 2026 (IBCOL HK 2026)</strong> qualifying round is now open for participant registration. IBCOL HK is Hong Kong's official qualifying pathway for the International Blockchain Olympiad — the world's premier blockchain competition for students.
+          </p>
+
+          <p>
+            Teams that place first in their respective streams at the IBCOL HK qualifying round will represent Hong Kong at the IBCOL international finals. Hong Kong has participated in IBCOL since 2022 and has placed in the top three internationally in two of the four years since.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"IBCOL is not a coding competition. It is a challenge to build something that matters — a blockchain application with a real use case, argued with rigour and presented with clarity."</p>
+            <cite>— KBI Hong Kong IBCOL Track Director</cite>
+          </div>
+
+          <h2>What Is IBCOL?</h2>
+
+          <p>
+            The International Blockchain Olympiad (IBCOL) challenges student teams to design and present a blockchain-based solution to a real-world problem. Teams produce a written project paper — typically 15–25 pages — and deliver a live presentation to an expert judging panel. The emphasis is on rigour of reasoning, practical applicability, and technical depth: teams must demonstrate not just that blockchain is technically feasible for their chosen problem, but that it is the most appropriate solution compared to alternatives.
+          </p>
+
+          <p>
+            Topics in previous years have ranged from supply chain provenance and healthcare records to carbon credit trading, financial inclusion, and digital identity. The breadth of problem domains means that teams from diverse academic backgrounds — computer science, business, law, engineering, social science — can all contribute meaningfully.
+          </p>
+
+          <h2>The 2026 Competition Format</h2>
+
+          <p>
+            IBCOL HK 2026 follows the two-stream ETO HK model introduced for the full programme cycle:
+          </p>
+
+          <ul>
+            <li><strong>Schoolers Stream (ISCED 1–3)</strong> — Open to primary and secondary school students. Schoolers Teams are judged within their own stream against age-appropriate benchmarks.</li>
+            <li><strong>Students Stream (ISCED 4–8)</strong> — Open to sub-degree, undergraduate, and postgraduate students. Mixed teams with a tertiary majority may include secondary school members.</li>
+          </ul>
+
+          <p>
+            Both streams compete at the same qualifying event, with separate judging panels and prize categories. The top team from each stream advances to the IBCOL international finals.
+          </p>
+
+          <div class="article-fact-box">
+            <div class="article-fact-box-title">IBCOL HK 2026 — Key Details</div>
+            <div class="article-fact-list">
+              <div class="article-fact-item">Team size: 2–5 members; multi-school and multi-institution teams welcome</div>
+              <div class="article-fact-item">Format: Written project paper (15–25 pages) + live presentation (15 min) + Q&amp;A (10 min)</div>
+              <div class="article-fact-item">Two streams: Schoolers (ISCED 1–3) and Students (ISCED 4–8)</div>
+              <div class="article-fact-item">Top team per stream represents Hong Kong at IBCOL international finals</div>
+              <div class="article-fact-item">Qualifying round date: Q2 2026 (exact date to be confirmed with registered teams)</div>
+              <div class="article-fact-item">Preparatory clinic: Blockchain Foundations Clinic, July 2026 (open to all registrants)</div>
+            </div>
+          </div>
+
+          <h2>Who Should Apply</h2>
+
+          <p>
+            IBCOL is designed for students who want to engage seriously with a real-world problem — not students who want to learn blockchain in a classroom setting. The competition rewards depth of thinking, quality of argument, and practical sensibility. Technical blockchain implementation is part of the project, but it is not the primary criterion: a project with a genuinely compelling use case and sound reasoning will score above a technically impressive project with a weak problem rationale.
+          </p>
+
+          <p>
+            Strong IBCOL candidates typically have one or more of the following characteristics:
+          </p>
+
+          <ul>
+            <li>Genuine curiosity about a specific real-world problem that blockchain could address</li>
+            <li>Academic background in computer science, information systems, finance, law, or related fields</li>
+            <li>Experience with academic writing, research methodology, or structured argumentation</li>
+            <li>Interest in emerging technology policy, governance, or economics — not just implementation</li>
+            <li>Appetite for the full project lifecycle: problem framing, research, design, writing, and live presentation</li>
+          </ul>
+
+          <p>
+            No prior blockchain development experience is required. KBI HK's <a href="event1.html">Blockchain Foundations Clinic</a> is specifically designed to give new participants the conceptual foundation they need to compete effectively.
+          </p>
+
+          <h2>Key Dates and Registration Process</h2>
+
+          <div class="timeline-steps">
+            <div class="timeline-step">
+              <div class="timeline-date">Jan 2026</div>
+              <div class="timeline-desc"><strong>Interest registration opens.</strong> Register now to receive the official prospectus, competition handbook, and preparatory resources.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-date">Mar 2026</div>
+              <div class="timeline-desc"><strong>Official team registration opens.</strong> Teams formally declare their track, stream, and member roster. Solo registrants are matched with teammates at this stage.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-date">Jul 2026</div>
+              <div class="timeline-desc"><strong>Blockchain Foundations Clinic.</strong> Half-day preparatory workshop at HKU. Open to all registered IBCOL HK teams. Covers smart contract fundamentals, use case design, and project paper structure.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-date">Q2 2026</div>
+              <div class="timeline-desc"><strong>Project paper submission deadline.</strong> Teams submit their completed written paper. Exact date confirmed with registered teams.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-date">Q2 2026</div>
+              <div class="timeline-desc"><strong>IBCOL HK Qualifying Round (Finals Day).</strong> Live presentations and judging. Top teams from each stream announced. International representatives confirmed.</div>
+            </div>
+          </div>
+
+          <h2>IBCOL HK's Track Record</h2>
+
+          <p>
+            Since KBI Hong Kong became an official IBCOL chapter in 2022, the programme has grown from 22 teams in the inaugural qualifying round to 42 teams in 2025. Hong Kong teams have consistently performed well internationally: in 2024, the Hong Kong Students Stream champion placed second at the IBCOL international finals — the chapter's highest international placing to date.
+          </p>
+
+          <p>
+            The 2025 qualifying round marked the first year IBCOL HK formally adopted the Schoolers Stream. Three secondary school teams competed in 2025 — a number the chapter expects to grow substantially in 2026, as awareness of the programme spreads through the secondary school network.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"The teams that win IBCOL HK do not just know blockchain. They know why blockchain — why it is the right tool for the problem they have chosen, and why the alternatives fall short."</p>
+            <cite>— Dr. Michelle Lam, KBI HK Chapter Director</cite>
+          </div>
+
+          <h2>Register Now</h2>
+
+          <p>
+            Interest registration is the first step. Registering now ensures you receive the official IBCOL HK 2026 prospectus and competition handbook, invitations to preparatory clinics and workshops, and team formation support if you are registering as an individual seeking teammates.
+          </p>
+
+          <p>
+            Full team registration and track/stream selection will open in March 2026. Questions about IBCOL HK 2026 can be directed to the KBI HK secretariat via the <a href="contact.html">contact page</a>.
+          </p>
+
+          <div style="margin-top:40px;padding:28px 32px;background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);">
+            <div class="label-row" style="margin-bottom:12px;"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Register Now</span></div>
+            <p style="font-family:'Inter',sans-serif;font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px;">Register interest for IBCOL HK 2026 and receive the official prospectus, preparatory resources, and team formation support.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-prussian">
+                Register Interest
+                <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="competitions.html#ibcol" class="btn btn-outline-prussian">Full IBCOL HK Details →</a>
+            </div>
+          </div>
+
+          <!-- Share bar -->
+          <div class="article-share-bar">
+            <span class="article-share-label">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?text=IBCOL%20Hong%20Kong%202026%20%E2%80%94%20Call%20for%20Participants%20Now%20Open&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M14 3a5.4 5.4 0 01-1.54.42 2.7 2.7 0 001.18-1.49 5.4 5.4 0 01-1.71.65A2.69 2.69 0 009.46 2a2.7 2.7 0 00-2.63 3.3A7.65 7.65 0 012 2.67a2.7 2.7 0 00.84 3.6 2.68 2.68 0 01-1.22-.34v.04A2.7 2.7 0 003.78 8.7a2.7 2.7 0 01-1.22.05 2.7 2.7 0 002.52 1.87A5.4 5.4 0 012 11.73 7.63 7.63 0 006.14 13c4.98 0 7.7-4.12 7.7-7.7l-.01-.35A5.5 5.5 0 0014 3Z" fill="currentColor"/></svg>
+              Twitter / X
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2V6zm5 0h2.9v1.1h.05C10.4 6.4 11.3 6 12.4 6 14.7 6 15 7.5 15 9.5V14h-3v-4c0-1 0-2.3-1.4-2.3S9 11 9 11v3H6V6z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Quick Links</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-yellow btn--sm" style="justify-content:center;">Register Interest →</a>
+              <a href="competitions.html#ibcol" class="btn btn-outline-prussian btn--sm" style="justify-content:center;">IBCOL HK Details</a>
+              <a href="event1.html" class="btn btn-prussian btn--sm" style="justify-content:center;">Blockchain Clinic</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Key Dates</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="padding:8px 0;border-bottom:1px solid var(--stone);">
+                <div style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;color:var(--prussian);margin-bottom:2px;">Jan 2026</div>
+                <div style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);">Interest registration open</div>
+              </div>
+              <div style="padding:8px 0;border-bottom:1px solid var(--stone);">
+                <div style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;color:var(--prussian);margin-bottom:2px;">Mar 2026</div>
+                <div style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);">Team registration opens</div>
+              </div>
+              <div style="padding:8px 0;border-bottom:1px solid var(--stone);">
+                <div style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;color:var(--prussian);margin-bottom:2px;">Jul 2026</div>
+                <div style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);">Blockchain Foundations Clinic</div>
+              </div>
+              <div style="padding:8px 0;">
+                <div style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;color:var(--prussian);margin-bottom:2px;">Q2 2026</div>
+                <div style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);">Qualifying round — Finals Day</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Related Articles</div>
+            <a href="news1.html" class="related-article-link">
+              <div class="related-article-title">ETO Hong Kong 2026 Is Now Open</div>
+              <div class="related-article-meta">Announcement · 5 min read</div>
+            </a>
+            <a href="news2.html" class="related-article-link">
+              <div class="related-article-title">Why Blockchain Education Matters for Hong Kong Students</div>
+              <div class="related-article-meta">Insight · 6 min read</div>
+            </a>
+            <a href="news.html" class="related-article-link">
+              <div class="related-article-title">All News &amp; Insights →</div>
+              <div class="related-article-meta">View archive</div>
+            </a>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Tags</div>
+            <div class="article-tag-cloud">
+              <span class="tag tag--prussian">Announcement</span>
+              <span class="tag tag--stone">IBCOL HK</span>
+              <span class="tag tag--stone">Blockchain</span>
+              <span class="tag tag--stone">ETO HK 2026</span>
+              <span class="tag tag--mist">Competition</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="news.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">News</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

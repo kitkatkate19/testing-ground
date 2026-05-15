@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Projects — KBI Hong Kong</title>
+  <meta name="description" content="KBI Hong Kong's applied technology research and development projects — ongoing work in blockchain, data science, and quantum computing that students can join.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .project-card { background: #fff; border: 1px solid var(--stone); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 28px; }
+    .project-card-hero { height: 220px; position: relative; overflow: hidden; }
+    .project-card-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .project-card-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,49,83,0.85) 0%, rgba(0,49,83,0.3) 60%, transparent 100%); display: flex; align-items: center; padding: 32px; }
+    .project-track-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; border: 1px solid rgba(255,255,255,0.3); color: #fff; margin-bottom: 10px; }
+    .project-card-title-overlay { font-size: 1.375rem; font-weight: 600; font-family: 'Playfair Display', serif; color: #fff; line-height: 1.3; }
+    .project-card-body { padding: 32px; }
+    .project-meta-row { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+    .project-meta-item { display: flex; gap: 6px; align-items: center; font-size: 0.8125rem; color: var(--text-faint); }
+    .project-description { font-size: 0.875rem; color: var(--text-faint); line-height: 1.85; }
+    .project-skills { margin-top: 20px; }
+    .project-skills-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--prussian); margin-bottom: 8px; }
+    .project-card-footer { padding: 20px 32px; background: var(--mist); border-top: 1px solid var(--stone); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .project-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .project-filter-btn { padding: 7px 16px; border: 1.5px solid var(--stone); border-radius: 999px; background: #fff; font-size: 0.8125rem; font-weight: 600; color: var(--text-faint); cursor: pointer; transition: all 0.2s; }
+    .project-filter-btn:hover, .project-filter-btn.active { background: var(--prussian); border-color: var(--prussian); color: #fff; }
+    .register-form-wrap { background: #fff; border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 48px; }
+    .status-open { color: #16a34a; font-weight: 600; }
+    .status-active { color: var(--prussian); font-weight: 600; }
+    .status-completed { color: var(--text-faint); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero page-hero--night" aria-label="Tech Projects">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=jwOwgh%2FA%2FAHva8vGyNGIq6cGAxTBK08%2FXE7qMXcZ3hc77tPUbD%2B6M5nd8BywGVZpqcXAveJ5%2Fn8PZJ7N2QKA%2B2vM1HtGOT%2FsYacCVKfcfZwrhiXj32Rs5O8Ef%2Bu7Ic3yshwOKt%2BgeLzOV7AUXf4n8MLLRH3zmlJTxw%3D%3D&u2=HkXXEMwWiUcXI6dg&width=2560');background-size:cover;background-position:center;opacity:0.18;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Programmes</span></div>
+      <h1 class="page-hero-heading">Tech Projects</h1>
+      <p class="page-hero-sub">Applied research and technology development, run in collaboration with universities and industry partners. From learning to building to publishing — KBI HK projects bridge the gap.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+        <a href="#projects" class="btn btn-yellow btn--sm">View Active Projects</a>
+        <a href="#register" class="btn btn-outline-white btn--sm">Register Your Interest</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT IS PROJECTS -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="projects-intro">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">About the Projects Programme</span></div>
+          <h2 class="section-heading reveal" id="projects-intro">Beyond Competitions —<br>Building and Publishing</h2>
+          <p class="section-body reveal reveal-delay-1">Competitions teach you to analyse and solve under pressure. Projects teach you to build, iterate, collaborate across months, and produce something that exists beyond a competition round. The KBI HK Projects programme is for community members who want to go further.</p>
+          <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">Each project is affiliated with a university research group or an industry partner, has a defined scope and timeline, and aims toward a concrete output — whether that is a working prototype, a published paper, an open-source tool, or a public dataset. Projects run for one or two academic terms with a small team of 2–5 participants.</p>
+          <p class="section-body reveal reveal-delay-3" style="margin-top:16px;">Participation in a KBI HK project is selectively offered to members who have demonstrated commitment through competition or community involvement. If you have not yet been approached but are interested, register your interest below and we will be in touch when a suitable project becomes available.</p>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:16px;" class="reveal reveal-delay-1">
+            <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-md);padding:24px;display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--prussian);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="18" height="18" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div><h4 style="font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Real outputs, not just participation</h4><p style="font-size:0.8125rem;color:var(--text-faint);line-height:1.6;">Projects are oriented toward concrete, public outputs — publications, tools, datasets, or working systems that add something to the world.</p></div>
+            </div>
+            <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-md);padding:24px;display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--prussian);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="18" height="18" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div><h4 style="font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Mentored by researchers and practitioners</h4><p style="font-size:0.8125rem;color:var(--text-faint);line-height:1.6;">Each project has a faculty or industry advisor who provides direction, reviews outputs, and acts as a co-author or technical lead where appropriate.</p></div>
+            </div>
+            <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-md);padding:24px;display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--prussian);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" stroke-linecap="round"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg></div>
+              <div><h4 style="font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Research Bursary eligible</h4><p style="font-size:0.8125rem;color:var(--text-faint);line-height:1.6;">Approved project teams may apply for the KBI HK Research Bursary to cover software, compute, or publication costs. See the <a href="scholarships.html" style="color:var(--prussian);font-weight:600;">scholarships page</a>.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS LIST -->
+  <section class="section-wrap section-wrap--mist" id="projects" aria-labelledby="projects-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Active &amp; Recent Projects</span></div>
+      <h2 class="section-heading reveal" id="projects-heading">Current Project Portfolio</h2>
+
+      <div class="project-filter-bar reveal reveal-delay-1">
+        <button class="project-filter-btn active" onclick="filterProjects('all', this)">All Tracks</button>
+        <button class="project-filter-btn" onclick="filterProjects('blockchain', this)">Blockchain</button>
+        <button class="project-filter-btn" onclick="filterProjects('data-science', this)">Data Science</button>
+        <button class="project-filter-btn" onclick="filterProjects('quantum', this)">Quantum Computing</button>
+      </div>
+
+      <!-- PROJECT 1 -->
+      <div class="project-card reveal" data-track="blockchain">
+        <div class="project-card-hero">
+          <img src="https://sspark.genspark.ai/cfimages?u1=nrFdEojKLFCcgaZVH4mAnsTYk73koUcvD2ePo0RfC9POoYDnKL7lZ%2F%2BnuHEHT3lCDHyiyMTvkXIjGVCwaieuYb85RwgOd01qB%2Bo%2FnLpaw08kRx1%2FiR2HxBOZWaUQq51VqSD8NW%2Bk3lFisRy7P%2FkmwBlWr10sr01jhg%3D%3D&u2=vsrX0PfItwssPYUT&width=2560" alt="Blockchain network visualisation">
+          <div class="project-card-hero-overlay">
+            <div>
+              <div class="project-track-badge">🔗 Blockchain</div>
+              <div class="project-card-title-overlay">DeFi Transparency &amp; On-Chain Governance Analysis</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-meta-row">
+            <div class="project-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1.5" stroke-linecap="round"/></svg> Started Q3 2024 · Ongoing</div>
+            <div class="project-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="14" height="14" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 0 8 14.5 6.5 6.5 0 0 0 8 1.5z"/><path d="M8 4.5v4l2.5 1.5" stroke-linecap="round"/></svg> In collaboration with HKU DeFi Lab</div>
+            <div class="project-meta-item"><span class="status-open">● Recruiting 1 more member</span></div>
+          </div>
+          <p class="project-description">An analysis of transparency mechanisms, governance token distributions, and voting participation patterns across major DeFi protocols deployed on Ethereum and alternative L1 chains. The project aims to produce a publicly available dataset and a peer-reviewed paper examining the gap between stated governance decentralisation and actual voting concentration.</p>
+          <p class="project-description" style="margin-top:12px;">Current team is 3 members (2 Computer Science, 1 Economics). Seeking one additional member with Python data analysis or smart contract reading experience.</p>
+          <div class="project-skills">
+            <div class="project-skills-label">Skills useful for this project</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="tag tag--stone">Python</span><span class="tag tag--stone">Blockchain</span><span class="tag tag--stone">Data Analysis</span><span class="tag tag--stone">Solidity (basic)</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <span class="tag tag--sky">Blockchain</span>
+          <span class="tag tag--stone">Research</span>
+          <span class="tag tag--stone">Dataset</span>
+          <div style="margin-left:auto;">
+            <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-prussian btn--sm">Register Interest</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card reveal reveal-delay-1" data-track="data-science">
+        <div class="project-card-hero">
+          <img src="https://sspark.genspark.ai/cfimages?u1=jwOwgh%2FA%2FAHva8vGyNGIq6cGAxTBK08%2FXE7qMXcZ3hc77tPUbD%2B6M5nd8BywGVZpqcXAveJ5%2Fn8PZJ7N2QKA%2B2vM1HtGOT%2FsYacCVKfcfZwrhiXj32Rs5O8Ef%2Bu7Ic3yshwOKt%2BgeLzOV7AUXf4n8MLLRH3zmlJTxw%3D%3D&u2=HkXXEMwWiUcXI6dg&width=2560" alt="Data science network visualisation">
+          <div class="project-card-hero-overlay">
+            <div>
+              <div class="project-track-badge">📊 Data Science</div>
+              <div class="project-card-title-overlay">Hong Kong Public Transit Demand Forecasting</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-meta-row">
+            <div class="project-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1.5" stroke-linecap="round"/></svg> Started January 2025 · Ongoing</div>
+            <div class="project-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="14" height="14" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 0 8 14.5 6.5 6.5 0 0 0 8 1.5z"/><path d="M8 4.5v4l2.5 1.5" stroke-linecap="round"/></svg> In collaboration with HKUST Transportation Lab</div>
+            <div class="project-meta-item"><span class="status-active">● Full team — interest list open</span></div>
+          </div>
+          <p class="project-description">A machine learning project using publicly available MTR ridership data, weather records, and event calendars to build short-term demand forecasting models for Hong Kong's Mass Transit Railway. The project combines time-series modelling with spatial analysis, and targets a working open-source forecasting tool as its primary output.</p>
+          <p class="project-description" style="margin-top:12px;">The current team of 4 is full, but we are building a waitlist for the next cohort of this project (expected Q3 2026). Register your interest now to be notified.</p>
+          <div class="project-skills">
+            <div class="project-skills-label">Skills useful for this project</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="tag tag--stone">Python</span><span class="tag tag--stone">Time Series</span><span class="tag tag--stone">Machine Learning</span><span class="tag tag--stone">GIS / Geospatial</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <span class="tag tag--sky">Data Science</span>
+          <span class="tag tag--stone">Machine Learning</span>
+          <span class="tag tag--stone">Open Source</span>
+          <div style="margin-left:auto;">
+            <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-outline-prussian btn--sm">Join Waitlist</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card reveal reveal-delay-2" data-track="quantum">
+        <div class="project-card-hero">
+          <img src="https://sspark.genspark.ai/cfimages?u1=OvjcsomASP72lTvl6XdXJ48YP4cHuaFMCx7%2FGA%2F6uvWPobrFdYvKNIcIzC6%2FKMv6jZevjXiUKm2LU4%2Fdd8gLmNo0zhKVyCtjyoMiUgADoSZ0WmNiowcjfVCFGJhjFvD1Hi%2Bn5QP84E97j%2FtvXmk0W1CaDeVz0TvV99pbO5yYUwiwQ06pray9fpRKx5CYyOXhGklsJuuGlX6JRg3kM%2BVRixG0kX24BYPhf7ojilhG4nuU%2BimB4Bq7VXGSwht73MXyXK3cwmg%3D&u2=GPMU4kisZiNe7I4S&width=2560" alt="Quantum circuit visualisation">
+          <div class="project-card-hero-overlay">
+            <div>
+              <div class="project-track-badge">⚛ Quantum Computing</div>
+              <div class="project-card-title-overlay">Quantum Error Correction Benchmarking for NISQ Devices</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-meta-row">
+            <div class="project-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1.5" stroke-linecap="round"/></svg> Starting Q3 2026 · Recruiting now</div>
+            <div class="project-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="14" height="14" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 0 8 14.5 6.5 6.5 0 0 0 8 1.5z"/><path d="M8 4.5v4l2.5 1.5" stroke-linecap="round"/></svg> In collaboration with HKUST Quantum Computing Group</div>
+            <div class="project-meta-item"><span class="status-open">● Recruiting 3–4 members</span></div>
+          </div>
+          <p class="project-description">A benchmarking study comparing the performance of leading quantum error correction protocols (including surface codes and repetition codes) on current NISQ (Noisy Intermediate-Scale Quantum) hardware via IBM Quantum and IonQ cloud access. The project aims to contribute a reproducible benchmarking methodology to the quantum computing research community.</p>
+          <p class="project-description" style="margin-top:12px;">This project is suitable for participants with a background in physics, mathematics, or computer science with some exposure to quantum computing fundamentals. Prior IQCOL HK participation is an advantage but not required.</p>
+          <div class="project-skills">
+            <div class="project-skills-label">Skills useful for this project</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="tag tag--stone">Qiskit / Cirq</span><span class="tag tag--stone">Python</span><span class="tag tag--stone">Linear Algebra</span><span class="tag tag--stone">Physics</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <span class="tag tag--cyan">Quantum Computing</span>
+          <span class="tag tag--stone">Research</span>
+          <span class="tag tag--stone">NISQ</span>
+          <div style="margin-left:auto;">
+            <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-prussian btn--sm">Register Interest</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REGISTER INTEREST -->
+  <section class="section-wrap section-wrap--white" id="register" aria-labelledby="register-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Get Involved</span></div>
+      <h2 class="section-heading reveal" id="register-heading">Register Your Interest</h2>
+      <div class="register-form-wrap reveal reveal-delay-1">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;" class="about-grid">
+          <div>
+            <p style="font-size:0.9375rem;color:var(--text-faint);line-height:1.8;margin-bottom:24px;">If you are interested in participating in a KBI HK project — either one listed above or a future project — register your interest using the form below. We will contact you when a project matching your background and interests is available or recruiting.</p>
+            <p style="font-size:0.875rem;color:var(--text-faint);line-height:1.8;margin-bottom:24px;">Registration does not guarantee placement on a specific project. Placement decisions are made by the project lead and faculty advisor based on skills, availability, and team composition needs.</p>
+            <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-md);padding:20px;">
+              <p style="font-size:0.8125rem;color:var(--text-faint);line-height:1.7;"><strong style="color:var(--ink);">Prerequisite:</strong> You should be an active KBI HK member, or currently in the process of joining, to be considered for project placement. Projects are a member benefit, not a standalone programme.</p>
+              <a href="membership.html" style="font-size:0.8125rem;font-weight:600;color:var(--prussian);text-decoration:none;margin-top:8px;display:inline-block;">Join Membership →</a>
+            </div>
+          </div>
+          <div>
+            <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-yellow" style="width:100%;text-align:center;display:block;font-size:1rem;padding:16px 24px;margin-bottom:16px;">
+              Register Interest in KBI HK Projects →
+            </a>
+            <p style="font-size:0.8125rem;color:var(--text-faint);text-align:center;">Opens in a new tab — Google Form</p>
+            <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--stone);">
+              <h3 style="font-size:0.9375rem;font-weight:600;color:var(--ink);margin-bottom:12px;">Want to propose a project?</h3>
+              <p style="font-size:0.8125rem;color:var(--text-faint);line-height:1.7;margin-bottom:16px;">If you have a research idea and would like to run it as a KBI HK project — either solo or as a team lead — we welcome proposals from members with existing faculty or industry advisor relationships. Use our contact form to submit a project brief.</p>
+              <a href="contact.html" class="btn btn-outline-prussian btn--sm">Submit a Project Proposal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+  <script>
+    function filterProjects(track, btn) {
+      document.querySelectorAll('.project-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        if (track === 'all' || card.getAttribute('data-track') === track) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

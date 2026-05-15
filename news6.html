@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Science in the Classroom: Why Olympiad-Style Competition Works — KBI Hong Kong</title>
+  <meta name="description" content="Arjun Sharma examines why structured, competitive data science challenges produce deeper learning outcomes than traditional coursework — and what that means for IDSOL HK.">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .article-hero {
+      background: var(--night); position: relative;
+      padding: calc(var(--nav-h) + 64px) 24px 72px; overflow: hidden;
+    }
+    .article-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(60,180,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60,180,255,0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .article-hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35); margin-bottom: 24px;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,0.45); transition: color var(--t); }
+    .article-breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .article-hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: #fff;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 28px;
+    }
+    .article-hero h1 em { color: var(--cyan); font-style: italic; }
+    .article-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .article-author { display: flex; align-items: center; gap: 12px; }
+    .article-author-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.15); }
+    .article-author-name { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .article-author-role { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .article-meta-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+    .article-meta-item { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.4); }
+    .article-meta-item strong { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    .article-layout {
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 56px; align-items: start; max-width: var(--max-width); margin: 0 auto;
+    }
+    .article-body { max-width: 680px; }
+    .article-body h2 { font-size: clamp(1.375rem, 2.5vw, 1.75rem); color: var(--text-main); margin: 40px 0 16px; letter-spacing: -0.015em; }
+    .article-body h3 { font-size: 1.125rem; color: var(--text-main); margin: 28px 0 12px; }
+    .article-body p { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .article-body ul, .article-body ol { padding-left: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .article-body li { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+    .article-body li::before { content: '–'; position: absolute; left: 0; color: var(--prussian); font-weight: 700; }
+    .article-body strong { color: var(--text-main); font-weight: 600; }
+    .article-body a { color: var(--prussian); text-decoration: underline; text-decoration-color: rgba(0,49,83,0.3); }
+    .article-body a:hover { color: var(--prussian-glow); }
+
+    .article-pullquote {
+      border-left: 3px solid var(--yellow); padding: 20px 28px;
+      background: var(--mist); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 32px 0;
+    }
+    .article-pullquote p { font-family: 'Playfair Display', serif; font-size: 1.1875rem; font-style: italic; color: var(--text-main); line-height: 1.7; margin-bottom: 10px; }
+    .article-pullquote cite { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: var(--text-faint); font-style: normal; }
+
+    .article-fact-box { background: var(--prussian); border-radius: var(--radius-lg); padding: 28px 32px; margin: 32px 0; }
+    .article-fact-box-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .article-fact-list { display: flex; flex-direction: column; gap: 8px; }
+    .article-fact-item { display: flex; gap: 10px; align-items: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .article-fact-item::before { content: '→'; color: var(--yellow); flex-shrink: 0; font-weight: 700; }
+
+    /* Comparison grid */
+    .comparison-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0;
+    }
+    .comparison-col {
+      border-radius: var(--radius-md); padding: 20px 22px;
+    }
+    .comparison-col--traditional { background: var(--stone); }
+    .comparison-col--olympiad { background: var(--prussian); }
+    .comparison-col-title {
+      font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .comparison-col--traditional .comparison-col-title { color: var(--text-faint); }
+    .comparison-col--olympiad .comparison-col-title { color: rgba(255,255,255,0.4); }
+    .comparison-item {
+      font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.6;
+      padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .comparison-col--traditional .comparison-item { color: var(--text-muted); }
+    .comparison-col--olympiad .comparison-item { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.07); }
+    .comparison-item:last-child { border-bottom: none; }
+
+    .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; }
+    .sidebar-card-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+    .related-article-link { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--stone); transition: color var(--t); }
+    .related-article-link:last-child { border-bottom: none; }
+    .related-article-title { font-family: 'Playfair Display', serif; font-size: 0.9375rem; font-weight: 600; color: var(--text-main); line-height: 1.35; transition: color var(--t); }
+    .related-article-link:hover .related-article-title { color: var(--prussian); }
+    .related-article-meta { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .article-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .article-share-bar { display: flex; gap: 12px; align-items: center; padding: 20px 0; border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); margin: 40px 0 0; }
+    .article-share-label { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--text-faint); }
+    .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid var(--stone); border-radius: var(--radius-sm); background: var(--white); font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); transition: background var(--t), border-color var(--t), color var(--t); }
+    .share-btn:hover { background: var(--mist); border-color: var(--text-faint); color: var(--text-main); }
+    .share-btn svg { width: 13px; height: 13px; }
+
+    @media (max-width: 960px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link active">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="article-hero" aria-label="Article header">
+    <div class="article-hero-grid" aria-hidden="true"></div>
+    <div class="article-hero-inner">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="news.html">News &amp; Insights</a>
+        <span>›</span>
+        <span aria-current="page">Data Science in the Classroom</span>
+      </nav>
+      <div class="article-hero-tags">
+        <span class="tag tag--cyan">Insight</span>
+        <span class="tag tag--sky">IDSOL HK</span>
+        <span class="tag tag--night">Education</span>
+      </div>
+      <h1>Data Science in the Classroom:<br>Why <em>Olympiad-Style Competition</em> Works</h1>
+      <div class="article-hero-meta">
+        <div class="article-author">
+          <img src="images/headshot-male-1.jpg" alt="Arjun Sharma" class="article-author-photo">
+          <div>
+            <div class="article-author-name">Arjun Sharma</div>
+            <div class="article-author-role">Data Science Programme Adviser, KBI HK</div>
+          </div>
+        </div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item"><strong>21 February 2026</strong></div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item">6 min read</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main>
+    <section class="section-wrap section-wrap--white" aria-label="Article content">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <figure style="margin:0 0 32px;border-radius:var(--radius-lg);overflow:hidden;">
+            <img src="https://sspark.genspark.ai/cfimages?u1=gabGjynRt6RADvI2mipGMe%2F8p2EJp84MNNGqjPkrkrJpx82hknTJTNnZUVmmYpCTpq4t45SNEosHRpMXyL%2BCXqqHTQ%2F9ANjRJYt4JTX0%2BYRG1DU%2FNFg5hfD2WJDtUI6%2BYt9E8ASyc%2BHwV9URzgs6rg%3D%3D&u2=bMsIlE8GwGhRbsy0&width=2560" alt="AI in education — CUHK students working collaboratively on data projects in a classroom setting" style="width:100%;height:300px;object-fit:cover;display:block;">
+            <figcaption style="padding:10px 16px;background:var(--mist);font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-faint);">The olympiad format creates conditions classroom instruction rarely replicates — students working with unseen real-world data under time pressure, discovering what they are capable of.</figcaption>
+          </figure>
+
+          <p>
+            In October 2023, twenty-four teams gathered at CUHK Business School for the first IDSOL HK qualifying round. The challenge: analyse an unseen dataset — Hong Kong MTR ridership patterns — produce a meaningful insight, and present their findings live within a four-hour window. No prior knowledge of the dataset. No textbook to guide them. Just the data, their tools, and four hours.
+          </p>
+
+          <p>
+            The standard of work that emerged was, frankly, surprising — even to the judges. Teams that had never worked with transport data before produced regression models, anomaly detection analyses, and clustering outputs that would have been creditable in a graduate research context. One team's analysis of post-pandemic ridership recovery across different line types was subsequently cited by a judge in a conference paper.
+          </p>
+
+          <p>
+            That outcome did not happen by accident. It happened because the olympiad format does something that classroom instruction, however excellent, cannot easily replicate: it creates the conditions under which students discover what they are actually capable of.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"The unseen dataset format is deliberately uncomfortable. That discomfort is pedagogically intentional — it is the closest we can get to replicating real professional data science conditions in a student competition context."</p>
+            <cite>— Arjun Sharma, Data Science Programme Adviser, KBI HK</cite>
+          </div>
+
+          <h2>The Limitations of Coursework-Based Assessment</h2>
+
+          <p>
+            Before examining why olympiad-style competition works, it is worth being precise about what conventional data science education does well — and where its limitations lie.
+          </p>
+
+          <p>
+            University data science courses, at their best, do an excellent job of introducing students to the conceptual foundations: statistical inference, machine learning paradigms, model evaluation, visualisation principles. A well-designed undergraduate data science programme will produce graduates who understand the theory and can apply standard techniques to well-structured problems.
+          </p>
+
+          <p>
+            The limitations emerge when students face real-world conditions: messy data, ambiguous problem definitions, time constraints, and the absence of a marking rubric that tells them what "correct" looks like. These are the conditions under which data science is actually practised — and they are almost entirely absent from standard coursework assessment.
+          </p>
+
+          <p>
+            Coursework assignments typically provide a dataset, a set of questions, and a rubric. The student's task is to produce the expected output. This is a useful exercise in applying known techniques. But it does not develop the judgment to know <em>which</em> technique is appropriate, the creativity to find a non-obvious angle, or the resilience to handle an approach that fails partway through and needs to be abandoned. Those skills develop under pressure, with real stakes and genuine uncertainty.
+          </p>
+
+          <h2>What the Olympiad Format Adds</h2>
+
+          <p>
+            IDSOL HK's qualifying format is designed around five principles that distinguish it from conventional assessment:
+          </p>
+
+          <ul>
+            <li><strong>Unseen data.</strong> Teams receive the dataset at the start of the competition window. There is no opportunity to prepare domain-specific knowledge in advance. This forces teams to rely on transferable analytical skills rather than topic-specific preparation.</li>
+            <li><strong>Open-ended problem framing.</strong> Rather than being given specific questions to answer, teams are asked to produce "meaningful, defensible insights" from the data. What counts as meaningful is a judgment call — exactly the kind of judgment professional data scientists make every day.</li>
+            <li><strong>Time-bounded delivery.</strong> The four-hour window is not arbitrary. It mirrors the kind of time pressure found in hackathons, client presentations, and real-world analytical briefs. Learning to scope a problem appropriately within a time constraint is a skill that takes practice.</li>
+            <li><strong>Live presentation with expert questioning.</strong> Teams present their findings to a panel of judges who ask follow-up questions. This tests understanding at a depth that written submissions alone cannot reach — you cannot cite a formula you don't understand when a judge asks you to explain why you chose it.</li>
+            <li><strong>Peer calibration.</strong> Competing alongside other high-ability teams provides a calibration point that classroom settings rarely offer. Seeing what peers at your level are capable of is a powerful motivator — and occasionally a humbling corrective.</li>
+          </ul>
+
+          <div class="comparison-grid">
+            <div class="comparison-col comparison-col--traditional">
+              <div class="comparison-col-title">Traditional Coursework</div>
+              <div class="comparison-item">Known dataset provided in advance</div>
+              <div class="comparison-item">Structured questions with marking rubric</div>
+              <div class="comparison-item">Individual submission, no peer context</div>
+              <div class="comparison-item">Written assessment, no live questioning</div>
+              <div class="comparison-item">Grade-oriented — optimise for the rubric</div>
+            </div>
+            <div class="comparison-col comparison-col--olympiad">
+              <div class="comparison-col-title">IDSOL HK Format</div>
+              <div class="comparison-item">Unseen dataset, no advance preparation</div>
+              <div class="comparison-item">Open-ended insight generation</div>
+              <div class="comparison-item">Team-based, peer-calibrated environment</div>
+              <div class="comparison-item">Live presentation with expert Q&amp;A</div>
+              <div class="comparison-item">Insight-oriented — find something true and useful</div>
+            </div>
+          </div>
+
+          <h2>The Learning That Happens Before the Competition</h2>
+
+          <p>
+            It would be a mistake to focus exclusively on the competition day itself. The most significant learning in IDSOL HK — as with any olympiad — happens in the preparation period. Teams preparing for IDSOL HK 2026 will, over the preceding months, work through more datasets, more analytical frameworks, and more presentation rehearsals than they would encounter in a typical academic semester. They will do this voluntarily, motivated by the prospect of a meaningful performance context.
+          </p>
+
+          <p>
+            This is one of the most underappreciated aspects of competition-based learning: the competition is the visible output, but the preparation is where most of the learning happens. And unlike coursework, where the learning stops at the deadline, competition preparation has no natural endpoint — teams continue refining their approach as long as they have time and motivation.
+          </p>
+
+          <div class="article-fact-box">
+            <div class="article-fact-box-title">IDSOL HK 2025 — Competition Highlights</div>
+            <div class="article-fact-list">
+              <div class="article-fact-item">38 teams entered the 2025 qualifying round, up from 24 in 2023</div>
+              <div class="article-fact-item">Dataset: Hong Kong public hospital admissions patterns (provided on competition day)</div>
+              <div class="article-fact-item">Winning team's analysis surfaced a non-obvious seasonal anomaly in A&amp;E presentations</div>
+              <div class="article-fact-item">Three teams included secondary school students competing alongside university postgraduates</div>
+              <div class="article-fact-item">Top two teams advanced to IDSOL international finals, representing Hong Kong</div>
+            </div>
+          </div>
+
+          <h2>Why This Matters for Hong Kong Specifically</h2>
+
+          <p>
+            Hong Kong's university system produces strong technical graduates. HKU, CUHK, HKUST, and PolyU all run competitive data science and statistics programmes. The issue is not technical competence — it is the gap between technical competence and applied judgment.
+          </p>
+
+          <p>
+            Employers in Hong Kong's financial services, logistics, and healthcare sectors increasingly report that graduate hires arrive with strong theoretical foundations but limited experience of working with ambiguous, real-world problems under time pressure. This is not a criticism of the universities — it reflects a genuine structural gap between what academic assessment optimises for and what professional practice requires.
+          </p>
+
+          <p>
+            Olympiad-style competition does not replace university education. But it fills a specific gap that university education is not designed to address: the gap between knowing how to apply a technique and knowing when to apply it, why it is the right choice, and how to communicate the results to someone who wasn't in the room when you ran the model.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"Every team that competes in IDSOL HK walks away having done something they didn't think they could do. That experience of discovering your own capability is not something you can teach in a lecture."</p>
+            <cite>— Arjun Sharma, KBI HK Data Science Adviser</cite>
+          </div>
+
+          <h2>Getting Involved in IDSOL HK 2026</h2>
+
+          <p>
+            The IDSOL track is open to all ETO HK 2026 participants. Teams of two to five can compete in either the Schoolers Stream (secondary school students) or the Students Stream (tertiary). Mixed-school and mixed-institution teams are welcome and encouraged — some of the strongest analytical teams we have seen have brought together students with different domain knowledge (statistics, computer science, domain expertise) who would not have met through their institutions alone.
+          </p>
+
+          <p>
+            If you are an educator reading this: the best thing you can do for your students is encourage them to register. The preparation process alone — working through datasets, building presentations, rehearsing their reasoning under pressure — will develop skills that their coursework is not currently developing. The competition day is a bonus.
+          </p>
+
+          <div style="margin-top:40px;padding:28px 32px;background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);">
+            <div class="label-row" style="margin-bottom:12px;"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Compete in IDSOL HK 2026</span></div>
+            <p style="font-family:'Inter',sans-serif;font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px;">Register interest for ETO HK 2026 to join the IDSOL track. Open to secondary school and tertiary students across all institutions.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-prussian">
+                Register Interest
+                <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="competitions.html#idsol" class="btn btn-outline-prussian">IDSOL HK Details →</a>
+            </div>
+          </div>
+
+          <!-- Share bar -->
+          <div class="article-share-bar">
+            <span class="article-share-label">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?text=Data%20Science%20in%20the%20Classroom%3A%20Why%20Olympiad-Style%20Competition%20Works&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M14 3a5.4 5.4 0 01-1.54.42 2.7 2.7 0 001.18-1.49 5.4 5.4 0 01-1.71.65A2.69 2.69 0 009.46 2a2.7 2.7 0 00-2.63 3.3A7.65 7.65 0 012 2.67a2.7 2.7 0 00.84 3.6 2.68 2.68 0 01-1.22-.34v.04A2.7 2.7 0 003.78 8.7a2.7 2.7 0 01-1.22.05 2.7 2.7 0 002.52 1.87A5.4 5.4 0 012 11.73 7.63 7.63 0 006.14 13c4.98 0 7.7-4.12 7.7-7.7l-.01-.35A5.5 5.5 0 0014 3Z" fill="currentColor"/></svg>
+              Twitter / X
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2V6zm5 0h2.9v1.1h.05C10.4 6.4 11.3 6 12.4 6 14.7 6 15 7.5 15 9.5V14h-3v-4c0-1 0-2.3-1.4-2.3S9 11 9 11v3H6V6z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Quick Links</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener" class="btn btn-yellow btn--sm" style="justify-content:center;">Register for ETO HK →</a>
+              <a href="competitions.html#idsol" class="btn btn-outline-prussian btn--sm" style="justify-content:center;">IDSOL HK Details</a>
+              <a href="eto2026.html" class="btn btn-prussian btn--sm" style="justify-content:center;">ETO HK 2026</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">In This Article</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Limits of Coursework</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">What Olympiad Format Adds</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Learning Before Competition</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Why This Matters for HK</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Related Articles</div>
+            <a href="news4.html" class="related-article-link">
+              <div class="related-article-title">Why Quantum Computing Education Cannot Wait</div>
+              <div class="related-article-meta">Insight · 7 min read</div>
+            </a>
+            <a href="news1.html" class="related-article-link">
+              <div class="related-article-title">ETO Hong Kong 2026 Is Now Open</div>
+              <div class="related-article-meta">Announcement · 5 min read</div>
+            </a>
+            <a href="news.html" class="related-article-link">
+              <div class="related-article-title">All News &amp; Insights →</div>
+              <div class="related-article-meta">View archive</div>
+            </a>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Tags</div>
+            <div class="article-tag-cloud">
+              <span class="tag tag--cyan">Data Science</span>
+              <span class="tag tag--stone">IDSOL HK</span>
+              <span class="tag tag--stone">Insight</span>
+              <span class="tag tag--stone">Education</span>
+              <span class="tag tag--mist">ETO HK 2026</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="news.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">News</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

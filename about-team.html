@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team — KBI Hong Kong</title>
+  <meta name="description" content="Meet the committee, track directors, and volunteer officers who run KBI Hong Kong — a youth-led team building the city's emerging-technology ecosystem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px; margin-top: 40px; }
+    .team-card { background: #fff; border: 1px solid var(--stone); border-radius: var(--radius-md); overflow: hidden; cursor: pointer; transition: box-shadow 0.25s, transform 0.25s; }
+    .team-card:hover { box-shadow: 0 8px 32px rgba(0,49,83,0.12); transform: translateY(-3px); }
+    .team-card-view-hint { display: flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.75rem; font-weight: 600; color: var(--prussian); opacity: 0; transition: opacity 0.2s; }
+    .team-card:hover .team-card-view-hint { opacity: 1; }
+    .team-card-view-hint svg { width: 12px; height: 12px; }
+    .team-card-photo { width: 100%; height: 220px; object-fit: cover; object-position: top; display: block; background: var(--mist); }
+    .team-card-photo-placeholder { width: 100%; height: 220px; background: linear-gradient(135deg, var(--prussian) 0%, #1a4a7a 100%); display: flex; align-items: center; justify-content: center; }
+    .team-card-body { padding: 24px; }
+    .team-card-name { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; font-family: 'Playfair Display', serif; }
+    .team-card-role { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--prussian); margin-bottom: 10px; }
+    .team-card-bio { font-size: 0.8125rem; color: var(--text-faint); line-height: 1.7; }
+    .role-table-wrap { overflow-x: auto; margin-top: 36px; }
+    .role-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .role-table th { background: var(--prussian); color: #fff; padding: 12px 16px; text-align: left; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .role-table td { padding: 14px 16px; border-bottom: 1px solid var(--stone); color: var(--text-main); vertical-align: top; }
+    .role-table tr:last-child td { border-bottom: none; }
+    .role-table tr:nth-child(even) td { background: var(--mist); }
+    .role-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .role-badge--leadership { background: var(--prussian); color: #fff; }
+    .role-badge--track { background: var(--yellow); color: var(--ink); }
+    .role-badge--officer { background: var(--stone); color: var(--ink); }
+    .role-badge--apo { background: #e8f4fd; color: var(--prussian); border: 1px solid #b8d8f0; }
+
+    /* ── TEAM PROFILE MODAL ── */
+    .team-modal-backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(5,7,10,0.75); z-index: 1200;
+      align-items: center; justify-content: center;
+      padding: 24px; backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .team-modal-backdrop.active { display: flex; }
+    .team-modal {
+      background: #fff; border-radius: var(--radius-lg);
+      max-width: 640px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      position: relative;
+      animation: modalSlideUp 0.28s cubic-bezier(0.22,1,0.36,1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+    }
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .team-modal-close {
+      position: absolute; top: 16px; right: 16px; z-index: 10;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(5,7,10,0.06); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--ink); font-size: 1.1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .team-modal-close:hover { background: rgba(5,7,10,0.12); }
+    .team-modal-hero {
+      display: flex; gap: 28px; align-items: flex-start;
+      padding: 36px 36px 28px;
+      border-bottom: 1px solid var(--stone);
+    }
+    .team-modal-photo {
+      width: 96px; height: 96px; border-radius: 50%;
+      object-fit: cover; object-position: top;
+      flex-shrink: 0; background: var(--mist);
+      border: 3px solid var(--stone);
+    }
+    .team-modal-photo-placeholder {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--prussian) 0%, #1a4a7a 100%);
+      flex-shrink: 0; display: flex;
+      align-items: center; justify-content: center;
+      border: 3px solid var(--prussian);
+    }
+    .team-modal-hero-info { flex: 1; min-width: 0; }
+    .team-modal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.375rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 6px;
+    }
+    .team-modal-role {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--prussian); margin-bottom: 14px;
+    }
+    .team-modal-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .team-modal-tag {
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 0.6875rem; font-weight: 600;
+      background: var(--mist); border: 1px solid var(--stone);
+      color: var(--text-muted);
+    }
+    .team-modal-tag--prussian { background: var(--prussian); border-color: var(--prussian); color: #fff; }
+    .team-modal-tag--yellow { background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
+    .team-modal-body { padding: 28px 36px 36px; }
+    .team-modal-section { margin-bottom: 24px; }
+    .team-modal-section:last-child { margin-bottom: 0; }
+    .team-modal-section-label {
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(5,7,10,0.35); margin-bottom: 10px;
+    }
+    .team-modal-bio {
+      font-size: 0.9375rem; color: var(--text-main);
+      line-height: 1.8;
+    }
+    .team-modal-detail-list {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .team-modal-detail-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 0.875rem; color: var(--text-main);
+    }
+    .team-modal-detail-icon {
+      width: 20px; height: 20px; border-radius: 4px;
+      background: var(--mist); border: 1px solid var(--stone);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px; font-size: 0.7rem;
+    }
+    .team-modal-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+    .team-modal-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: var(--radius-sm);
+      border: 1px solid var(--stone); background: var(--mist);
+      font-size: 0.8125rem; font-weight: 600; color: var(--prussian);
+      text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .team-modal-link:hover { background: var(--prussian); border-color: var(--prussian); color: #fff; }
+    .team-modal-link svg { width: 14px; height: 14px; }
+    @media (max-width: 520px) {
+      .team-modal-hero { flex-direction: column; gap: 16px; padding: 24px 20px 20px; }
+      .team-modal-body { padding: 20px; }
+      .team-modal-photo, .team-modal-photo-placeholder { width: 72px; height: 72px; }
+    }
+
+    /* ── ASSOCIATED ORGANISATIONS ── */
+    .assoc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .assoc-card {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: box-shadow 0.25s, transform 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .assoc-card:hover {
+      box-shadow: 0 8px 32px rgba(0,49,83,0.10);
+      transform: translateY(-3px);
+    }
+    .assoc-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .assoc-card-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--mist);
+      border: 1px solid var(--stone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .assoc-card-meta {}
+    .assoc-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .assoc-card-type {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--prussian);
+    }
+    .assoc-card-desc {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .assoc-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .assoc-card-footer {
+      padding-top: 18px;
+      border-top: 1px solid var(--stone);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .assoc-card-region {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .assoc-card-region::before {
+      content: '📍';
+      font-size: 0.75rem;
+    }
+    .assoc-card-link {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--prussian);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .assoc-card-link::after { content: '→'; }
+    .assoc-featured-banner {
+      background: var(--prussian);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 700px) {
+      .assoc-featured-banner { grid-template-columns: 1fr; }
+    }
+    .assoc-featured-banner h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .assoc-featured-banner p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.75;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" role="banner">
+    <p class="announcement-bar-text">
+      <span class="announcement-bar-badge">2026</span>
+      ETO Hong Kong 2026 applications are open —
+      <a href="eto2026.html" class="announcement-bar-link">Apply before 31 May&nbsp;→</a>
+    </p>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="22" height="22" rx="5" fill="#003153"/>
+            <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+          </svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero page-hero--night" aria-label="Our Team">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=NwTPWKsd0Ke%2Fe7jlRHvZ99ot8A2XjIXrWMKRb%2FbnF7zVn2%2B%2FooXTxueWTh8JcKkkl11d%2BpGmh3Q%2BIXqTdLRQkG32ZysJQzGm2OvtSUb%2BlyDipw%3D%3D&u2=rCuR3wNGwWxYzt4C&width=2560');background-size:cover;background-position:center;opacity:0.15;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <nav class="page-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span aria-hidden="true">›</span> <a href="about-who-we-are.html">About</a> <span aria-hidden="true">›</span> <span>Our Team</span>
+      </nav>
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">About KBI Hong Kong</span></div>
+      <h1 class="page-hero-heading">Our Team</h1>
+      <p class="page-hero-sub">KBI Hong Kong is entirely youth-run. Meet the university students and recent graduates leading our programmes, competitions, and community.</p>
+    </div>
+  </header>
+
+  <!-- LEADERSHIP -->
+  <section class="section-wrap section-wrap--white" id="leadership" aria-labelledby="leadership-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Chapter Leadership</span></div>
+      <h2 class="section-heading reveal" id="leadership-heading">Executive Committee</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:640px;">Our Chapter Director and Deputy Director are responsible for strategic direction, institutional relationships, and overall governance of KBI Hong Kong. They are supported by three Track Directors who lead our core competition programmes.</p>
+      <div class="team-grid">
+        <div class="team-card reveal"
+          data-name="Dr. Michelle Lam"
+          data-role="Chapter Director"
+          data-badge-type="leadership"
+          data-photo="images/headshot-female-1.jpg"
+          data-university="The University of Hong Kong (HKU)"
+          data-programme="PhD Candidate, Computer Science — Distributed Systems"
+          data-since="KBI HK member since 2016 · Founding member"
+          data-bio-extended="Dr. Lam oversees KBI HK's strategic direction, institutional partnerships, and overall governance of the chapter. As a founding member since 2016, she has guided the organisation through its nine-year growth from a two-event campus society to a twelve-programme regional institution. Her doctoral research at HKU focuses on fault-tolerant consensus protocols in distributed systems — work that directly informs the technical rigour of IBCOL HK's advanced problem sets. She is the primary author of the KBI HK Nine-Year Retrospective and has represented the chapter at three international KBI board meetings."
+          data-linkedin="#"
+          aria-haspopup="dialog"
+          role="button" tabindex="0">
+          <img src="images/headshot-female-1.jpg" alt="Dr. Michelle Lam" class="team-card-photo">
+          <div class="team-card-body">
+            <div class="team-card-name">Dr. Michelle Lam</div>
+            <div class="team-card-role">Chapter Director</div>
+            <p class="team-card-bio">Oversees KBI HK's strategic direction, institutional partnerships, and overall governance. PhD candidate in Computer Science at HKU, specialising in distributed systems. Founding member of KBI HK and author of the Nine-Year Retrospective.</p>
+            <div style="margin-top:12px;"><span class="role-badge role-badge--leadership">Leadership</span></div>
+            <div class="team-card-view-hint">View profile <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-1"
+          data-name="Arjun Sharma"
+          data-role="Deputy Director"
+          data-badge-type="leadership"
+          data-photo="images/headshot-male-1.jpg"
+          data-university="HKUST — Hong Kong University of Science and Technology"
+          data-programme="Master of Science, Data Science and Analytics"
+          data-since="KBI HK member since 2022 · Committee since 2023"
+          data-bio-extended="Arjun manages KBI HK's internal operations, committee coordination, and programme delivery across all three competition tracks. As Deputy Director, he serves as the primary point of contact for day-to-day committee matters and chairs the weekly programme review meetings. His MSc research at HKUST centres on probabilistic graphical models for financial time-series, experience he brings to the design of IDSOL HK's advanced data modelling rounds. Arjun is the editor of the KBI HK Insight publication and authored the widely shared 'Data Science Classroom' feature. He joined KBI HK as a competition participant in 2022 before moving onto the committee the following year."
+          data-linkedin="#"
+          aria-haspopup="dialog"
+          role="button" tabindex="0">
+          <img src="images/headshot-male-1.jpg" alt="Arjun Sharma" class="team-card-photo">
+          <div class="team-card-body">
+            <div class="team-card-name">Arjun Sharma</div>
+            <div class="team-card-role">Deputy Director</div>
+            <p class="team-card-bio">Manages internal operations, committee coordination, and programme delivery across all tracks. Masters student in Data Science at HKUST. Leads the Insight publication and IDSOL HK track, and authored the Data Science Classroom piece.</p>
+            <div style="margin-top:12px;"><span class="role-badge role-badge--leadership">Leadership</span></div>
+            <div class="team-card-view-hint">View profile <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-2"
+          data-name="Grace Wong"
+          data-role="Track Director — Blockchain"
+          data-badge-type="track"
+          data-photo="images/headshot-female-2.jpg"
+          data-university="The Chinese University of Hong Kong (CUHK)"
+          data-programme="BEng (Hons), Computer Science — Final Year"
+          data-since="KBI HK member since 2021 · Committee since 2024"
+          data-bio-extended="Grace leads all IBCOL HK programme design, including case problem authorship, the judging framework, and relationships with blockchain industry mentors who assess finalist presentations. In her final year of Computer Science at CUHK, her coursework emphasis on smart contract security and applied cryptography gives her deep subject-matter fluency across the competition's technical domains. She is the co-lead of the KBI HK DeFi Transparency Research Project, which produced the 2024 Decentralised Lending Risk report. Grace joined KBI HK as an IBCOL HK semifinalist and worked as a Competition Coordinator before being appointed Track Director for the current cycle."
+          data-linkedin="#"
+          aria-haspopup="dialog"
+          role="button" tabindex="0">
+          <img src="images/headshot-female-2.jpg" alt="Grace Wong" class="team-card-photo">
+          <div class="team-card-body">
+            <div class="team-card-name">Grace Wong</div>
+            <div class="team-card-role">Track Director — Blockchain</div>
+            <p class="team-card-bio">Leads all IBCOL HK programme design, judging framework, and partnerships with blockchain industry mentors. Final-year Computer Science student at CUHK. Co-lead on the KBI HK DeFi Transparency Research Project.</p>
+            <div style="margin-top:12px;"><span class="role-badge role-badge--track">Track Director</span></div>
+            <div class="team-card-view-hint">View profile <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-3"
+          data-name="Raymond Cheung"
+          data-role="Track Director — Quantum Computing"
+          data-badge-type="track"
+          data-photo="images/headshot-male-2.jpg"
+          data-university="HKUST — Hong Kong University of Science and Technology"
+          data-programme="MPhil, Physics — Quantum Information & Computation"
+          data-since="KBI HK member since 2020 · Committee since 2022"
+          data-bio-extended="Raymond leads IQCOL HK's programme design and curriculum development, drawing on his MPhil research in quantum information and computation at HKUST. He designed the Quantum Primer Workshop series — a four-session educational programme for secondary school and undergraduate students with no prior quantum mechanics background — which has been delivered at eight Hong Kong campuses since 2023. Raymond co-authored the IQCOL HK problem sets for both the 2024 and 2025 qualifying rounds, and wrote the widely read op-ed 'Why Quantum Computing Education Cannot Wait', published in KBI HK Insight. He joined the chapter as an IQCOL founding-year participant before becoming a competition coordinator and, subsequently, Track Director."
+          data-linkedin="#"
+          aria-haspopup="dialog"
+          role="button" tabindex="0">
+          <img src="images/headshot-male-2.jpg" alt="Raymond Cheung" class="team-card-photo">
+          <div class="team-card-body">
+            <div class="team-card-name">Raymond Cheung</div>
+            <div class="team-card-role">Track Director — Quantum Computing</div>
+            <p class="team-card-bio">Leads IQCOL HK design, curriculum development, and the Quantum Primer Workshop series. Physics postgraduate at HKUST. Author of "Why Quantum Computing Education Cannot Wait" and co-designer of the IQCOL problem sets.</p>
+            <div style="margin-top:12px;"><span class="role-badge role-badge--track">Track Director</span></div>
+            <div class="team-card-view-hint">View profile <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-4">
+          <div class="team-card-photo-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" width="48" height="48" aria-hidden="true"><circle cx="24" cy="18" r="10" fill="rgba(255,255,255,0.2)"/><path d="M4 44c0-11 9-19 20-19s20 8 20 19" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Track Director — Data Science</div>
+            <div class="team-card-role">Role Currently Open</div>
+            <p class="team-card-bio">We are currently recruiting a Track Director for the IDSOL HK data science track for the 2026 cycle. Interested in leading one of Hong Kong's most rigorous student data science competitions?</p>
+            <div style="margin-top:12px;"><a href="contact.html" style="font-size:0.8125rem;font-weight:600;color:var(--prussian);">Enquire →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICERS -->
+  <section class="section-wrap section-wrap--mist" id="officers" aria-labelledby="officers-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Programme Officers</span></div>
+      <h2 class="section-heading reveal" id="officers-heading">Officers & Volunteers</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:640px;">Our Programme Officers handle the day-to-day operations of KBI HK across seven specialised functions. Each officer role is filled by a volunteer community member, typically a current university student or recent graduate.</p>
+      <div class="role-table-wrap reveal reveal-delay-2">
+        <table class="role-table" aria-label="KBI HK Committee Roles">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Type</th>
+              <th>Responsibilities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Membership Officer</strong></td>
+              <td><span class="role-badge role-badge--officer">Officer</span></td>
+              <td>Manages member onboarding, records, and communications. First point of contact for new members and returning participants.</td>
+            </tr>
+            <tr>
+              <td><strong>Outreach Officer</strong></td>
+              <td><span class="role-badge role-badge--officer">Officer</span></td>
+              <td>Manages school and university outreach, ambassador relationships, and community partnerships. Drives participant recruitment for all programmes.</td>
+            </tr>
+            <tr>
+              <td><strong>Sponsorship Officer</strong></td>
+              <td><span class="role-badge role-badge--officer">Officer</span></td>
+              <td>Coordinates sponsor and partner relationships, manages sponsorship packages, and supports the Chapter Director in institutional negotiations.</td>
+            </tr>
+            <tr>
+              <td><strong>Events Officer</strong></td>
+              <td><span class="role-badge role-badge--officer">Officer</span></td>
+              <td>Plans and executes all KBI HK events — workshops, clinics, community gatherings, and competition days. Manages logistics, venues, and volunteer coordination.</td>
+            </tr>
+            <tr>
+              <td><strong>Communications Officer</strong></td>
+              <td><span class="role-badge role-badge--officer">Officer</span></td>
+              <td>Manages KBI HK's public communications across all platforms — social media, newsletters, press releases, and the KBI HK Insight publication.</td>
+            </tr>
+            <tr>
+              <td><strong>Associate Programme Officer (APO)</strong></td>
+              <td><span class="role-badge role-badge--apo">APO</span></td>
+              <td>Junior volunteer role for community members interested in moving into officer positions. APOs support an officer function and learn KBI HK operations through mentored participation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- APO PROGRAMME -->
+  <section class="section-wrap section-wrap--white" id="apo" aria-labelledby="apo-heading">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Join the Team</span></div>
+          <h2 class="section-heading reveal" id="apo-heading">The APO Programme —<br>Your Path to the Committee</h2>
+          <p class="section-body reveal reveal-delay-1">The Associate Programme Officer (APO) programme is KBI HK's structured pathway for community members who want to move from participant to contributor. APOs are placed with an officer function and take on real responsibilities with mentored guidance.</p>
+          <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">The APO programme runs for one academic year. Successful APOs are eligible to apply for full Programme Officer roles in the following cycle. Historically, the majority of our current committee came through the APO programme.</p>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px;" class="reveal reveal-delay-3">
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="min-width:24px;height:24px;border-radius:50%;background:var(--prussian);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:700;flex-shrink:0;">1</div>
+              <div><strong style="font-size:0.875rem;">Apply during open recruitment</strong><p style="font-size:0.8125rem;color:var(--text-faint);margin-top:2px;">APO intake happens twice per year. Applications require a short statement of interest and a description of how you have engaged with KBI HK previously.</p></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="min-width:24px;height:24px;border-radius:50%;background:var(--prussian);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:700;flex-shrink:0;">2</div>
+              <div><strong style="font-size:0.875rem;">Matched to an officer function</strong><p style="font-size:0.8125rem;color:var(--text-faint);margin-top:2px;">Based on your interests and availability, you are matched to a Programme Officer who becomes your primary mentor. Functions include events, outreach, communications, and membership.</p></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="min-width:24px;height:24px;border-radius:50%;background:var(--prussian);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:700;flex-shrink:0;">3</div>
+              <div><strong style="font-size:0.875rem;">Eligible for full officer role</strong><p style="font-size:0.8125rem;color:var(--text-faint);margin-top:2px;">After a full APO cycle, you may apply for a full Programme Officer role in the next committee intake. References from your mentor are considered in the application.</p></div>
+            </div>
+          </div>
+          <div style="margin-top:32px;" class="reveal reveal-delay-4">
+            <a href="membership.html" class="btn btn-prussian btn--sm">Learn About Membership First</a>
+            <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-left:12px;">Enquire About APO</a>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div style="background:var(--prussian);border-radius:var(--radius-lg);padding:40px;">
+            <div class="label-row" style="margin-bottom:20px;"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Who Should Apply</span></div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;">Current KBI HK members who have participated in at least one programme, competition, or community event</p></div>
+              <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;">University students or recent graduates based in Hong Kong, available for regular volunteer commitment</p></div>
+              <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;">Individuals who want to contribute to the operational side of a serious, non-profit, student-run organisation — not just attend events</p></div>
+              <div style="display:flex;gap:12px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:7px;"></div><p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.7;">Those with specific interests in events management, outreach, communications, or community-building in the technology education space</p></div>
+            </div>
+            <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+              <p style="color:rgba(255,255,255,0.5);font-size:0.8125rem;line-height:1.6;"><strong style="color:rgba(255,255,255,0.8);">Note:</strong> The APO programme is not a prerequisite for Track Director roles. Track Directors are recruited separately based on deep expertise in a specific technology domain.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section class="section-wrap section-wrap--mist" aria-label="Get involved">
+    <div class="section-inner" style="text-align:center;">
+      <div class="label-row" style="justify-content:center;"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Get Involved</span></div>
+      <h2 class="section-heading reveal">Want to Join the Team?</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:560px;margin:0 auto 32px;">APO intake is announced to current members first. Join KBI HK membership to receive notification when the next APO round opens, or reach out directly with any questions about volunteering.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-2">
+        <a href="membership.html" class="btn btn-prussian">Join Membership</a>
+        <a href="contact.html" class="btn btn-outline-prussian">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSOCIATED ORGANISATIONS -->
+  <section class="section-wrap section-wrap--white" id="associated-orgs" aria-labelledby="assoc-orgs-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Our Network</span></div>
+      <h2 class="section-heading reveal" id="assoc-orgs-heading">Associated Organisations</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:660px;">KBI Hong Kong operates as part of a wider international network of chapters, partner institutions, and aligned organisations. These relationships form the backbone of our cross-border collaborations, exchange programmes, and joint competition initiatives.</p>
+
+      <div class="assoc-grid">
+
+        <!-- KBI Global -->
+        <div class="assoc-card reveal">
+          <div class="assoc-card-header">
+            <div class="assoc-card-logo" aria-hidden="true">🌐</div>
+            <div class="assoc-card-meta">
+              <div class="assoc-card-name">Königsberger Bridges Institute</div>
+              <div class="assoc-card-type">Parent Organisation</div>
+            </div>
+          </div>
+          <p class="assoc-card-desc">The global body that charters and coordinates all KBI chapters worldwide. KBI HK operates under the KBI charter and reports to the international board annually. The Institute sets shared standards for programme quality, research ethics, and competition integrity across all chapters.</p>
+          <div class="assoc-card-tags">
+            <span class="tag tag--stone">Global Governance</span>
+            <span class="tag tag--stone">Charter Body</span>
+            <span class="tag tag--sky">Research Standards</span>
+          </div>
+          <div class="assoc-card-footer">
+            <span class="assoc-card-region">International</span>
+            <a href="about-who-we-are.html" class="assoc-card-link">Learn more</a>
+          </div>
+        </div>
+
+        <!-- KBI Singapore -->
+        <div class="assoc-card reveal reveal-delay-1">
+          <div class="assoc-card-header">
+            <div class="assoc-card-logo" aria-hidden="true">🇸🇬</div>
+            <div class="assoc-card-meta">
+              <div class="assoc-card-name">KBI Singapore</div>
+              <div class="assoc-card-type">Sibling Chapter</div>
+            </div>
+          </div>
+          <p class="assoc-card-desc">Our closest sibling chapter, with whom KBI HK collaborates on joint competition rounds, cross-border judging panels, and student exchange initiatives. Several IBCOL HK and IQCOL HK problem sets are co-designed with the Singapore chapter's Track Directors.</p>
+          <div class="assoc-card-tags">
+            <span class="tag tag--stone">Joint Competitions</span>
+            <span class="tag tag--stone">Cross-Border</span>
+            <span class="tag tag--sky">Active Partnership</span>
+          </div>
+          <div class="assoc-card-footer">
+            <span class="assoc-card-region">Singapore</span>
+            <a href="sisters.html" class="assoc-card-link">View all chapters</a>
+          </div>
+        </div>
+
+        <!-- KBI Taiwan -->
+        <div class="assoc-card reveal reveal-delay-2">
+          <div class="assoc-card-header">
+            <div class="assoc-card-logo" aria-hidden="true">🇹🇼</div>
+            <div class="assoc-card-meta">
+              <div class="assoc-card-name">KBI Taiwan</div>
+              <div class="assoc-card-type">Sibling Chapter</div>
+            </div>
+          </div>
+          <p class="assoc-card-desc">The Taiwan chapter collaborates with KBI HK on blockchain and data science track development. KBI HK members have participated in KBI Taiwan-hosted workshops, and we jointly produced the East Asia Emerging Technology report in 2024.</p>
+          <div class="assoc-card-tags">
+            <span class="tag tag--stone">Research Collaboration</span>
+            <span class="tag tag--stone">Blockchain Track</span>
+          </div>
+          <div class="assoc-card-footer">
+            <span class="assoc-card-region">Taipei, Taiwan</span>
+            <a href="sisters.html" class="assoc-card-link">View all chapters</a>
+          </div>
+        </div>
+
+        <!-- HKUST -->
+        <div class="assoc-card reveal reveal-delay-3">
+          <div class="assoc-card-header">
+            <div class="assoc-card-logo" aria-hidden="true">🎓</div>
+            <div class="assoc-card-meta">
+              <div class="assoc-card-name">HKUST — Centre for Quantum Technologies</div>
+              <div class="assoc-card-type">Academic Partner</div>
+            </div>
+          </div>
+          <p class="assoc-card-desc">Academic advisory partner for IQCOL HK's technical curriculum and problem design. Faculty members from HKUST's Centre for Quantum Technologies serve as technical reviewers and guest mentors for the Quantum Primer Workshop series.</p>
+          <div class="assoc-card-tags">
+            <span class="tag tag--stone">Academic Advisory</span>
+            <span class="tag tag--stone">IQCOL HK</span>
+            <span class="tag tag--sky">Workshop Mentors</span>
+          </div>
+          <div class="assoc-card-footer">
+            <span class="assoc-card-region">Clear Water Bay, HK</span>
+            <a href="collaborations.html" class="assoc-card-link">Collaborations</a>
+          </div>
+        </div>
+
+        <!-- HKU Faculty -->
+        <div class="assoc-card reveal reveal-delay-4">
+          <div class="assoc-card-header">
+            <div class="assoc-card-logo" aria-hidden="true">🏛️</div>
+            <div class="assoc-card-meta">
+              <div class="assoc-card-name">HKU — Department of Computer Science</div>
+              <div class="assoc-card-type">Academic Partner</div>
+            </div>
+          </div>
+          <p class="assoc-card-desc">Ongoing faculty advisory relationship supporting IBCOL HK judging, ISFRETIC certification content development, and KBI HK's applied research projects. Several KBI HK alumni are current postgraduate students or research staff within the department.</p>
+          <div class="assoc-card-tags">
+            <span class="tag tag--stone">Academic Advisory</span>
+            <span class="tag tag--stone">IBCOL HK</span>
+            <span class="tag tag--stone">Certification Content</span>
+          </div>
+          <div class="assoc-card-footer">
+            <span class="assoc-card-region">Pokfulam, HK</span>
+            <a href="collaborations.html" class="assoc-card-link">Collaborations</a>
+          </div>
+        </div>
+
+        <!-- Industry Partner -->
+        <div class="assoc-card reveal" style="border-style:dashed;border-color:var(--prussian);background:rgba(0,49,83,0.02);">
+          <div class="assoc-card-header">
+            <div class="assoc-card-logo" aria-hidden="true" style="background:rgba(0,49,83,0.06);border-color:rgba(0,49,83,0.15);">＋</div>
+            <div class="assoc-card-meta">
+              <div class="assoc-card-name" style="color:var(--prussian);">Become an Associated Organisation</div>
+              <div class="assoc-card-type">Open Partnership</div>
+            </div>
+          </div>
+          <p class="assoc-card-desc">We are always open to new institutional partnerships — academic, industry, or civic. If your organisation works at the intersection of technology, education, or youth development, we would like to hear from you.</p>
+          <div class="assoc-card-tags">
+            <span class="tag tag--stone">Academic Institutions</span>
+            <span class="tag tag--stone">Industry Partners</span>
+            <span class="tag tag--stone">NGOs &amp; Civic Bodies</span>
+          </div>
+          <div class="assoc-card-footer">
+            <span class="assoc-card-region">Hong Kong &amp; Beyond</span>
+            <a href="contact.html" class="assoc-card-link">Get in touch</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Featured KBI Family Banner -->
+      <div class="assoc-featured-banner reveal">
+        <div>
+          <h3>Part of the KBI Global Family</h3>
+          <p>KBI Hong Kong is one of twelve chartered chapters of the Königsberger Bridges Institute worldwide. Together, our chapters host over 40 annual competitions, workshops, and research programmes across Asia, Europe, and North America — all run by students, for students.</p>
+        </div>
+        <div style="flex-shrink:0;">
+          <a href="sisters.html" class="btn btn-yellow">View All Sibling Chapters →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TEAM PROFILE MODAL -->
+  <div class="team-modal-backdrop" id="teamModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
+    <div class="team-modal" id="teamModal">
+      <button class="team-modal-close" id="teamModalClose" aria-label="Close profile">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+
+      <!-- Hero row: photo + name/role/tags -->
+      <div class="team-modal-hero">
+        <div id="teamModalPhotoWrap"></div>
+        <div class="team-modal-hero-info">
+          <div class="team-modal-name" id="teamModalName"></div>
+          <div class="team-modal-role" id="teamModalRole"></div>
+          <div class="team-modal-tags" id="teamModalTags"></div>
+        </div>
+      </div>
+
+      <!-- Body: bio + details + links -->
+      <div class="team-modal-body">
+        <div class="team-modal-section">
+          <div class="team-modal-section-label">About</div>
+          <p class="team-modal-bio" id="teamModalBio"></p>
+        </div>
+        <div class="team-modal-section" id="teamModalDetailsSection">
+          <div class="team-modal-section-label">Details</div>
+          <div class="team-modal-detail-list" id="teamModalDetails"></div>
+        </div>
+        <div class="team-modal-section" id="teamModalLinksSection">
+          <div class="team-modal-section-label">Connect</div>
+          <div class="team-modal-links" id="teamModalLinks"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="kbi-hk.js"></script>
+  <script>
+    /* ── Team Profile Modal ── */
+    (function () {
+      const backdrop = document.getElementById('teamModalBackdrop');
+      const modal    = document.getElementById('teamModal');
+      const closeBtn = document.getElementById('teamModalClose');
+
+      // Badge type → CSS class + label
+      const badgeMap = {
+        leadership: { cls: 'team-modal-tag--prussian', label: 'Leadership' },
+        track:      { cls: 'team-modal-tag--yellow',   label: 'Track Director' },
+        officer:    { cls: '',                          label: 'Programme Officer' },
+      };
+
+      function openModal(card) {
+        const d = card.dataset;
+
+        // Photo
+        const photoWrap = document.getElementById('teamModalPhotoWrap');
+        if (d.photo) {
+          photoWrap.innerHTML = `<img src="${d.photo}" alt="${d.name}" class="team-modal-photo">`;
+        } else {
+          photoWrap.innerHTML = `<div class="team-modal-photo-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" width="48" height="48"><circle cx="24" cy="18" r="10" fill="rgba(255,255,255,0.25)"/><path d="M4 44c0-11 9-19 20-19s20 8 20 19" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg>
+          </div>`;
+        }
+
+        // Name & role
+        document.getElementById('teamModalName').textContent = d.name || '';
+        document.getElementById('teamModalRole').textContent = d.role || '';
+
+        // Tags
+        const tagsEl = document.getElementById('teamModalTags');
+        tagsEl.innerHTML = '';
+        if (d.badgeType && badgeMap[d.badgeType]) {
+          const b = badgeMap[d.badgeType];
+          tagsEl.innerHTML += `<span class="team-modal-tag ${b.cls}">${b.label}</span>`;
+        }
+        if (d.university) {
+          const uni = d.university.split('—')[0].trim().split('(')[1];
+          if (uni) tagsEl.innerHTML += `<span class="team-modal-tag">${uni.replace(')','')}</span>`;
+        }
+
+        // Extended bio (fall back to card bio)
+        const bioEl = document.getElementById('teamModalBio');
+        bioEl.textContent = d.bioExtended || card.querySelector('.team-card-bio')?.textContent || '';
+
+        // Details list
+        const detailsList = document.getElementById('teamModalDetails');
+        detailsList.innerHTML = '';
+        const details = [
+          d.university ? { icon: '🎓', text: d.university }    : null,
+          d.programme  ? { icon: '📖', text: d.programme }     : null,
+          d.since      ? { icon: '📅', text: d.since }         : null,
+        ].filter(Boolean);
+
+        const detailsSection = document.getElementById('teamModalDetailsSection');
+        if (details.length) {
+          detailsSection.style.display = '';
+          details.forEach(item => {
+            detailsList.innerHTML += `<div class="team-modal-detail-item">
+              <div class="team-modal-detail-icon">${item.icon}</div>
+              <span>${item.text}</span>
+            </div>`;
+          });
+        } else {
+          detailsSection.style.display = 'none';
+        }
+
+        // Links
+        const linksEl = document.getElementById('teamModalLinks');
+        linksEl.innerHTML = '';
+        const linksSection = document.getElementById('teamModalLinksSection');
+        const links = [];
+        if (d.linkedin && d.linkedin !== '#') {
+          links.push({ href: d.linkedin, label: 'LinkedIn', icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>' });
+        }
+        // Always offer contact link
+        links.push({ href: 'contact.html', label: 'Send a message', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>' });
+
+        if (links.length) {
+          linksSection.style.display = '';
+          links.forEach(l => {
+            linksEl.innerHTML += `<a href="${l.href}" class="team-modal-link" ${l.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>${l.icon}${l.label}</a>`;
+          });
+        } else {
+          linksSection.style.display = 'none';
+        }
+
+        // Show
+        backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Attach click/keyboard to every card with data-name
+      document.querySelectorAll('.team-card[data-name]').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card); }
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    })();
+  </script>
+</body>
+</html>

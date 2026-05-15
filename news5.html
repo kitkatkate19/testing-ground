@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBI HK Chapter Rebuild: A New Operational Structure for 2026 — KBI Hong Kong</title>
+  <meta name="description" content="KBI Hong Kong announces a restructured operational model for 2026, with new committee roles, clearer programme ownership, and an expanded volunteer leadership framework.">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .article-hero {
+      background: var(--night); position: relative;
+      padding: calc(var(--nav-h) + 64px) 24px 72px;
+      overflow: hidden;
+    }
+    .article-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(60,180,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60,180,255,0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .article-hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35); margin-bottom: 24px;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,0.45); transition: color var(--t); }
+    .article-breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .article-hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700; color: #fff;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 28px;
+    }
+    .article-hero h1 em { color: var(--cyan); font-style: italic; }
+    .article-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .article-author { display: flex; align-items: center; gap: 12px; }
+    .article-author-photo {
+      width: 40px; height: 40px; border-radius: 50%;
+      object-fit: cover; border: 2px solid rgba(255,255,255,0.15);
+    }
+    .article-author-name { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .article-author-role { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .article-meta-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+    .article-meta-item { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.4); }
+    .article-meta-item strong { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    .article-layout {
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 56px; align-items: start;
+      max-width: var(--max-width); margin: 0 auto;
+    }
+    .article-body { max-width: 680px; }
+    .article-body h2 { font-size: clamp(1.375rem, 2.5vw, 1.75rem); color: var(--text-main); margin: 40px 0 16px; letter-spacing: -0.015em; }
+    .article-body h3 { font-size: 1.125rem; color: var(--text-main); margin: 28px 0 12px; }
+    .article-body p { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .article-body ul, .article-body ol { padding-left: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .article-body li { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+    .article-body li::before { content: '–'; position: absolute; left: 0; color: var(--prussian); font-weight: 700; }
+    .article-body strong { color: var(--text-main); font-weight: 600; }
+    .article-body a { color: var(--prussian); text-decoration: underline; text-decoration-color: rgba(0,49,83,0.3); }
+    .article-body a:hover { color: var(--prussian-glow); }
+
+    .article-pullquote {
+      border-left: 3px solid var(--yellow); padding: 20px 28px;
+      background: var(--mist); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 32px 0;
+    }
+    .article-pullquote p { font-family: 'Playfair Display', serif; font-size: 1.1875rem; font-style: italic; color: var(--text-main); line-height: 1.7; margin-bottom: 10px; }
+    .article-pullquote cite { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: var(--text-faint); font-style: normal; }
+
+    .article-fact-box { background: var(--prussian); border-radius: var(--radius-lg); padding: 28px 32px; margin: 32px 0; }
+    .article-fact-box-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .article-fact-list { display: flex; flex-direction: column; gap: 8px; }
+    .article-fact-item { display: flex; gap: 10px; align-items: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .article-fact-item::before { content: '→'; color: var(--yellow); flex-shrink: 0; font-weight: 700; }
+
+    /* Role table */
+    .role-table { width: 100%; border-collapse: collapse; margin: 28px 0; }
+    .role-table th {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint);
+      text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--stone);
+    }
+    .role-table td {
+      font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: var(--text-muted);
+      padding: 12px 14px; border-bottom: 1px solid var(--stone); line-height: 1.6;
+      vertical-align: top;
+    }
+    .role-table tr:last-child td { border-bottom: none; }
+    .role-table td strong { color: var(--text-main); }
+
+    .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; }
+    .sidebar-card-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+    .related-article-link { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--stone); transition: color var(--t); }
+    .related-article-link:last-child { border-bottom: none; }
+    .related-article-title { font-family: 'Playfair Display', serif; font-size: 0.9375rem; font-weight: 600; color: var(--text-main); line-height: 1.35; transition: color var(--t); }
+    .related-article-link:hover .related-article-title { color: var(--prussian); }
+    .related-article-meta { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .article-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .article-share-bar { display: flex; gap: 12px; align-items: center; padding: 20px 0; border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); margin: 40px 0 0; }
+    .article-share-label { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--text-faint); }
+    .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid var(--stone); border-radius: var(--radius-sm); background: var(--white); font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); transition: background var(--t), border-color var(--t), color var(--t); }
+    .share-btn:hover { background: var(--mist); border-color: var(--text-faint); color: var(--text-main); }
+    .share-btn svg { width: 13px; height: 13px; }
+
+    @media (max-width: 960px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .role-table { font-size: 0.875rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link active">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="article-hero" aria-label="Article header">
+    <div class="article-hero-grid" aria-hidden="true"></div>
+    <div class="article-hero-inner">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="news.html">News &amp; Insights</a>
+        <span>›</span>
+        <span aria-current="page">KBI HK Chapter Rebuild 2026</span>
+      </nav>
+      <div class="article-hero-tags">
+        <span class="tag tag--prussian">Press Release</span>
+        <span class="tag tag--stone">Chapter Update</span>
+        <span class="tag tag--night">Governance</span>
+      </div>
+      <h1>KBI HK Chapter Rebuild:<br>A <em>New Operational Structure</em> for 2026</h1>
+      <div class="article-hero-meta">
+        <div class="article-author">
+          <img src="images/headshot-female-1.jpg" alt="Dr. Michelle Lam" class="article-author-photo">
+          <div>
+            <div class="article-author-name">KBI Hong Kong Executive Committee</div>
+            <div class="article-author-role">Official Press Release</div>
+          </div>
+        </div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item"><strong>12 March 2026</strong></div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item">5 min read</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main>
+    <section class="section-wrap section-wrap--white" aria-label="Article content">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <figure style="margin:0 0 32px;border-radius:var(--radius-lg);overflow:hidden;">
+            <img src="https://sspark.genspark.ai/cfimages?u1=SKYwI6sHvM6ts1jersGx7EH7alRbUJE5lvGmeLwn6x9F0rNnsvmU3iDvYktxrybu1TCUwW6ugv2wgog8oJKLulk8pXn52JiVJyRBpgchScAG7qk93s8C%2FZOvwVV7gHFVi4pvaLmhPYXSa4N6L%2BTwLw%3D%3D&u2=LUVQHhBPZ%2BiVtWFv&width=2560" alt="Knowledge Building International organisation — collaborative educational network" style="width:100%;height:300px;object-fit:cover;display:block;">
+            <figcaption style="padding:10px 16px;background:var(--mist);font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-faint);">KBI HK's 2026 restructure establishes a tiered volunteer leadership framework and dedicated committee roles across all three competition tracks.</figcaption>
+          </figure>
+
+          <p>
+            KBI Hong Kong is pleased to announce the completion of a comprehensive operational restructure, effective from the 2026 programme cycle. The restructure establishes clearer lines of responsibility across all programme areas, introduces a new tiered volunteer leadership framework, and creates dedicated committee roles for each competition track under ETO HK.
+          </p>
+
+          <p>
+            This announcement follows an internal review conducted throughout the final quarter of 2025, during which the Executive Committee assessed the chapter's operational model against the demands of its expanded programme portfolio. The review found that while KBI HK had grown significantly since its 2022 relaunch — adding IQCOL in 2024, launching the Schoolers Stream in 2025, and more than doubling its membership base — the underlying committee structure had not evolved at the same pace.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"We have built something real here. The restructure is about making sure the organisation can sustain and grow what we have built — without relying on a handful of people doing everything."</p>
+            <cite>— KBI Hong Kong Chapter Director</cite>
+          </div>
+
+          <h2>What Has Changed</h2>
+
+          <p>
+            The 2026 operational structure introduces four primary changes to how KBI HK operates:
+          </p>
+
+          <h3>1. Dedicated Track Directors</h3>
+          <p>
+            Each of the three ETO HK competition tracks — IBCOL, IDSOL, and IQCOL — now has a dedicated Track Director. Track Directors are responsible for the end-to-end delivery of their respective qualifying rounds: judge recruitment, participant communication, marking coordination, and liaison with the relevant international olympiad organising body. Previously, these responsibilities were managed collectively by the Executive Committee, which created coordination bottlenecks as participant numbers grew.
+          </p>
+
+          <h3>2. A Formalised Volunteer Leadership Tier</h3>
+          <p>
+            KBI HK has historically relied on an informal pool of volunteers for event support, mentoring, and outreach. From 2026, the chapter introduces a formal <strong>Associate Programme Officer (APO)</strong> role — a structured, time-bounded volunteer position with defined responsibilities and a clear pathway to committee membership. APOs are recruited each February and serve for one full programme cycle (February through December).
+          </p>
+          <p>
+            The APO structure serves two purposes: it gives the chapter a reliable, accountable volunteer pipeline, and it gives early-career professionals and recent graduates a meaningful leadership development opportunity within a well-regarded academic organisation.
+          </p>
+
+          <h3>3. Separated Membership and Outreach Functions</h3>
+          <p>
+            The chapter's growth objectives for 2026 require substantially more proactive outreach than in previous cycles — particularly to secondary schools and to institutions outside the traditional CUHK/HKU/HKUST cluster. To support this, the Membership and Outreach functions have been separated into two distinct committee portfolios, each with its own lead and workplan.
+          </p>
+
+          <h3>4. A Formal Sponsorship Relations Function</h3>
+          <p>
+            Sponsorship has historically been handled on an ad hoc basis by Executive Committee members with existing industry relationships. The 2026 structure creates a dedicated Sponsorship Relations Officer role, responsible for maintaining an active sponsor pipeline, managing sponsor benefits delivery, and developing a multi-year sponsorship strategy aligned to the chapter's programme roadmap.
+          </p>
+
+          <div class="article-fact-box">
+            <div class="article-fact-box-title">2026 Committee Structure at a Glance</div>
+            <div class="article-fact-list">
+              <div class="article-fact-item">Chapter Director — Overall strategic leadership and international KBI liaison</div>
+              <div class="article-fact-item">Deputy Director — Operations oversight, committee coordination, governance</div>
+              <div class="article-fact-item">Track Directors × 3 — IBCOL HK, IDSOL HK, IQCOL HK (one each)</div>
+              <div class="article-fact-item">Membership Officer — Member acquisition, onboarding, and retention</div>
+              <div class="article-fact-item">Outreach Officer — School and university partnerships, community engagement</div>
+              <div class="article-fact-item">Sponsorship Relations Officer — Sponsor pipeline, benefits delivery, strategy</div>
+              <div class="article-fact-item">Events Officer — Non-competition events: clinics, meet-ups, seminars</div>
+              <div class="article-fact-item">Communications Officer — Website, social media, news and publications</div>
+            </div>
+          </div>
+
+          <h2>Committee Roles and Responsibilities</h2>
+
+          <p>
+            The following table summarises the primary accountabilities attached to each committee role in the 2026 structure:
+          </p>
+
+          <table class="role-table" aria-label="Committee roles and responsibilities">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Primary Accountabilities</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Chapter Director</strong></td>
+                <td>Strategic direction; international KBI relationship; public representation; final sign-off on major decisions</td>
+              </tr>
+              <tr>
+                <td><strong>Deputy Director</strong></td>
+                <td>Committee coordination; operational governance; APO programme management; Chapter Director cover</td>
+              </tr>
+              <tr>
+                <td><strong>Track Director (×3)</strong></td>
+                <td>Full delivery of qualifying round for assigned track; judge recruitment; international liaision; participant support</td>
+              </tr>
+              <tr>
+                <td><strong>Membership Officer</strong></td>
+                <td>Member database management; onboarding journey; renewal campaigns; member benefits delivery</td>
+              </tr>
+              <tr>
+                <td><strong>Outreach Officer</strong></td>
+                <td>School and university MOU management; teacher and faculty engagement; ambassador programme</td>
+              </tr>
+              <tr>
+                <td><strong>Sponsorship Relations Officer</strong></td>
+                <td>Sponsor prospecting and proposals; contract management; benefits fulfilment; multi-year strategy</td>
+              </tr>
+              <tr>
+                <td><strong>Events Officer</strong></td>
+                <td>Clinic, workshop, meet-up, and seminar logistics; venue management; registration systems</td>
+              </tr>
+              <tr>
+                <td><strong>Communications Officer</strong></td>
+                <td>Website content; social media channels; news articles; press releases; design asset oversight</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Associate Programme Officer Programme</h2>
+
+          <p>
+            The APO programme is open to KBI HK members who have completed at least one full programme cycle as a participant or general volunteer. APOs are assigned to a specific committee portfolio and work directly under the guidance of the relevant committee lead.
+          </p>
+
+          <p>
+            The APO role is designed for early-career professionals and penultimate or final-year students who want substantive organisational experience in a structured, professional environment. Responsibilities are real and meaningful — APOs are not performing administrative tasks, they are contributing to the delivery of programmes that serve hundreds of participants annually.
+          </p>
+
+          <p>
+            Applications for the 2026 APO cohort will open in early February. Interested candidates should <a href="contact.html">contact the KBI HK secretariat</a> to be notified when applications open.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"The APO programme is one of the structural changes I am most excited about. It creates a talent pipeline for the chapter, and it gives our most engaged members a real leadership opportunity."</p>
+            <cite>— KBI Hong Kong Deputy Director</cite>
+          </div>
+
+          <h2>What Stays the Same</h2>
+
+          <p>
+            It is worth being explicit about what the restructure does not change. The core mission of KBI HK — to develop the next generation of blockchain, data science, and quantum computing talent in Hong Kong through rigorous, internationally benchmarked competition — remains unchanged. The three-track ETO HK model, the Schoolers and Students streams, the emphasis on written research papers and live presentations, and the community-first approach to membership all continue exactly as before.
+          </p>
+
+          <p>
+            The restructure is an operational change, not a strategic one. It is designed to make the chapter more capable of executing on the mission at scale, not to change the mission itself.
+          </p>
+
+          <h2>Next Steps</h2>
+
+          <p>
+            Full committee appointments for the 2026 cycle were confirmed in February 2026. Details of committee members will be published on the <a href="about.html">About page</a> shortly. APO applications will open in March 2026 with a rolling admissions process.
+          </p>
+
+          <p>
+            Members with questions about the restructure or interest in APO roles are welcome to reach out via the <a href="contact.html">contact page</a>.
+          </p>
+
+          <div style="margin-top:40px;padding:28px 32px;background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);">
+            <div class="label-row" style="margin-bottom:12px;"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Get Involved</span></div>
+            <p style="font-family:'Inter',sans-serif;font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px;">Interested in joining the KBI HK committee or applying for an APO role? Get in touch — we welcome motivated individuals who want to contribute to serious tech education in Hong Kong.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="contact.html" class="btn btn-prussian">
+                Contact the Secretariat
+                <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="membership.html" class="btn btn-outline-prussian">Join as a Member</a>
+            </div>
+          </div>
+
+          <!-- Share bar -->
+          <div class="article-share-bar">
+            <span class="article-share-label">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?text=KBI%20HK%20Chapter%20Rebuild%3A%20A%20New%20Operational%20Structure%20for%202026&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M14 3a5.4 5.4 0 01-1.54.42 2.7 2.7 0 001.18-1.49 5.4 5.4 0 01-1.71.65A2.69 2.69 0 009.46 2a2.7 2.7 0 00-2.63 3.3A7.65 7.65 0 012 2.67a2.7 2.7 0 00.84 3.6 2.68 2.68 0 01-1.22-.34v.04A2.7 2.7 0 003.78 8.7a2.7 2.7 0 01-1.22.05 2.7 2.7 0 002.52 1.87A5.4 5.4 0 012 11.73 7.63 7.63 0 006.14 13c4.98 0 7.7-4.12 7.7-7.7l-.01-.35A5.5 5.5 0 0014 3Z" fill="currentColor"/></svg>
+              Twitter / X
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2V6zm5 0h2.9v1.1h.05C10.4 6.4 11.3 6 12.4 6 14.7 6 15 7.5 15 9.5V14h-3v-4c0-1 0-2.3-1.4-2.3S9 11 9 11v3H6V6z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Quick Links</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a href="contact.html" class="btn btn-yellow btn--sm" style="justify-content:center;">Contact Secretariat →</a>
+              <a href="membership.html" class="btn btn-outline-prussian btn--sm" style="justify-content:center;">Join Membership</a>
+              <a href="about.html" class="btn btn-prussian btn--sm" style="justify-content:center;">About KBI HK</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">In This Article</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">What Has Changed</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Committee Roles</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">APO Programme</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Next Steps</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Related Articles</div>
+            <a href="news1.html" class="related-article-link">
+              <div class="related-article-title">ETO Hong Kong 2026 Is Now Open</div>
+              <div class="related-article-meta">Announcement · 5 min read</div>
+            </a>
+            <a href="news7.html" class="related-article-link">
+              <div class="related-article-title">IBCOL Hong Kong 2026 — Call for Participants Now Open</div>
+              <div class="related-article-meta">Announcement · 4 min read</div>
+            </a>
+            <a href="news.html" class="related-article-link">
+              <div class="related-article-title">All News &amp; Insights →</div>
+              <div class="related-article-meta">View archive</div>
+            </a>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Tags</div>
+            <div class="article-tag-cloud">
+              <span class="tag tag--prussian">Press Release</span>
+              <span class="tag tag--stone">Governance</span>
+              <span class="tag tag--stone">Chapter Update</span>
+              <span class="tag tag--mist">2026</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="news.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">News</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

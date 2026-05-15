@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community — KBI Hong Kong</title>
+<meta name="description" content="Join the KBI Hong Kong community — a network of students, alumni, educators, mentors, and partners committed to serious emerging-technology engagement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kbi-hk.css">
+<style>
+  .join-team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+  .join-team-card { background: #fff; border: 1px solid var(--stone); border-radius: var(--radius-md); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+  .join-team-card-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); background: var(--prussian); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .join-team-card h3 { font-family: 'Playfair Display', serif; font-size: 1.0625rem; font-weight: 600; color: var(--ink); margin: 0; }
+  .join-team-card p { font-size: 0.8125rem; color: var(--text-faint); line-height: 1.75; margin: 0; flex: 1; }
+  .join-team-card .tag { align-self: flex-start; }
+</style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <!-- <li class="hide-md"><a href="sponsors.html">Sponsors</a></li> -->
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false"
+        aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero page-hero--prussian" aria-label="Community page header" style="position:relative;overflow:hidden;">
+  <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=PwXrtgAUGJA6%2B%2FVpfW39sZTqxt2igt%2BBsDhhbmSnpbSAHLxAPyaUpDyqJdKh%2BXFFkayUgiOeqoGJ9FnCnRtNN4WPcyk8XvyTbopWWJa3aYnFKvRprSERcYEUORc%2BJaBDQGNxDEqKXliYGJv4Bawcdudv8PY1rzbkbXvVQ55yaUZ47IcwP%2FMB0ZhTTdsFn81JjG%2B9jGwuK8fbzlI3bXPFnw0jMhaZbW7fzyTHgmiobnhPCnxbJTymIfuoUDepwMVztL3dYcyiPEYTt7jm%2Felw%2BCcSPumDDAe6Cw%3D%3D&u2=hBIzRH%2F3HwxayGFk&width=2560');background-size:cover;background-position:center;opacity:0.12;"></div>
+  <div class="page-hero-inner" style="position:relative;z-index:1;">
+    <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Community</span></div>
+    <h1 class="page-hero-heading">A Community Built<br>on Serious Engagement</h1>
+    <p class="page-hero-sub">KBI Hong Kong is more than a programme provider — it is a sustained community of students, educators, alumni, mentors, and partners who share a commitment to rigorous, non-hype engagement with blockchain, data science, and quantum computing.</p>
+</div>
+</header>
+
+<!-- WHO WE ARE -->
+<section class="section-wrap section-wrap--white" id="who-we-are" aria-labelledby="community-who-heading">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Who We Are</span></div>
+        <h2 class="section-heading reveal" id="community-who-heading">1,000+ Members.<br>One Shared Standard.</h2>
+        <p class="section-body reveal reveal-delay-1">The KBI Hong Kong community spans secondary school students, university undergraduates and postgraduates, educators, alumni, volunteer programme leads, industry mentors, and institutional partners. What unites this diverse group is a shared standard: intellectual rigour, genuine curiosity, and a refusal to engage with hype over substance.</p>
+        <p class="section-body reveal reveal-delay-2" style="margin-top:16px;">This is a community where showing your working matters as much as getting the right answer — where serious effort is recognised regardless of outcome, and where long-term engagement is valued over one-time participation.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;" class="reveal reveal-delay-3">
+          <span class="tag tag--sky">Students</span><span class="tag tag--sky">Alumni</span><span class="tag tag--stone">Educators</span><span class="tag tag--stone">Mentors</span><span class="tag tag--stone">Institutional Partners</span><span class="tag tag--stone">Sponsors</span>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-4">
+          <a href="#join" class="btn btn-prussian">Join the Community <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="membership.html" class="btn btn-outline-prussian">View Membership Types</a>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--prussian);border-radius:var(--radius-lg);padding:44px 40px;" class="reveal reveal-delay-1">
+          <div class="label-row" style="margin-bottom:20px;"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Community Values</span></div>
+          <div class="values-grid">
+            <div class="value-item"><div class="value-item-label">Rigour</div><div class="value-item-desc">We go deep, not wide. We prioritise understanding over familiarity.</div></div>
+            <div class="value-item"><div class="value-item-label">Curiosity</div><div class="value-item-desc">We ask honest questions and follow evidence wherever it leads.</div></div>
+            <div class="value-item"><div class="value-item-label">Integrity</div><div class="value-item-desc">We acknowledge what we do not know. We never oversell technology.</div></div>
+            <div class="value-item"><div class="value-item-label">Practicality</div><div class="value-item-desc">We ground our work in real applications and measurable outcomes.</div></div>
+            <div class="value-item"><div class="value-item-label">Inclusion</div><div class="value-item-desc">Our community is open to anyone with commitment — not just top students.</div></div>
+            <div class="value-item"><div class="value-item-label">Collaboration</div><div class="value-item-desc">We build with institutions, not around them. We strengthen the ecosystem.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar" aria-label="Community statistics">
+  <div class="stats-bar-inner">
+    <div class="stats-bar-item"><div class="stats-bar-number">1,000<span>+</span></div><div class="stats-bar-label">Community Members</div><div class="stats-bar-desc">Students, alumni, educators, and institutional partners</div></div>
+    <div class="stats-bar-item"><div class="stats-bar-number">9<span>+</span></div><div class="stats-bar-label">Years of Community Building</div><div class="stats-bar-desc">Continuous since 2016 — HK's longest-running KBI chapter</div></div>
+    <div class="stats-bar-item"><div class="stats-bar-number">30<span>+</span></div><div class="stats-bar-label">Partner Institutions</div><div class="stats-bar-desc">Schools, universities, and professional bodies across Hong Kong</div></div>
+    <div class="stats-bar-item"><div class="stats-bar-number">3</div><div class="stats-bar-label">Technology Communities</div><div class="stats-bar-desc">Blockchain · Data Science · Quantum Computing</div></div>
+  </div>
+</section>
+
+<!-- GROUPS & NETWORKS -->
+<section class="section-wrap section-wrap--mist" id="groups" aria-labelledby="groups-heading">
+  <div class="section-inner">
+    <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Groups &amp; Networks</span></div>
+    <h2 class="section-heading reveal" id="groups-heading">Find Your Group<br>Within the Community</h2>
+    <p class="section-body reveal reveal-delay-1" style="margin-bottom:48px;">KBI HK's community is organised into groups that serve different functions — from competition preparation to applied research to peer study. Members can participate in multiple groups across different technology tracks.</p>
+
+    <div class="what-grid" role="list">
+      <article class="what-card reveal" role="listitem">
+        <div class="what-card-num" aria-hidden="true">01</div>
+        <div class="what-card-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h14M4 11h10M4 16h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="17" cy="15.5" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>Study Groups</h3>
+        <p>Peer-led groups for students preparing for IBCOL, IDSOL, or IQCOL. Focus on technical foundations, problem-solving practice, and collaborative learning in a structured weekly format.</p>
+        <a href="programmes.html#groups" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="what-card reveal reveal-delay-1" role="listitem">
+        <div class="what-card-num" aria-hidden="true">02</div>
+        <div class="what-card-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="12" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>Research Groups</h3>
+        <p>Applied research collectives working on emerging-technology topics. Groups produce reports, briefings, and experimental work — contributing to KBI HK's knowledge base and public resources.</p>
+        <a href="programmes.html#groups" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="what-card reveal reveal-delay-2" role="listitem">
+        <div class="what-card-num" aria-hidden="true">03</div>
+        <div class="what-card-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M1 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 13c2.761 0 5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 2"/></svg></div>
+        <h3>Working Groups</h3>
+        <p>Operational groups that contribute to KBI HK's chapter activities — including event organisation, outreach, curriculum design, and chapter governance. Open to experienced members.</p>
+        <a href="membership.html" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="what-card reveal reveal-delay-3" role="listitem">
+        <div class="what-card-num" aria-hidden="true">04</div>
+        <div class="what-card-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 3L14.5 9.5H20L15.5 13.5L17.5 20L11 16.5L4.5 20L6.5 13.5L2 9.5H7.5L11 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Alumni Network</h3>
+        <p>Former participants and long-term contributors who maintain connection with KBI HK — contributing as mentors, judges, advisors, and community leaders who help shape the chapter's future direction.</p>
+        <a href="#join" class="what-card-link">Learn more <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY COMMUNITIES -->
+<section class="section-wrap section-wrap--white" id="paths" aria-labelledby="tracks-heading">
+  <div class="section-inner">
+    <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Technology Communities</span></div>
+    <h2 class="section-heading reveal" id="tracks-heading">Three Technology<br>Communities. One Ecosystem.</h2>
+    <p class="section-body reveal reveal-delay-1" style="margin-bottom:48px;">KBI HK organises its community around three technology tracks, each with its own study groups, research focus, and competition pathway. Members typically focus on one track but are encouraged to explore all three.</p>
+
+    <div class="prog-grid">
+      <article class="prog-card reveal" style="border-top:3px solid #D6E5F4;">
+        <div class="prog-card-tag"><span class="tag tag--sky">Blockchain</span></div>
+        <h3>Blockchain Community</h3>
+        <p>Focused on distributed ledger technology, smart contracts, and blockchain application design. The IBCOL competition pathway connects members to Hong Kong and international stages.</p>
+        <ul style="margin:16px 0;list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>IBCOL study and preparation groups</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>DLT and smart contract fundamentals workshops</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>Blockchain application research projects</li>
+        </ul>
+        <a href="programmes.html#ibcol" class="link-arrow">Explore IBCOL <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="prog-card reveal reveal-delay-1" style="border-top:3px solid #D6E5F4;">
+        <div class="prog-card-tag"><span class="tag tag--sky">Data Science</span></div>
+        <h3>Data Science Community</h3>
+        <p>Focused on statistical reasoning, machine learning fundamentals, and real-world data analysis. The IDSOL competition pathway develops the analytical rigour that serious data practice demands.</p>
+        <ul style="margin:16px 0;list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>IDSOL study and preparation groups</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>Statistics, Python, and ML fundamentals</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>Applied dataset research and analysis</li>
+        </ul>
+        <a href="programmes.html#idsol" class="link-arrow">Explore IDSOL <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="prog-card reveal reveal-delay-2" style="border-top:3px solid #D6E5F4;">
+        <div class="prog-card-tag"><span class="tag tag--sky">Quantum Computing</span></div>
+        <h3>Quantum Computing Community</h3>
+        <p>Focused on quantum mechanics foundations, Qiskit programming, and quantum algorithm design. The IQCOL pathway offers one of the most intellectually rigorous student challenges in Hong Kong.</p>
+        <ul style="margin:16px 0;list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>IQCOL study and preparation groups</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>Qiskit and quantum circuit fundamentals</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--prussian);font-weight:700;flex-shrink:0;">·</span>Quantum simulation and algorithm research</li>
+        </ul>
+        <a href="programmes.html#iqcol" class="link-arrow">Explore IQCOL <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY QUOTE -->
+<section class="section-wrap section-wrap--prussian" aria-label="Community ethos">
+  <div class="section-inner">
+    <div style="max-width:800px;margin:0 auto;text-align:center;">
+      <div class="label-row" style="justify-content:center;margin-bottom:32px;"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Our Ethos</span></div>
+      <blockquote style="font-family:'Playfair Display',serif;font-size:clamp(1.375rem,3vw,2rem);color:#fff;line-height:1.45;font-style:italic;font-weight:500;margin-bottom:36px;" class="reveal">"This is a community where showing your working matters as much as the answer. Where nine years of continuous commitment means we have seen what serious engagement actually looks like — and we hold ourselves to that standard."</blockquote>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;" class="reveal reveal-delay-1">
+        <span class="why-value-tag">Rigour</span><span class="why-value-tag">Curiosity</span><span class="why-value-tag">Integrity</span><span class="why-value-tag">Practicality</span><span class="why-value-tag">Inclusion</span><span class="why-value-tag">Collaboration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN THE KBI HK TEAM -->
+<section class="section-wrap section-wrap--mist" id="join-team" aria-labelledby="join-team-heading">
+  <div class="section-inner">
+    <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Volunteer With Us</span></div>
+    <h2 class="section-heading reveal" id="join-team-heading">Join the KBI HK Team</h2>
+    <p class="section-body reveal reveal-delay-1" style="max-width:680px;">KBI Hong Kong is entirely volunteer-run. Every event, competition, and community initiative is built by a small, committed team of students and recent graduates. If you want to go beyond attending programmes and actually help build them, we want to hear from you.</p>
+
+    <div class="join-team-grid">
+      <div class="join-team-card reveal">
+        <div class="join-team-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="22" height="22" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke-linecap="round"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="tag tag--sky">Open Now</span>
+        <h3>Associate Programme Officer (APO)</h3>
+        <p>The structured entry point to the KBI HK committee. APOs are placed with a Programme Officer function — Events, Communications, Outreach, or Membership — and take on real responsibilities with mentored guidance for one academic year. The majority of our current committee came through this route.</p>
+        <a href="about-team.html#apo" class="btn btn-prussian btn--sm" style="margin-top:8px;align-self:flex-start;">Learn About the APO Programme →</a>
+      </div>
+
+      <div class="join-team-card reveal reveal-delay-1">
+        <div class="join-team-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="22" height="22" aria-hidden="true"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="tag tag--stone">Experienced Members</span>
+        <h3>Programme Officer</h3>
+        <p>Full officer roles across seven functions: Membership, Outreach, Sponsorship, Events, Communications, Research, and Curriculum. Officers lead their function independently, manage APOs, and report to the Deputy Director. We recruit officers from our APO alumni and occasionally externally for specialist functions.</p>
+        <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-top:8px;align-self:flex-start;">Enquire About Officer Roles →</a>
+      </div>
+
+      <div class="join-team-card reveal reveal-delay-2">
+        <div class="join-team-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="22" height="22" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" stroke-linecap="round"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+        </div>
+        <span class="tag tag--stone">Domain Expert</span>
+        <h3>Track Director</h3>
+        <p>Track Directors lead one of KBI HK's three competition programmes — IBCOL HK (Blockchain), IDSOL HK (Data Science), or IQCOL HK (Quantum). This role demands deep domain expertise and is recruited independently from the officer pathway. We currently have one open Track Director role for Data Science.</p>
+        <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-top:8px;align-self:flex-start;">Express Interest →</a>
+      </div>
+
+      <div class="join-team-card reveal reveal-delay-3">
+        <div class="join-team-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-linecap="round"/><path d="M12 8v4l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="tag tag--stone">Event-Based</span>
+        <h3>Event Volunteer</h3>
+        <p>Not ready to commit to a full officer role yet? Event volunteers support specific KBI HK programmes — competition days, workshops, community gatherings, and the annual ETO HK finals. This is how many of our current team members got started, and it counts as demonstrated engagement when applying for APO.</p>
+        <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-top:8px;align-self:flex-start;">Sign Up to Volunteer →</a>
+      </div>
+
+      <div class="join-team-card reveal reveal-delay-4">
+        <div class="join-team-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="22" height="22" aria-hidden="true"><path d="M22 10v6M2 10l10-8 10 8-10 8-10-8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="tag tag--stone">Academic / Industry</span>
+        <h3>Mentor or Judge</h3>
+        <p>Practitioners and academics who want to contribute expertise without full committee membership. Mentors support student teams during competition preparation. Judges evaluate submissions and presentations at IBCOL, IDSOL, IQCOL, and ETO HK. Time commitment is bounded and flexible.</p>
+        <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-top:8px;align-self:flex-start;">Register as Mentor or Judge →</a>
+      </div>
+
+      <div class="join-team-card reveal reveal-delay-5" style="background:var(--prussian);border-color:var(--prussian);">
+        <div class="join-team-card-icon" style="background:rgba(255,255,255,0.15);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="1.5" width="22" height="22" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+        </div>
+        <h3 style="color:#fff;">Not Sure Where to Start?</h3>
+        <p style="color:rgba(255,255,255,0.75);">If you are interested in contributing but not sure which role fits, reach out directly. We will have an honest conversation about what we need, what you can offer, and where the right starting point is. We prefer real conversations over long application forms.</p>
+        <a href="contact.html" class="btn btn-yellow btn--sm" style="margin-top:8px;align-self:flex-start;">Start a Conversation →</a>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--stone);border-radius:var(--radius-md);padding:28px 32px;margin-top:40px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;" class="reveal">
+      <div style="flex-shrink:0;width:44px;height:44px;border-radius:var(--radius-sm);background:var(--mist);display:flex;align-items:center;justify-content:center;" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--prussian)" stroke-width="1.5" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div style="flex:1;min-width:220px;">
+        <h4 style="font-size:0.9375rem;font-weight:600;color:var(--ink);margin-bottom:6px;">What We Look For</h4>
+        <p style="font-size:0.8125rem;color:var(--text-faint);line-height:1.75;">We don't require a perfect CV or a specific degree. We look for genuine curiosity about emerging technology, demonstrated reliability, honest communication, and the willingness to do unglamorous operational work that makes programmes actually happen. KBI HK is a serious organisation — and serious organisations need people who show up consistently, not just when it's exciting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN THE COMMUNITY -->
+<section class="section-wrap section-wrap--white" id="join" aria-labelledby="join-heading">
+  <div class="section-inner">
+    <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Join the Community</span></div>
+    <h2 class="section-heading reveal" id="join-heading">Find Your Path<br>into KBI HK</h2>
+    <p class="section-body reveal reveal-delay-1" style="margin-bottom:48px;">There are multiple ways to become part of the KBI Hong Kong community, depending on who you are and what you want to contribute. All paths require genuine commitment — this is not a community for passive observers.</p>
+
+    <div class="membership-types-grid">
+      <article class="membership-card reveal">
+        <div class="membership-card-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 18c0-3.31 3.13-6 7-6s7 2.69 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Students &amp; Early-Career</h3>
+        <p>Join as a Student Member or Professional Member. Compete in IBCOL, IDSOL, or IQCOL. Attend workshops. Join study and research groups. Progress to leadership roles.</p>
+        <a href="membership.html" class="btn btn-outline-prussian btn--sm" style="margin-top:20px;">Apply for Membership <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="membership-card reveal reveal-delay-1">
+        <div class="membership-card-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h12M4 10h8M4 15h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Educators &amp; Schools</h3>
+        <p>Join as an Educator Member or institutional partner. Direct students to programmes, contribute to curriculum, co-host events, and build structured pathways for your students.</p>
+        <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-top:20px;">Get in Touch <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+      <article class="membership-card reveal reveal-delay-2">
+        <div class="membership-card-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2l2 5.5 5.5 1-4 3.9 1 5.6-4.5-2.5L5.5 18l1-5.6-4-3.9 5.5-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Mentors &amp; Advisors</h3>
+        <p>Practitioners and academics who want to contribute expertise. Judge competitions, mentor student teams, advise on research, and speak at events to engaged and motivated audiences.</p>
+        <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="margin-top:20px;">Express Interest <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-band" aria-label="Newsletter signup">
+  <div class="newsletter-inner">
+    <div class="newsletter-left"><h3>Stay Updated</h3><p>Programme announcements, event dates, and insights — directly to your inbox.</p></div>
+    <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter signup form" novalidate>
+      <label for="nl-email" class="sr-only">Email address</label>
+      <input type="email" id="nl-email" name="email" class="newsletter-input" placeholder="Enter your email address" required autocomplete="email">
+      <button type="submit" class="btn btn-yellow btn--sm">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-band" aria-label="Call to action">
+  <div class="cta-band-inner">
+    <div class="label-row" style="justify-content:center;margin-bottom:24px;"><div class="u-rule" aria-hidden="true"></div><span class="u-label u-label--light">Your Next Step</span></div>
+    <h2 class="cta-band-heading reveal">Be part of something<br><em>serious and sustained.</em></h2>
+    <p class="cta-band-body reveal reveal-delay-1">KBI Hong Kong's community is built on nine years of genuine commitment to emerging-technology education. Whether you compete, teach, mentor, or support — your contribution matters and is recognised.</p>
+    <div class="cta-band-actions reveal reveal-delay-2">
+      <a href="membership.html" class="btn btn-yellow">Join Membership <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="events.html" class="btn btn-white">Upcoming Events</a>
+      <a href="contact.html" class="btn btn-outline-white">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="22" height="22" rx="5" fill="#003153"/>
+            <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+          </svg>
+        </div>
+        <span class="footer-logo-name">KBI Hong Kong</span>
+      </div>
+      <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+      <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h3 class="footer-col-heading">About</h3>
+        <ul role="list">
+          <li><a href="about-who-we-are.html">Who We Are</a></li>
+          <li><a href="about-history.html">Our History</a></li>
+          <li><a href="about-impact.html">Our Impact</a></li>
+          <li><a href="about-team.html">Our Team</a></li>
+          <li><a href="media.html">Media &amp; Brand Kit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Programmes</h3>
+        <ul role="list">
+          <li><a href="eto2026.html">ETO HK 2026</a></li>
+          <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+          <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+          <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+          <li><a href="certifications.html">Certifications</a></li>
+          <li><a href="projects.html">Tech Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Community</h3>
+        <ul role="list">
+          <li><a href="events.html">Events</a></li>
+          <li><a href="community.html">Community Hub</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="scholarships.html">Scholarships</a></li>
+          <li><a href="sisters.html">Sibling Organisations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Resources</h3>
+        <ul role="list">
+          <li><a href="news.html">News &amp; Insights</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+      <div class="footer-bottom-badge">
+        <div class="footer-bottom-badge-dot"></div>
+        KBI Chapter · Est. 2016
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 12V2M2 7l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<script src="kbi-hk.js"></script>
+</body>
+</html>

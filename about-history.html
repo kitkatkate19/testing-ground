@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our History — KBI Hong Kong</title>
+  <meta name="description" content="A visual archive of KBI Hong Kong events from 2016 to present — nine years of competitions, workshops, and community gatherings.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+    /* ── YEAR SELECTOR ── */
+    .year-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 40px; }
+    .year-btn { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; padding: 10px 20px; border-radius: 100px; border: 1.5px solid var(--stone); background: #fff; color: var(--text-faint); cursor: pointer; transition: all 0.2s; }
+    .year-btn:hover { border-color: var(--prussian); color: var(--prussian); }
+    .year-btn.active { background: var(--prussian); border-color: var(--prussian); color: #fff; }
+
+    /* ── ARCHIVE PANELS ── */
+    .archive-panel { display: none; }
+    .archive-panel.active { display: block; animation: fadeSlideIn 0.35s ease both; }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .archive-panel-header { padding: 40px 0 32px; border-bottom: 1px solid var(--stone); margin-bottom: 40px; }
+    .archive-panel-year { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 700; color: var(--prussian); line-height: 1; margin-bottom: 8px; opacity: 0.15; }
+    .archive-panel-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 600; color: var(--ink); margin-bottom: 12px; }
+    .archive-panel-desc { font-size: 0.9375rem; color: var(--text-faint); line-height: 1.8; max-width: 680px; }
+
+    /* ── EVENT ARCHIVE CARDS ── */
+    .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+    .archive-card { border-radius: var(--radius-md); overflow: hidden; background: #fff; border: 1px solid var(--stone); text-decoration: none; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; }
+    .archive-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,49,83,0.12); }
+    .archive-card-cover { position: relative; height: 220px; overflow: hidden; flex-shrink: 0; }
+    .archive-card-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .archive-card:hover .archive-card-cover img { transform: scale(1.05); }
+    .archive-card-cover-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,49,83,0.75) 0%, rgba(0,49,83,0.2) 50%, transparent 100%); }
+    .archive-card-badges { position: absolute; top: 14px; left: 14px; display: flex; gap: 6px; z-index: 2; }
+    .archive-card-date { position: absolute; bottom: 14px; left: 14px; z-index: 2; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 0.04em; }
+    .archive-card-location { position: absolute; bottom: 14px; right: 14px; z-index: 2; font-family: 'Inter', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 4px; }
+    .archive-card-body { padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .archive-card-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
+    .archive-card-summary { font-size: 0.8125rem; color: var(--text-faint); line-height: 1.7; flex: 1; }
+    .archive-card-cta { font-size: 0.8125rem; font-weight: 600; color: var(--prussian); display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; }
+
+    /* ── FOUNDING STORY TIMELINE ── */
+    .milestone-strip { display: flex; flex-direction: column; gap: 0; }
+    .milestone-row { display: flex; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--stone); align-items: flex-start; }
+    .milestone-row:last-child { border-bottom: none; }
+    .milestone-year-col { min-width: 80px; font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: var(--prussian); flex-shrink: 0; padding-top: 2px; }
+    .milestone-dot-col { display: flex; flex-direction: column; align-items: center; gap: 0; flex-shrink: 0; }
+    .milestone-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--prussian); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--prussian); flex-shrink: 0; margin-top: 4px; }
+    .milestone-dot--yellow { background: var(--yellow); box-shadow: 0 0 0 2px var(--yellow); }
+    .milestone-line { width: 2px; flex: 1; background: var(--stone); min-height: 20px; }
+    .milestone-content { flex: 1; }
+    .milestone-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .milestone-body { font-size: 0.875rem; color: var(--text-faint); line-height: 1.8; }
+    .milestone-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .milestone-stat-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .milestone-stat { display: inline-block; background: var(--mist); border: 1px solid var(--stone); border-radius: var(--radius-sm); padding: 5px 12px; font-size: 0.75rem; font-weight: 600; color: var(--prussian); }
+
+    @media (max-width: 640px) {
+      .milestone-year-col { min-width: 52px; font-size: 1rem; }
+      .archive-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero page-hero--night" aria-label="Our History" style="position:relative;overflow:hidden;">
+    <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=MK9c7mQaiV5uX%2FCiHnlKGQ33zclF92b29Xauqd%2FIChryu3t4MNP053mwzbTAgglsEqaMzVXueir4r4LkA5P%2Bmlqojdobi5bM3BUe%2Bp3km2c2JyhizbXQhNLzJlQ2guTqsWMUWku6j16BPXSQdSeh1%2FUZ7FnL6GrHKza45qG5kRYRHQUCaEqMfdbRnfTIeDYqv5Dsr6RwV7KJjomMBiSK2rIcMB5PAVW%2F64jXnLt%2F9r41IA%3D%3D&u2=KpZCYAotQXwjh9C5&width=2560');background-size:cover;background-position:center;opacity:0.18;"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <nav class="page-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span aria-hidden="true">›</span> <a href="about-who-we-are.html">About</a> <span aria-hidden="true">›</span> <span>Our History</span>
+      </nav>
+      <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">About KBI Hong Kong</span></div>
+      <h1 class="page-hero-heading">Our History</h1>
+      <p class="page-hero-sub">Nine years of events, competitions, workshops, and community — explore our complete visual archive year by year.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+        <a href="#archive" class="btn btn-yellow btn--sm">Browse the Archive</a>
+        <a href="#founding" class="btn btn-outline-white btn--sm">Our Founding Story</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO PULL QUOTE -->
+  <section class="section-wrap section-wrap--white" aria-label="History introduction">
+    <div class="section-inner">
+      <div style="max-width:760px;margin:0 auto;text-align:center;">
+        <div class="label-row" style="justify-content:center;"><div class="u-rule" aria-hidden="true"></div><span class="u-label">The Archive</span></div>
+        <h2 class="section-heading reveal">From Two People with an Idea<br>to a 1,000-Strong Community</h2>
+        <p class="section-body reveal reveal-delay-1">KBI Hong Kong did not begin with a grant or an institutional mandate. It began with a small group of university students who believed Hong Kong's students deserved access to serious emerging-technology education. Nine years later, every event in this archive is proof of what that belief can build. Click a year below to explore.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE YEAR ARCHIVE -->
+  <section class="section-wrap section-wrap--mist" id="archive" aria-labelledby="archive-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Event Archive</span></div>
+      <h2 class="section-heading reveal" id="archive-heading">Browse by Year</h2>
+
+      <!-- YEAR SELECTOR -->
+      <div class="year-selector" role="tablist" aria-label="Select year">
+        <button class="year-btn active" role="tab" aria-selected="true"  aria-controls="panel-2025" data-year="2025">2025–26</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2024" data-year="2024">2024</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2023" data-year="2023">2023</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2022" data-year="2022">2022</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2021" data-year="2021">2021</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2020" data-year="2020">2020</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2019" data-year="2019">2019</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2018" data-year="2018">2018</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2017" data-year="2017">2017</button>
+        <button class="year-btn" role="tab" aria-selected="false" aria-controls="panel-2016" data-year="2016">2016</button>
+      </div>
+
+      <!-- ══════════ 2025–26 PANEL ══════════ -->
+      <div class="archive-panel active" id="panel-2025" role="tabpanel" aria-labelledby="btn-2025">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2025</div>
+          <div class="archive-panel-title">Restructured Operations &amp; ETO HK 2026 Opens</div>
+          <p class="archive-panel-desc">A new committee structure, expanded officer roles, and KBI HK's most ambitious year to date — culminating in the opening of ETO HK 2026 and the nine-year retrospective. Three competition tracks run simultaneously.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">ETO HK 2026 Opens</span>
+            <span class="tag tag--stone">9 Years</span>
+            <span class="tag tag--stone">All Three Tracks</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2025.html#eto2026-launch" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=JRmpi3xnsEFHuNK8TkzKGnTJkpu0R8xDAiyLiE3r%2Bn%2BOp1CdQ4K0iXuIQEzIjloJX08MdPDhPjrJzqRYShst8S1yIl7gNAJBoZ4Cpzr0WdlokbOA%2BNO7XHZB8Ndd%2FAjGhcPmMvuurUfhXDLvlpxaQ15CBEpCKyJbhe02XEV2n2J%2F1eX%2FjJaCXJY%2FHCAkA8MaZ7d%2F9PmWb0cX20276omReQiU839qJ3gt&u2=mzynAtzMjn%2FSUv4G&width=2560" alt="ETO HK 2026 Launch">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Flagship</span></div>
+              <div class="archive-card-date">April 2026</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Hong Kong</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">ETO HK 2026 — Interest Registration Opens</div>
+              <p class="archive-card-summary">KBI Hong Kong opens registration for the Emerging Technologies Olympiad 2026, spanning all three tracks. The biggest KBI HK programme yet.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2025.html#nine-year" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=fH2QmZM54XDqmFpVCPaAGB33SwPIKBpldvU7rE1erSLQgabl6PgUd%2BeIfyTFcYcanIhvmn%2FIWJtGAHdGkdUm7Cm5JsxN8ttyMOmd3IK9VIzNGCbfQ7Yo4juSsxBfr6gOMrEe0dtjpxiNYKT21l1Hfmoq&u2=aiudgBFomHUgdByW&width=2560" alt="Nine-Year Community Gathering">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Community</span></div>
+              <div class="archive-card-date">February 2026</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Hong Kong</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">KBI HK Nine-Year Community Gathering</div>
+              <p class="archive-card-summary">Marking nine years of continuous operation — the largest KBI HK community gathering to date, bringing together current members, alumni, mentors, and partners.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2025.html#eto2025-finals" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncsXFCOWZ6NOSr6fVMNLNx2uJPOm7xlLeUPFgVZqB1BZrOkao95BKn1edlZGYCTt4YDISWnVp9b5UlHtD4pA2o8yoq9WJ5s6XzvzKerC%2FxNit7vMK4Gq7%2BH89o0c4AyPwME%3D&u2=IFWKAVhnRHUHlzA%2B&width=2560" alt="ETO HK 2025 Finals">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition</span></div>
+              <div class="archive-card-date">December 2025</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKUST, Clear Water Bay</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">ETO HK 2025 — Finals Day</div>
+              <p class="archive-card-summary">The second edition of ETO HK Finals Day — cross-track challenge presentations from 38 qualifying teams, judged by industry and academic panels.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2025.html#quantum-primer-2025" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=I9DV%2FDRVz8O5a8rNzJMVZUR1Y4z5aGLaio8L9tP6TexyoaLobo2eVb5aKh3wSEoeTaqiAvddqhzXf22GYXLG6NhMVrWvkVqSXRYCl9MnjBTMLWmM5hMXm3Y%3D&u2=NkdGEy1mL7cIMR9c&width=2560" alt="Quantum Primer Workshop 2025">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Workshop</span></div>
+              <div class="archive-card-date">October 2025</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>CUHK, Sha Tin</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">Quantum Primer Workshop Series 2025</div>
+              <p class="archive-card-summary">Three-session deep-dive into quantum circuit design and Qiskit fundamentals for IQCOL HK preparation. Attended by 45 students across four universities.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2024 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2024" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2024</div>
+          <div class="archive-panel-title">ETO HK Inaugural Edition — The Flagship Arrives</div>
+          <p class="archive-panel-desc">The year KBI HK launched its capstone programme — the Emerging Technology Olympiad Hong Kong, drawing 42 teams across all three tracks. The largest and most complex event in KBI HK history to that point.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">ETO HK Inaugural</span>
+            <span class="tag tag--stone">42 Teams</span>
+            <span class="tag tag--stone">300+ Attendees</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2024.html#eto2024" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=JRmpi3xnsEFHuNK8TkzKGnTJkpu0R8xDAiyLiE3r%2Bn%2BOp1CdQ4K0iXuIQEzIjloJX08MdPDhPjrJzqRYShst8S1yIl7gNAJBoZ4Cpzr0WdlokbOA%2BNO7XHZB8Ndd%2FAjGhcPmMvuurUfhXDLvlpxaQ15CBEpCKyJbhe02XEV2n2J%2F1eX%2FjJaCXJY%2FHCAkA8MaZ7d%2F9PmWb0cX20276omReQiU839qJ3gt&u2=mzynAtzMjn%2FSUv4G&width=2560" alt="ETO HK 2024 Inaugural">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Flagship · Inaugural</span></div>
+              <div class="archive-card-date">November 2024</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKU, Pok Fu Lam</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">ETO HK 2024 — Inaugural Finals</div>
+              <p class="archive-card-summary">The inaugural Emerging Technology Olympiad HK Finals. 42 teams, three tracks, one stage. The most complex competitive programme KBI HK had run to date.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2024.html#ibcol2024" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=ERRYJ71shAJIHHQaUQqy%2F%2BbiByoRdFeJn4acO07jAuhBeJplYshY3sY235pzyforDUgsZbhV9rnvxCrg6jztJ3q8oC3Uw6%2FAPcO0LnD1VNg%2FJ43q0OPLUSwUznpKl%2F3Kp4mowEH5WDpPBu4urWC6lw%3D%3D&u2=KRIjYyhgCuNH%2BkEP&width=2560" alt="IBCOL HK 2024">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition</span></div>
+              <div class="archive-card-date">July 2024</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>CUHK, Sha Tin</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IBCOL HK 2024 — Qualifying Round</div>
+              <p class="archive-card-summary">The eighth edition of IBCOL HK — 34 teams tackling smart contract architecture challenges. Top teams advanced to the ETO HK Finals cross-track stage.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2024.html#community-2024" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=mA%2FHGWZCb4tFGCFeXT8OSkcE%2FRTe1%2FfbNKbqlVwKp4wjqweTQNqlPsCznPq8KOU3gF9KnrlSl1ra%2F3h1SY%2FYqHAWYsQhCRZO4HZl8iZrukZ6cn%2FyM%2FIuN3XBAvmQuW2vOcaJ00JepkKlAswkAf6KDiPYJbVQgdLk&u2=qHvRWOGlD0vDk4cz&width=2560" alt="KBI HK Annual Gathering 2024">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Community</span></div>
+              <div class="archive-card-date">March 2024</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Central, Hong Kong</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">KBI HK Annual Community Gathering 2024</div>
+              <p class="archive-card-summary">Annual gathering for members, alumni, mentors, and partners. Featured talks from two alumni now working in the technology industry, and the launch of the 2024 scholarship cycle.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2023 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2023" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2023</div>
+          <div class="archive-panel-title">APO Programme Formalised &amp; Research Projects Launch</div>
+          <p class="archive-panel-desc">The year KBI HK established its structured pathway for junior members into committee roles, and launched its first applied research and technology development projects in collaboration with university research groups.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">APO Programme</span>
+            <span class="tag tag--sky">Research Projects</span>
+            <span class="tag tag--stone">3 Tracks Active</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2023.html#apo-launch" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40EcFM9JtbOQjA6FW%2BsrF1n3JJpqvpDxvPNZm5NFEbX9bsofkPePct3RY%2FsisqOOXKIHozKYzdQ6pR2XgPtGfCFulsh0ZNLA%3D%3D&u2=%2BGA2I5GSdWp%2BPdE1&width=2560" alt="APO Programme Launch 2023">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Programme Launch</span></div>
+              <div class="archive-card-date">September 2023</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKU, Pok Fu Lam</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">APO Programme — First Cohort Launch</div>
+              <p class="archive-card-summary">The inaugural Associate Programme Officer cohort — 8 APOs placed across five officer functions. All eight completed the full programme year and four subsequently joined as full officers.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2023.html#iqcol2023" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=OvjcsomASP72lTvl6XdXJ48YP4cHuaFMCx7%2FGA%2F6uvWPobrFdYvKNIcIzC6%2FKMv6jZevjXiUKm2LU4%2Fdd8gLmNo0zhKVyCtjyoMiUgADoSZ0WmNiowcjfVCFGJhjFvD1Hi%2Bn5QP84E97j%2FtvXmk0W1CaDeVz0TvV99pbO5yYUwiwQ06pray9fpRKx5CYyOXhGklsJuuGlX6JRg3kM%2BVRixG0kX24BYPhf7ojilhG4nuU%2BimB4Bq7VXGSwht73MXyXK3cwmg%3D&u2=GPMU4kisZiNe7I4S&width=2560" alt="IQCOL HK 2023">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition</span></div>
+              <div class="archive-card-date">June 2023</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKUST, Clear Water Bay</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IQCOL HK 2023 — Third Edition</div>
+              <p class="archive-card-summary">The third IQCOL HK — quantum error correction and variational algorithms as this year's challenge themes. Largest quantum cohort to that date: 22 teams.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2023.html#research-projects" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=NwTPWKsd0Ke%2Fe7jlRHvZ99ot8A2XjIXrWMKRb%2FbnF7zVn2%2B%2FooXTxueWTh8JcKkkl11d%2BpGmh3Q%2BIXqTdLRQkG32ZysJQzGm2OvtSUb%2BlyDipw%3D%3D&u2=rCuR3wNGwWxYzt4C&width=2560" alt="Research Projects Launch 2023">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Research</span></div>
+              <div class="archive-card-date">March 2023</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>CUHK, Sha Tin</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">KBI HK Applied Research Projects — Kickoff</div>
+              <p class="archive-card-summary">Launch of KBI HK's first collaborative research projects with university research groups. Three projects initiated in DeFi transparency, data ethics, and quantum simulation.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2022 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2022" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2022</div>
+          <div class="archive-panel-title">Hybrid Operations Resume — Community Scales</div>
+          <p class="archive-panel-desc">In-person events returned in hybrid format. IBCOL HK reached its largest cohort to date, with 38 teams. The KBI HK Community Gathering became an annual fixture.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">Hybrid Events Return</span>
+            <span class="tag tag--stone">38 Teams — Record</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2022.html#ibcol2022" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=ERRYJ71shAJIHHQaUQqy%2F%2BbiByoRdFeJn4acO07jAuhBeJplYshY3sY235pzyforDUgsZbhV9rnvxCrg6jztJ3q8oC3Uw6%2FAPcO0LnD1VNg%2FJ43q0OPLUSwUznpKl%2F3Kp4mowEH5WDpPBu4urWC6lw%3D%3D&u2=KRIjYyhgCuNH%2BkEP&width=2560" alt="IBCOL HK 2022">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition · Record</span></div>
+              <div class="archive-card-date">August 2022</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKU, Pok Fu Lam</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IBCOL HK 2022 — Record Cohort (38 Teams)</div>
+              <p class="archive-card-summary">Back in person after two pandemic years — IBCOL HK 2022 drew 38 teams across secondary schools and universities, the largest single competition cohort in KBI HK history at the time.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2022.html#annual-gathering" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=fH2QmZM54XDqmFpVCPaAGB33SwPIKBpldvU7rE1erSLQgabl6PgUd%2BeIfyTFcYcanIhvmn%2FIWJtGAHdGkdUm7Cm5JsxN8ttyMOmd3IK9VIzNGCbfQ7Yo4juSsxBfr6gOMrEe0dtjpxiNYKT21l1Hfmoq&u2=aiudgBFomHUgdByW&width=2560" alt="Annual Gathering 2022">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Community</span></div>
+              <div class="archive-card-date">April 2022</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Causeway Bay, Hong Kong</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">KBI HK Annual Gathering — First In-Person Return</div>
+              <p class="archive-card-summary">First in-person community gathering since 2019. Hybrid format allowed remote participation. Welcomed 120+ attendees and featured the inaugural scholarship awards ceremony.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2021 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2021" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2021</div>
+          <div class="archive-panel-title">IQCOL HK Launched — Quantum Track Added</div>
+          <p class="archive-panel-desc">The International Quantum Computing Olympiad Hong Kong is launched, completing the three-track framework. KBI HK becomes the first chapter in the network to run all three KBI competition tracks simultaneously.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">IQCOL HK Launch</span>
+            <span class="tag tag--stone">All 3 Tracks — First</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2021.html#iqcol-launch" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=OvjcsomASP72lTvl6XdXJ48YP4cHuaFMCx7%2FGA%2F6uvWPobrFdYvKNIcIzC6%2FKMv6jZevjXiUKm2LU4%2Fdd8gLmNo0zhKVyCtjyoMiUgADoSZ0WmNiowcjfVCFGJhjFvD1Hi%2Bn5QP84E97j%2FtvXmk0W1CaDeVz0TvV99pbO5yYUwiwQ06pray9fpRKx5CYyOXhGklsJuuGlX6JRg3kM%2BVRixG0kX24BYPhf7ojilhG4nuU%2BimB4Bq7VXGSwht73MXyXK3cwmg%3D&u2=GPMU4kisZiNe7I4S&width=2560" alt="IQCOL HK Inaugural 2021">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition · Inaugural</span></div>
+              <div class="archive-card-date">October 2021</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Online (Hybrid)</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IQCOL HK 2021 — Inaugural Edition</div>
+              <p class="archive-card-summary">The first IQCOL HK — 14 teams tackling quantum circuit design and quantum algorithm fundamentals. Conducted entirely online. KBI HK becomes the first chapter running all three competition tracks.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2021.html#quantum-primer-2021" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=I9DV%2FDRVz8O5a8rNzJMVZUR1Y4z5aGLaio8L9tP6TexyoaLobo2eVb5aKh3wSEoeTaqiAvddqhzXf22GYXLG6NhMVrWvkVqSXRYCl9MnjBTMLWmM5hMXm3Y%3D&u2=NkdGEy1mL7cIMR9c&width=2560" alt="Quantum Primer Workshop 2021">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Workshop</span></div>
+              <div class="archive-card-date">July 2021</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Online</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">Quantum Primer Workshop — First Edition</div>
+              <p class="archive-card-summary">The inaugural Quantum Primer Workshop series, designed to prepare IQCOL entrants from scratch. Covered quantum mechanics foundations, qubit logic, and Qiskit basics across four online sessions.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2020 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2020" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2020</div>
+          <div class="archive-panel-title">Pivot to Online — Resilience Through Disruption</div>
+          <p class="archive-panel-desc">The global pandemic forces all programmes online. KBI HK becomes one of the first KBI chapters to fully operationalise virtual competitions and workshops — frameworks subsequently adopted by other chapters globally.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--stone">Virtual Programmes</span>
+            <span class="tag tag--stone">Membership Grew</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2020.html#ibcol-online" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=zxWwdhiTkaxRoAld%2FxY6ZYdNywPGxOkOIUFClotopOiQMSgogtGTWPXg0qEgtofZCBkLgYS1dx5lH544DTURGF3BfnQwDvnT7q7N%2BJlWuKhRhQ%3D%3D&u2=YFYkj%2BVFYXB91VWm&width=2560" alt="IBCOL HK 2020 Online">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition · First Virtual</span></div>
+              <div class="archive-card-date">August 2020</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Online (Global)</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IBCOL HK 2020 — First Virtual Edition</div>
+              <p class="archive-card-summary">KBI HK's first fully virtual competition. Built from scratch in four weeks. Despite the pivot, 28 teams participated — higher than the previous year — with participants logging in from outside Hong Kong for the first time.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2019 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2019" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2019</div>
+          <div class="archive-panel-title">First International Finals Qualification</div>
+          <p class="archive-panel-desc">KBI HK teams qualify for and participate in international KBI finals for the first time. The ISFRETIC certification curriculum is introduced, providing structured training pathways for competition participants.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">International Finals</span>
+            <span class="tag tag--sky">ISFRETIC Launch</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2019.html#intl-finals" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncsXFCOWZ6NOSr6fVMNLNx2uJPOm7xlLeUPFgVZqB1BZrOkao95BKn1edlZGYCTt4YDISWnVp9b5UlHtD4pA2o8yoq9WJ5s6XzvzKerC%2FxNit7vMK4Gq7%2BH89o0c4AyPwME%3D&u2=IFWKAVhnRHUHlzA%2B&width=2560" alt="International Finals 2019">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition · International</span></div>
+              <div class="archive-card-date">November 2019</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Europe</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">KBI HK at International Finals — First Qualification</div>
+              <p class="archive-card-summary">Two KBI HK teams qualify for and participate in the KBI International Finals, competing against chapters from Europe and North America. A Top 3 finish in blockchain marks KBI HK's first international recognition.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2019.html#isfretic-launch" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=NwTPWKsd0Ke%2Fe7jlRHvZ99ot8A2XjIXrWMKRb%2FbnF7zVn2%2B%2FooXTxueWTh8JcKkkl11d%2BpGmh3Q%2BIXqTdLRQkG32ZysJQzGm2OvtSUb%2BlyDipw%3D%3D&u2=rCuR3wNGwWxYzt4C&width=2560" alt="ISFRETIC Certification Launch">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Certification · Inaugural</span></div>
+              <div class="archive-card-date">April 2019</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKUST, Clear Water Bay</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">ISFRETIC Certification Curriculum — Launch</div>
+              <p class="archive-card-summary">The introduction of the ISFRETIC certification curriculum — providing structured learning pathways for competition participants across blockchain and data science. The first cohort of 32 students completed Level 1.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2018 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2018" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2018</div>
+          <div class="archive-panel-title">IDSOL HK Launched — Data Science Track Added</div>
+          <p class="archive-panel-desc">The International Data Science Olympiad Hong Kong is launched, introducing a second technology track. The first competition draws teams analysing real datasets from Hong Kong's public sector.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">IDSOL HK Launch</span>
+            <span class="tag tag--stone">Data Science</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2018.html#idsol-launch" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=mA%2FHGWZCb4tFGCFeXT8OSkcE%2FRTe1%2FfbNKbqlVwKp4wjqweTQNqlPsCznPq8KOU3gF9KnrlSl1ra%2F3h1SY%2FYqHAWYsQhCRZO4HZl8iZrukZ6cn%2FyM%2FIuN3XBAvmQuW2vOcaJ00JepkKlAswkAf6KDiPYJbVQgdLk&u2=qHvRWOGlD0vDk4cz&width=2560" alt="IDSOL HK Inaugural 2018">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition · Inaugural</span></div>
+              <div class="archive-card-date">September 2018</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKU, Pok Fu Lam</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IDSOL HK 2018 — Inaugural Edition</div>
+              <p class="archive-card-summary">The first IDSOL HK — 18 teams analysing real public-sector datasets from Hong Kong. The inaugural edition set the template for real-world data challenges that IDSOL HK has followed ever since.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2017 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2017" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2017</div>
+          <div class="archive-panel-title">First Secondary School Partnerships</div>
+          <p class="archive-panel-desc">IBCOL HK expands to include secondary school student teams for the first time. KBI HK establishes its first formal partnerships with two Hong Kong universities.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--stone">Secondary Schools</span>
+            <span class="tag tag--stone">University Partnerships</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2017.html#ibcol2017" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40EcFM9JtbOQjA6FW%2BsrF1n3JJpqvpDxvPNZm5NFEbX9bsofkPePct3RY%2FsisqOOXKIHozKYzdQ6pR2XgPtGfCFulsh0ZNLA%3D%3D&u2=%2BGA2I5GSdWp%2BPdE1&width=2560" alt="IBCOL HK 2017">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition</span></div>
+              <div class="archive-card-date">August 2017</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>CUHK, Sha Tin</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IBCOL HK 2017 — Secondary School Expansion</div>
+              <p class="archive-card-summary">The second edition of IBCOL HK, expanded to include secondary school teams for the first time. 28 teams competed across six schools and three universities.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ 2016 PANEL ══════════ -->
+      <div class="archive-panel" id="panel-2016" role="tabpanel">
+        <div class="archive-panel-header">
+          <div class="archive-panel-year" aria-hidden="true">2016</div>
+          <div class="archive-panel-title">KBI Hong Kong is Established — Year One</div>
+          <p class="archive-panel-desc">A small group of university students establishes the Hong Kong chapter of the Königsberger Bridges Institute — the first KBI chapter outside of the founding institution. The inaugural IBCOL HK draws 22 student teams from three universities.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+            <span class="tag tag--sky">Chapter Founded</span>
+            <span class="tag tag--sky">IBCOL HK Inaugural</span>
+            <span class="tag tag--stone">22 Teams · 3 Universities</span>
+          </div>
+        </div>
+        <div class="archive-grid">
+          <a href="event-gallery-2016.html#ibcol-inaugural" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=ERRYJ71shAJIHHQaUQqy%2F%2BbiByoRdFeJn4acO07jAuhBeJplYshY3sY235pzyforDUgsZbhV9rnvxCrg6jztJ3q8oC3Uw6%2FAPcO0LnD1VNg%2FJ43q0OPLUSwUznpKl%2F3Kp4mowEH5WDpPBu4urWC6lw%3D%3D&u2=KRIjYyhgCuNH%2BkEP&width=2560" alt="IBCOL HK 2016 Inaugural">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Competition · Inaugural</span></div>
+              <div class="archive-card-date">October 2016</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>HKU, Pok Fu Lam</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">IBCOL HK 2016 — Inaugural Edition</div>
+              <p class="archive-card-summary">The first KBI Hong Kong event. 22 teams from HKU, HKUST, and CUHK competing in the inaugural International Blockchain Olympiad qualifying round. The beginning of everything.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a href="event-gallery-2016.html#founding" class="archive-card">
+            <div class="archive-card-cover">
+              <img src="https://sspark.genspark.ai/cfimages?u1=mQ9t9fCrTlYifVwwgbSBCuwaZCA7TbZdD7PRtUZGGR7LyGd1LhPOt8IYyrurO2IDKLSKyhPpo%2FbtxEcwnnTtd%2B%2FPfLgzoXoMyYpX8%2F3OkbI%3D&u2=XAeDRVgTBr4NS5qw&width=2560" alt="KBI HK Founding 2016">
+              <div class="archive-card-cover-overlay"></div>
+              <div class="archive-card-badges"><span class="tag tag--night">Milestone</span></div>
+              <div class="archive-card-date">March 2016</div>
+              <div class="archive-card-location"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M6 1C4.07 1 2.5 2.57 2.5 4.5c0 2.72 3.5 6.5 3.5 6.5s3.5-3.78 3.5-6.5C9.5 2.57 7.93 1 6 1z" stroke="currentColor" stroke-width="1.1"/></svg>Hong Kong</div>
+            </div>
+            <div class="archive-card-body">
+              <div class="archive-card-name">KBI Hong Kong — Chapter Founded</div>
+              <p class="archive-card-summary">The founding of KBI Hong Kong as the first KBI chapter outside the founding institution. A small group of university students with a belief that Hong Kong's students deserved access to serious emerging-technology programmes.</p>
+              <span class="archive-card-cta">View Gallery <svg viewBox="0 0 12 12" fill="none" width="10" height="10" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING PHILOSOPHY -->
+  <section class="section-wrap section-wrap--prussian" aria-labelledby="philosophy-heading">
+    <div class="section-inner">
+      <div style="max-width:760px;margin:0 auto;text-align:center;">
+        <div class="label-row" style="justify-content:center;"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">Founding Philosophy</span></div>
+        <h2 class="section-heading reveal" id="philosophy-heading" style="color:#fff;">Built on a Simple Premise</h2>
+        <blockquote class="reveal reveal-delay-1" style="font-size:1.25rem;font-style:italic;color:rgba(255,255,255,0.85);line-height:1.8;margin:32px 0;font-family:'Playfair Display',serif;border:none;padding:0;">"Hong Kong's students are capable of operating at the international frontier of emerging technology — they just need programmes serious enough to take them there."</blockquote>
+        <p class="reveal reveal-delay-2" style="color:rgba(255,255,255,0.7);line-height:1.8;font-size:0.9375rem;">This was the founding premise in 2016, and it remains the organising principle of everything KBI Hong Kong builds. Nine years of sustained operation have validated that premise — but the work is far from finished.</p>
+        <div style="margin-top:36px;" class="reveal reveal-delay-3">
+          <a href="about-impact.html" class="btn btn-yellow btn--sm">See the Impact →</a>
+          <a href="news8.html" class="btn btn-outline-white btn--sm" style="margin-left:12px;">Read the Nine-Year Retrospective</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+  <script>
+    // Year archive tab switching
+    const yearBtns = document.querySelectorAll('.year-btn');
+    const panels = document.querySelectorAll('.archive-panel');
+    yearBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const year = btn.dataset.year;
+        yearBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+        const target = document.getElementById('panel-' + year);
+        if (target) target.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

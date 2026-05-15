@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News &amp; Insights — KBI Hong Kong</title>
+<meta name="description" content="Latest news, announcements, and insights from KBI Hong Kong — covering blockchain, data science, quantum computing, and our programmes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kbi-hk.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark">
+          <span class="nav-wordmark-name">KBI Hong Kong</span>
+          <span class="nav-wordmark-sub">Königsberger Bridges Institute</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <!-- <li class="hide-md"><a href="sponsors.html">Sponsors</a></li> -->
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false"
+        aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero page-hero--night" aria-label="News page header" style="position:relative;overflow:hidden;">
+  <div class="page-hero-bg" aria-hidden="true" style="position:absolute;inset:0;background-image:url('https://sspark.genspark.ai/cfimages?u1=xNi0Ntqn8fPrwZvBza5bOiboTw1Q3fHoz3f6Wyc%2BDf1mJR4122oi15Pamcf%2BDrZP6%2BWpy4iip9nhCa9XJ74HTBOvWFDfJPifDx2oQe7Bbq1zeWYTUm1LBAc%3D&u2=MVitLeBtTt6Awkg7&width=2560');background-size:cover;background-position:center;opacity:0.13;"></div>
+  <div class="page-hero-inner" style="position:relative;z-index:1;">
+    <div class="label-row"><div class="u-rule u-rule--white" aria-hidden="true"></div><span class="u-label u-label--light">News &amp; Insights</span></div>
+    <h1 class="page-hero-heading">Latest from<br>KBI Hong Kong</h1>
+    <p class="page-hero-sub">Announcements, insights, press releases, and commentary from KBI Hong Kong — covering our programmes, the broader emerging-technology education landscape, and the technologies we teach.</p>
+  </div>
+</header>
+
+<!-- FEATURED ANNOUNCEMENT -->
+<section class="section-wrap section-wrap--white" id="announcements" aria-labelledby="news-featured-heading">
+  <div class="section-inner">
+    <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Featured Announcement</span></div>
+    <article class="news-featured-full reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:40px;">
+      <div class="news-featured-visual" style="height:380px;border-radius:var(--radius-lg);position:relative;overflow:hidden;">
+        <img src="https://sspark.genspark.ai/cfimages?u1=HDGHUe4B3A6RkFMGdIoEXJ5hNqQVEFZNlOiPMEJPkHVqwXHFCBFfAmH%2F0E5gBUliBPW2mxjy6jFKHvHjR6NJo5UqNAklX7FRRGY8aSHE2%2BkE7%2BGGk53N3b3rKv1o4vkD2G8xmz1JUCWNAy82ZEpWFjCy%2FKRZKsH%2FiTEhHIJsTi3Y59yL5xoq5yA6LAbfU%3D&u2=FGnv%2FHrblGqv9WKPK2q0Ew%3D%3D&width=700&height=400" alt="ETO Hong Kong 2026" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="eager">
+        <div style="position:absolute;inset:0;background:rgba(0,49,83,0.7);" aria-hidden="true"></div>
+        <div style="text-align:center;position:relative;z-index:1;padding:40px;display:flex;align-items:center;justify-content:center;height:100%;">
+          <div class="tag tag--night" style="margin-bottom:16px;display:inline-block;">Announcement · May 2026</div>
+          <p style="font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.5vw,1.625rem);color:#fff;line-height:1.3;font-style:italic;">"ETO Hong Kong 2026 — the flagship competition that unites all three tracks — opens interest registration this summer."</p>
+        </div>
+      </div>
+      <div>
+        <div class="news-meta" style="margin-bottom:16px;"><span class="tag tag--sky">Featured</span><span class="news-date" style="margin-left:8px;">May 2026</span></div>
+        <h2 class="section-heading" style="font-size:clamp(1.5rem,3vw,2rem);">ETO Hong Kong 2026 — Registration Opens This Summer</h2>
+        <p class="section-body" style="margin-top:16px;font-size:0.9375rem;">KBI Hong Kong announces the launch of interest registration for the Emerging Technologies Olympiad Hong Kong 2026 — the chapter's flagship competition spanning all three emerging-technology tracks: blockchain (IBCOL), data science (IDSOL), and quantum computing (IQCOL).</p>
+        <p class="section-body" style="margin-top:12px;font-size:0.9375rem;">ETO HK 2026 represents the first time KBI Hong Kong has brought together all three competition tracks under a single unified competitive stage, with a structured progression pathway to KBI's international competitions.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;"><a href="news1.html" class="btn btn-prussian btn--sm">Read Full Article <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="eto2026.html" class="btn btn-outline-prussian btn--sm">About ETO HK 2026</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- NEWS GRID -->
+<section class="section-wrap section-wrap--mist" id="insights" aria-labelledby="insights-heading">
+  <div class="section-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:44px;">
+      <div><div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">All News &amp; Insights</span></div><h2 class="section-heading reveal" id="insights-heading" style="margin-bottom:0;">Articles, Insights<br>&amp; Announcements</h2></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;" class="reveal">
+        <button class="news-filter-btn active" data-filter="all">All</button>
+        <button class="news-filter-btn" data-filter="announcement">Announcements</button>
+        <button class="news-filter-btn" data-filter="insight">Insights</button>
+        <button class="news-filter-btn" data-filter="press">Press</button>
+      </div>
+    </div>
+
+    <div class="news-all-grid" role="list">
+
+      <!-- Article 1 -->
+      <article class="news-all-card reveal" role="listitem" data-category="announcement">
+        <div class="news-all-card-visual" style="position:relative;overflow:hidden;"><img src="https://sspark.genspark.ai/cfimages?u1=HDGHUe4B3A6RkFMGdIoEXJ5hNqQVEFZNlOiPMEJPkHVqwXHFCBFfAmH%2F0E5gBUliBPW2mxjy6jFKHvHjR6NJo5UqNAklX7FRRGY8aSHE2%2BkE7%2BGGk53N3b3rKv1o4vkD2G8xmz1JUCWNAy82ZEpWFjCy%2FKRZKsH%2FiTEhHIJsTi3Y59yL5xoq5yA6LAbfU%3D&u2=FGnv%2FHrblGqv9WKPK2q0Ew%3D%3D&width=500&height=280" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy"><div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);" aria-hidden="true"></div></div>
+        <div class="news-all-card-body">
+          <div class="news-meta"><span class="tag tag--sky">Announcement</span><span class="news-date">May 2026</span></div>
+          <h4>ETO Hong Kong 2026 — Registration Opens This Summer</h4>
+          <p>KBI HK announces interest registration for the Emerging Technologies Olympiad Hong Kong 2026, spanning all three emerging-technology tracks.</p>
+          <a href="news1.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="news-all-card reveal reveal-delay-1" role="listitem" data-category="insight">
+        <div class="news-all-card-visual" style="position:relative;overflow:hidden;"><img src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40EcFM9JtbOQjA6FW%2BsrF1n3JJpqvpDxvPNZm5NFEbX9bsofkPePct3RY%2FsisqOOXKIHozKYzdQ6pR2XgPtGfCFulsh0ZNLA%3D%3D&u2=%2BGA2I5GSdWp%2BPdE1&width=500&height=280" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy"><div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);" aria-hidden="true"></div></div>
+        <div class="news-all-card-body">
+          <div class="news-meta"><span class="tag tag--stone">Insight</span><span class="news-date">April 2026</span></div>
+          <h4>Why Quantum Computing Education Cannot Wait</h4>
+          <p>The quantum advantage timeline is compressing. Here is why Hong Kong students who understand quantum mechanics today will be irreplaceable in ten years.</p>
+          <a href="news4.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="news-all-card reveal reveal-delay-2" role="listitem" data-category="press">
+        <div class="news-all-card-visual" style="position:relative;overflow:hidden;"><img src="https://sspark.genspark.ai/cfimages?u1=beGaK5sDYPeKeydTLscTU34eZiBpbaRG3nSHwJ3d%2BGMrQcj%2B16uxzi34UhEuDkY2PA3FlWjpqjk47LYj2ja18IbHl3LmjLh2EPxSs0rynDqdpcfBb0vXXhl%2FaffYSgvyJJdyx03Z3m4oSoJNX5MXlMo%2B4%2BaCQbxX6QzZOoc%2FNUN5goRrC5KRFw%3D%3D&u2=hFFxo9ik1ZsZMgmb&width=500&height=280" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy"><div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);" aria-hidden="true"></div></div>
+        <div class="news-all-card-body">
+          <div class="news-meta"><span class="tag tag--stone">Press</span><span class="news-date">March 2026</span></div>
+          <h4>KBI HK Chapter Rebuild: A New Operational Structure for 2026</h4>
+          <p>KBI Hong Kong announces a rebuilt programme portfolio, membership structure, and sponsor engagement framework for the 2026 academic year.</p>
+          <a href="news5.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="news-all-card reveal" role="listitem" data-category="insight">
+        <div class="news-all-card-visual" style="position:relative;overflow:hidden;"><img src="https://sspark.genspark.ai/cfimages?u1=xNi0Ntqn8fPrwZvBza5bOiboTw1Q3fHoz3f6Wyc%2BDf1mJR4122oi15Pamcf%2BDrZP6%2BWpy4iip9nhCa9XJ74HTBOvWFDfJPifDx2oQe7Bbq1zeWYTUm1LBAc%3D&u2=MVitLeBtTt6Awkg7&width=500&height=280" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy"><div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);" aria-hidden="true"></div></div>
+        <div class="news-all-card-body">
+          <div class="news-meta"><span class="tag tag--stone">Insight</span><span class="news-date">February 2026</span></div>
+          <h4>Data Science in the Classroom: Why Olympiad-Style Competition Works</h4>
+          <p>How structured competition formats like IDSOL Hong Kong create genuine statistical literacy rather than superficial tool familiarity — and why that distinction matters.</p>
+          <a href="news6.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="news-all-card reveal reveal-delay-1" role="listitem" data-category="announcement">
+        <div class="news-all-card-visual" style="position:relative;overflow:hidden;"><img src="https://sspark.genspark.ai/cfimages?u1=HDGHUe4B3A6RkFMGdIoEXJ5hNqQVEFZNlOiPMEJPkHVqwXHFCBFfAmH%2F0E5gBUliBPW2mxjy6jFKHvHjR6NJo5UqNAklX7FRRGY8aSHE2%2BkE7%2BGGk53N3b3rKv1o4vkD2G8xmz1JUCWNAy82ZEpWFjCy%2FKRZKsH%2FiTEhHIJsTi3Y59yL5xoq5yA6LAbfU%3D&u2=FGnv%2FHrblGqv9WKPK2q0Ew%3D%3D&width=500&height=280" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy"><div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);" aria-hidden="true"></div></div>
+        <div class="news-all-card-body">
+          <div class="news-meta"><span class="tag tag--sky">Announcement</span><span class="news-date">January 2026</span></div>
+          <h4>IBCOL Hong Kong 2026 — Call for Participants Now Open</h4>
+          <p>Applications are now open for IBCOL Hong Kong 2026, the qualifying round for the International Blockchain Olympiad. Teams of up to four students are invited to apply.</p>
+          <a href="news7.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="news-all-card reveal reveal-delay-2" role="listitem" data-category="insight">
+        <div class="news-all-card-visual" style="position:relative;overflow:hidden;"><img src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40EcFM9JtbOQjA6FW%2BsrF1n3JJpqvpDxvPNZm5NFEbX9bsofkPePct3RY%2FsisqOOXKIHozKYzdQ6pR2XgPtGfCFulsh0ZNLA%3D%3D&u2=%2BGA2I5GSdWp%2BPdE1&width=500&height=280" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy"><div style="position:absolute;inset:0;background:rgba(0,49,83,0.68);" aria-hidden="true"></div></div>
+        <div class="news-all-card-body">
+          <div class="news-meta"><span class="tag tag--stone">Insight</span><span class="news-date">December 2025</span></div>
+          <h4>Nine Years of KBI Hong Kong: What We Have Learned About Serious Tech Education</h4>
+          <p>A reflective piece from KBI HK leadership on the chapter's journey since 2016 — what has worked, what has not, and what the next generation of programmes must achieve.</p>
+          <a href="news8.html" class="link-arrow" style="margin-top:12px;display:inline-flex;">Read more <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRESS / MEDIA -->
+<section class="section-wrap section-wrap--white" id="press" aria-labelledby="press-heading">
+  <div class="section-inner">
+    <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Press &amp; Media</span></div>
+    <h2 class="section-heading reveal" id="press-heading">For Media &amp;<br>Press Enquiries</h2>
+    <p class="section-body reveal reveal-delay-1" style="max-width:600px;">KBI Hong Kong welcomes media coverage that accurately reflects our mission, programmes, and community. We are available for comment on emerging-technology education in Hong Kong, student competitions, and the broader KBI ecosystem.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:48px;">
+      <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);padding:32px;" class="reveal">
+        <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;">Press Contact</div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">For press enquiries, interview requests, and media coverage, contact KBI Hong Kong directly:</p>
+        <a href="mailto:hk@kbi.foundation" style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;color:var(--prussian);">hk@kbi.foundation</a>
+      </div>
+      <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);padding:32px;" class="reveal reveal-delay-1">
+        <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;">About KBI HK</div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--text-muted);line-height:1.7;">KBI Hong Kong is the regional chapter of the Königsberger Bridges Institute, established in 2016. It is a non-profit, youth-run organisation focused on emerging-technology education.</p>
+      </div>
+      <div style="background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);padding:32px;" class="reveal reveal-delay-2">
+        <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;">Key Facts</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--signal-yellow);font-weight:700;">·</span>Established 2016 — longest-running KBI chapter globally</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--signal-yellow);font-weight:700;">·</span>1,000+ community members across HK</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--signal-yellow);font-weight:700;">·</span>3 core technology tracks: Blockchain, Data Science, Quantum</li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--signal-yellow);font-weight:700;">·</span>50+ programmes and events delivered</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-band" aria-label="Newsletter signup">
+  <div class="newsletter-inner">
+    <div class="newsletter-left"><h3>Stay Updated</h3><p>Programme announcements, event dates, and insights — directly to your inbox.</p></div>
+    <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter signup form" novalidate>
+      <label for="nl-email" class="sr-only">Email address</label>
+      <input type="email" id="nl-email" name="email" class="newsletter-input" placeholder="Enter your email address" required autocomplete="email">
+      <button type="submit" class="btn btn-yellow btn--sm">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-band" aria-label="Call to action">
+  <div class="cta-band-inner">
+    <div class="label-row" style="justify-content:center;margin-bottom:24px;"><div class="u-rule" aria-hidden="true"></div><span class="u-label u-label--light">Get Involved</span></div>
+    <h2 class="cta-band-heading reveal">More than a news feed —<br><em>a serious community.</em></h2>
+    <p class="cta-band-body reveal reveal-delay-1">Subscribe to stay updated, or take the next step and join the KBI Hong Kong community as a member, sponsor, or institutional partner.</p>
+    <div class="cta-band-actions reveal reveal-delay-2">
+      <a href="membership.html" class="btn btn-yellow">Join Membership <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="sponsors.html#enquiry" class="btn btn-white">Become a Sponsor</a>
+      <a href="contact.html" class="btn btn-outline-white">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-mark" aria-hidden="true"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="12" y="2" width="8" height="8" rx="1" opacity="0.5"/><rect x="2" y="12" width="8" height="8" rx="1" opacity="0.5"/><rect x="12" y="12" width="8" height="8" rx="1"/></svg></div>
+        <span class="footer-logo-name">KBI Hong Kong</span>
+      </div>
+      <p class="footer-tagline">Rigorous emerging-tech education and talent development for Hong Kong's youth. Regional chapter of the K&ouml;nigsberger Bridges Institute. Est. 2016.</p>
+      <p class="footer-copyright">&copy; 2026 KBI Hong Kong<br>Registered non-profit, Hong Kong.</p>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" class="footer-social-btn" aria-label="LinkedIn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 5.5h2.5V14H2V5.5zM3.25 4.5a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zM6.5 5.5H9v1.15S9.75 5 11.5 5C13.5 5 14 6.5 14 8.5V14h-2.5V9c0-1-.25-2-1.25-2s-1.25 1.1-1.25 2v5H6.5V5.5z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg></a>
+        <a href="#" class="footer-social-btn" aria-label="Instagram"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/><circle cx="11.5" cy="4.5" r="0.75" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Programmes</h3>
+        <ul role="list">
+          <li><a href="eto2026.html">ETO Hong Kong 2026</a></li>
+          <li><a href="competitions.html#ibcol">IBCOL Hong Kong</a></li>
+          <li><a href="competitions.html#idsol">IDSOL Hong Kong</a></li>
+          <li><a href="competitions.html#iqcol">IQCOL Hong Kong</a></li>
+          <li><a href="certifications.html">Training &amp; Certifications</a></li>
+          <li><a href="collaborations.html">Collaborations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Organisation</h3>
+        <ul role="list">
+          <li><a href="about-who-we-are.html">Who We Are</a></li>
+          <li><a href="about-history.html">Our History</a></li>
+          <li><a href="about-impact.html">Our Impact</a></li>
+          <li><a href="about-team.html">Our Team</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="news.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-heading">Get Involved</h3>
+        <ul role="list">
+          <li><a href="events.html">Upcoming Events</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="scholarships.html">Scholarships</a></li>
+          <li><a href="sponsors.html">Sponsor Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-bottom-text">KBI Hong Kong is committed to rigour, curiosity, integrity, practicality, inclusion, and collaboration in emerging-technology education.</p>
+      <div class="footer-bottom-badge"><div class="footer-bottom-badge-dot" aria-hidden="true"></div>KBI Chapter &middot; Est. 2016</div>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 12V2M2 7l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<script src="kbi-hk.js"></script>
+</body>
+</html>

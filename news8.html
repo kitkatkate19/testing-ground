@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nine Years of KBI Hong Kong: What We Have Learned About Serious Tech Education — KBI Hong Kong</title>
+  <meta name="description" content="Dr. Michelle Lam reflects on nine years of running KBI Hong Kong — what worked, what did not, and what the chapter has learned about building a lasting serious technology education community.">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .article-hero {
+      background: var(--night); position: relative;
+      padding: calc(var(--nav-h) + 64px) 24px 72px; overflow: hidden;
+    }
+    .article-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(60,180,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60,180,255,0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .article-hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35); margin-bottom: 24px;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,0.45); transition: color var(--t); }
+    .article-breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .article-hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 700; color: #fff;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 28px;
+    }
+    .article-hero h1 em { color: var(--cyan); font-style: italic; }
+    .article-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .article-author { display: flex; align-items: center; gap: 12px; }
+    .article-author-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.15); }
+    .article-author-name { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .article-author-role { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .article-meta-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+    .article-meta-item { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.4); }
+    .article-meta-item strong { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    .article-layout {
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 56px; align-items: start; max-width: var(--max-width); margin: 0 auto;
+    }
+    .article-body { max-width: 680px; }
+    .article-body h2 { font-size: clamp(1.375rem, 2.5vw, 1.75rem); color: var(--text-main); margin: 40px 0 16px; letter-spacing: -0.015em; }
+    .article-body h3 { font-size: 1.125rem; color: var(--text-main); margin: 28px 0 12px; }
+    .article-body p { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .article-body ul, .article-body ol { padding-left: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .article-body li { font-family: 'Inter', sans-serif; font-size: 1.0625rem; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+    .article-body li::before { content: '–'; position: absolute; left: 0; color: var(--prussian); font-weight: 700; }
+    .article-body strong { color: var(--text-main); font-weight: 600; }
+    .article-body a { color: var(--prussian); text-decoration: underline; text-decoration-color: rgba(0,49,83,0.3); }
+    .article-body a:hover { color: var(--prussian-glow); }
+
+    .article-pullquote {
+      border-left: 3px solid var(--yellow); padding: 20px 28px;
+      background: var(--mist); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 32px 0;
+    }
+    .article-pullquote p { font-family: 'Playfair Display', serif; font-size: 1.1875rem; font-style: italic; color: var(--text-main); line-height: 1.7; margin-bottom: 10px; }
+    .article-pullquote cite { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: var(--text-faint); font-style: normal; }
+
+    .article-fact-box { background: var(--prussian); border-radius: var(--radius-lg); padding: 28px 32px; margin: 32px 0; }
+    .article-fact-box-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .article-fact-list { display: flex; flex-direction: column; gap: 8px; }
+    .article-fact-item { display: flex; gap: 10px; align-items: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .article-fact-item::before { content: '→'; color: var(--yellow); flex-shrink: 0; font-weight: 700; }
+
+    /* Lesson cards */
+    .lessons-list { display: flex; flex-direction: column; gap: 20px; margin: 28px 0; }
+    .lesson-card {
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 20px; align-items: start;
+      padding: 24px; background: var(--mist);
+      border: 1px solid var(--stone); border-radius: var(--radius-md);
+    }
+    .lesson-num {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem;
+      font-weight: 700; color: var(--prussian); line-height: 1;
+      padding-top: 2px;
+    }
+    .lesson-title {
+      font-family: 'Playfair Display', serif; font-size: 1.0625rem;
+      font-weight: 600; color: var(--text-main); margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .lesson-body {
+      font-family: 'Inter', sans-serif; font-size: 0.9375rem;
+      color: var(--text-muted); line-height: 1.7;
+    }
+
+    /* Year stat row */
+    .year-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--stone);
+      border: 1px solid var(--stone); border-radius: var(--radius-md);
+      overflow: hidden; margin: 28px 0;
+    }
+    .year-stat {
+      background: var(--white); padding: 20px 16px; text-align: center;
+    }
+    .year-stat-value {
+      font-family: 'Playfair Display', serif; font-size: 1.75rem;
+      font-weight: 700; color: var(--prussian); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .year-stat-label {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem;
+      color: var(--text-faint); line-height: 1.4;
+    }
+
+    .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; }
+    .sidebar-card-title { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+    .related-article-link { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--stone); transition: color var(--t); }
+    .related-article-link:last-child { border-bottom: none; }
+    .related-article-title { font-family: 'Playfair Display', serif; font-size: 0.9375rem; font-weight: 600; color: var(--text-main); line-height: 1.35; transition: color var(--t); }
+    .related-article-link:hover .related-article-title { color: var(--prussian); }
+    .related-article-meta { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-faint); }
+    .article-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .article-share-bar { display: flex; gap: 12px; align-items: center; padding: 20px 0; border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); margin: 40px 0 0; }
+    .article-share-label { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--text-faint); }
+    .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid var(--stone); border-radius: var(--radius-sm); background: var(--white); font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); transition: background var(--t), border-color var(--t), color var(--t); }
+    .share-btn:hover { background: var(--mist); border-color: var(--text-faint); color: var(--text-main); }
+    .share-btn svg { width: 13px; height: 13px; }
+
+    @media (max-width: 960px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .year-stats { grid-template-columns: repeat(2, 1fr); }
+      .lesson-card { grid-template-columns: 36px 1fr; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-light" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+                <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown"><button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-sub">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-sub">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-sub">Our Team</a>
+    <a href="media.html" class="nav-mobile-sub">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="collaborations.html" class="nav-mobile-sub">Collaborations</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="membership.html" class="nav-mobile-link">Membership</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link active">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="sisters.html" class="nav-mobile-link">Sibling Organisations</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="article-hero" aria-label="Article header">
+    <div class="article-hero-grid" aria-hidden="true"></div>
+    <div class="article-hero-inner">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="news.html">News &amp; Insights</a>
+        <span>›</span>
+        <span aria-current="page">Nine Years of KBI Hong Kong</span>
+      </nav>
+      <div class="article-hero-tags">
+        <span class="tag tag--cyan">Insight</span>
+        <span class="tag tag--stone">Community</span>
+        <span class="tag tag--night">Reflection</span>
+      </div>
+      <h1>Nine Years of KBI Hong Kong:<br><em>What We Have Learned</em> About Serious Tech Education</h1>
+      <div class="article-hero-meta">
+        <div class="article-author">
+          <img src="images/headshot-female-1.jpg" alt="Dr. Michelle Lam" class="article-author-photo">
+          <div>
+            <div class="article-author-name">Dr. Michelle Lam</div>
+            <div class="article-author-role">Chapter Director, KBI Hong Kong</div>
+          </div>
+        </div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item"><strong>5 December 2025</strong></div>
+        <div class="article-meta-divider" aria-hidden="true"></div>
+        <div class="article-meta-item">9 min read</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main>
+    <section class="section-wrap section-wrap--white" aria-label="Article content">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <figure style="margin:0 0 32px;border-radius:var(--radius-lg);overflow:hidden;">
+            <img src="https://sspark.genspark.ai/cfimages?u1=6YgYfXU5Vn8QNsSHmJ4cDr8F35rcpsF9F1Sn9X%2F3o21ERrySz6uh80bSxqGYY2DJx8ZALpDLpEmi47yzHzJzl6o%3D&u2=cPwktNtzkcFOINGz&width=2560" alt="HKU students gathered for cultural event — diverse university community celebrating milestones" style="width:100%;height:300px;object-fit:cover;display:block;">
+            <figcaption style="padding:10px 16px;background:var(--mist);font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-faint);">Nine years on from that first CUHK seminar room conversation — KBI HK now runs three competition tracks, two participation streams, and a growing community programme.</figcaption>
+          </figure>
+
+          <p>
+            In December 2016, a small group of Hong Kong students gathered in a seminar room at CUHK to discuss whether the city needed its own chapter of the Königsberger Bridges Institute. The conversation lasted three hours. By the end of it, we had agreed that it did — and that we were the ones who were going to build it.
+          </p>
+
+          <p>
+            Nine years later, I am writing this as KBI Hong Kong prepares for its most ambitious programme cycle yet: three competition tracks, two participation streams, an expanded community programme, a restructured committee, and our first dedicated sponsorship strategy. The organisation looks almost nothing like that 2016 seminar room conversation. And yet the core of what we were trying to do then is exactly what we are still trying to do now.
+          </p>
+
+          <p>
+            This article is a reflection on what nine years of building a serious technology education organisation in Hong Kong has taught us — what worked, what did not, and what we would do differently if we were starting again.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"The students who take KBI HK seriously are not the ones who want an activity to put on their university application. They are the ones who want to understand something real. Those are the students a serious organisation is built for."</p>
+            <cite>— Dr. Michelle Lam, Chapter Director, KBI Hong Kong</cite>
+          </div>
+
+          <h2>Where We Started</h2>
+
+          <p>
+            The early years of KBI HK were characterised by scarcity and enthusiasm in roughly equal measure. We had no budget, no venue, no track record, and no certainty that Hong Kong students would engage with olympiad-style technology competition at all. What we had was a small committee of people who believed deeply that Hong Kong's technology education ecosystem had a gap — and that filling it required something more rigorous and more serious than the hackathons and coding competitions that already existed.
+          </p>
+
+          <p>
+            The first IBCOL HK qualifying round in 2022 had 22 teams. That number felt both gratifyingly large and precarious — we had no idea whether it would grow or collapse in subsequent years. It grew. And the growth taught us things that no amount of planning could have predicted.
+          </p>
+
+          <div class="year-stats" aria-label="KBI HK growth statistics">
+            <div class="year-stat">
+              <div class="year-stat-value">22</div>
+              <div class="year-stat-label">Teams in first IBCOL HK, 2022</div>
+            </div>
+            <div class="year-stat">
+              <div class="year-stat-value">42</div>
+              <div class="year-stat-label">Teams in IBCOL HK, 2025</div>
+            </div>
+            <div class="year-stat">
+              <div class="year-stat-value">3</div>
+              <div class="year-stat-label">Competition tracks by 2025</div>
+            </div>
+            <div class="year-stat">
+              <div class="year-stat-value">300+</div>
+              <div class="year-stat-label">Attendees at ETO HK 2025 Finals</div>
+            </div>
+          </div>
+
+          <h2>Seven Things We Have Learned</h2>
+
+          <div class="lessons-list">
+
+            <div class="lesson-card">
+              <div class="lesson-num">01</div>
+              <div>
+                <div class="lesson-title">Rigour is the product, not the barrier</div>
+                <div class="lesson-body">
+                  When we first designed the IBCOL HK format — written research paper, live presentation, expert judging panel, strict marking criteria — several people warned us that Hong Kong students would find it too demanding and participation would be low. The opposite happened. The rigour was exactly what drew students in. Students who want a superficial experience have plenty of options. The students who were looking for something that would genuinely test them had almost nothing before KBI HK. Rigour was not a barrier to participation; it was the reason for participation.
+                </div>
+              </div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-num">02</div>
+              <div>
+                <div class="lesson-title">Community is infrastructure, not decoration</div>
+                <div class="lesson-body">
+                  In the early years, we treated community events — networking nights, seminars, meet-ups — as add-ons: nice to have, but secondary to the competition. We were wrong. The community infrastructure turned out to be load-bearing. The connections formed at our networking events produced cross-institution teams. The seminars produced participants who would never have registered without the introductory content. The alumni network produced judges, mentors, and sponsors. A competition without community is a one-off event. A competition with community is an institution.
+                </div>
+              </div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-num">03</div>
+              <div>
+                <div class="lesson-title">Secondary school students are seriously underestimated</div>
+                <div class="lesson-body">
+                  When we added the Schoolers Stream in 2025, we expected secondary school participation to be modest and the standard to be notably lower than tertiary students. Both assumptions were wrong. Secondary school teams competed with a seriousness and creativity that surprised every judge panel. The problem was never student capability — it was access. Secondary school students had never been invited into these spaces before. Once they were, they showed up fully. This is perhaps the single most important thing we have learned, and it is shaping everything we do in 2026.
+                </div>
+              </div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-num">04</div>
+              <div>
+                <div class="lesson-title">Volunteer-run does not mean amateur</div>
+                <div class="lesson-body">
+                  KBI HK has been run entirely by volunteers since its founding. Every committee member, every track director, every event organiser has been doing this alongside their full-time studies or careers. This is often cited as a limitation — and in some ways it is. But it is also a feature. The people who run KBI HK do so because they believe in it, not because they are paid to. That authenticity is visible to participants, sponsors, and partners in ways that are difficult to manufacture. The challenge is not to professionalise the organisation to the point of losing that quality — it is to build enough structure that volunteer effort is sustainable and not dependent on any single person's heroic output.
+                </div>
+              </div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-num">05</div>
+              <div>
+                <div class="lesson-title">Adding a new track is harder than it looks</div>
+                <div class="lesson-body">
+                  We added IDSOL in 2023 and IQCOL in 2024. Both additions were successful — but both were also significantly more operationally complex than we had anticipated. A new competition track is not just a new set of judging criteria. It is a new judge network, a new participant pipeline, a new set of preparatory resources, a new international relationship, and a new body of subject matter expertise that the committee needs to develop. We would do both additions again — but we would give ourselves more runway and more committee bandwidth before launch.
+                </div>
+              </div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-num">06</div>
+              <div>
+                <div class="lesson-title">Institutional relationships compound over time</div>
+                <div class="lesson-body">
+                  Our relationships with HKU, CUHK, HKUST, PolyU, and Cyberport have all deepened progressively over the years. The first time we asked an institution for a venue, we were a small student group with an interesting idea. By the third or fourth time, we were a known quantity with a track record and a community that the institution valued. The investment in building those relationships — showing up consistently, delivering quality, communicating clearly — compounded into structural support that no one-off pitch could have produced. This applies equally to sponsors, judges, and media partners.
+                </div>
+              </div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-num">07</div>
+              <div>
+                <div class="lesson-title">The students remember it differently than you do</div>
+                <div class="lesson-body">
+                  At our 2023 Alumni Reunion, we heard from participants across eight cohort years. Almost universally, the things they remembered most were not the things we had spent the most time on. They remembered specific moments of pressure — a judge's question they hadn't prepared for, a dataset they couldn't crack for the first two hours, a presentation that went better than expected. They remembered the people they met through KBI HK who became long-term colleagues. What we had optimised for — the quality of the judging, the rigour of the marking criteria, the prestige of the venue — was almost invisible to them. What mattered was the experience of discovering their own capacity under real conditions. That is the thing worth protecting above all else.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <h2>What We Got Wrong</h2>
+
+          <p>
+            It would be dishonest to write a nine-year reflection without acknowledging the failures. There were several.
+          </p>
+
+          <p>
+            We expanded too fast in 2023, adding both a new competition track and a major community event in the same cycle without sufficient committee bandwidth. The result was a year in which several things were delivered at a lower standard than we would have accepted in other years. We recovered — but the experience reinforced a lesson that organisations often have to learn the hard way: growing faster than your operational capacity is not ambition, it is risk.
+          </p>
+
+          <p>
+            We were also slow to formalise our sponsorship model. For the first several years, sponsorship was handled informally through existing relationships, with no documented structure, no consistent benefits package, and no multi-year strategy. This left money on the table and made it harder to build the kind of sustained sponsor relationships that would have given the chapter more financial stability. The 2026 operational restructure addresses this directly — but we should have addressed it in 2023.
+          </p>
+
+          <p>
+            And we underinvested in documentation and institutional memory. When committee members completed their terms and transitioned out, knowledge left with them. We have made progress on this — the 2026 restructure includes formal handover processes and documentation requirements — but the cost of not having done this earlier has been real and recurring.
+          </p>
+
+          <div class="article-pullquote">
+            <p>"Nine years in, the thing I am most proud of is not any single event or any particular result. It is that there is now a community in Hong Kong that takes blockchain, data science, and quantum computing education seriously — and that community did not exist before KBI HK."</p>
+            <cite>— Dr. Michelle Lam, Chapter Director, KBI Hong Kong</cite>
+          </div>
+
+          <h2>Looking at 2026 and Beyond</h2>
+
+          <p>
+            The 2026 programme cycle is the most ambitious we have ever designed. Three competition tracks. Two formal participation streams. A restructured committee with dedicated role ownership. A formal volunteer leadership programme. A multi-year sponsorship strategy. And a community programme that has grown from quarterly events to a year-round calendar.
+          </p>
+
+          <p>
+            None of this would have been possible without the nine years of institution-building that preceded it. The relationships, the track record, the alumni network, the operational lessons — all of it is load-bearing for what we are attempting in 2026.
+          </p>
+
+          <p>
+            What I hope for in the next nine years is not that KBI HK becomes bigger — though I expect it will. It is that it remains serious. That the students who participate continue to do so because they want to be genuinely challenged, not because they want a line on their CV. That the standard of the work we ask for continues to be a real standard — one that requires real effort, produces real learning, and means something when it is achieved.
+          </p>
+
+          <p>
+            That is what we built this for. And that is what we are still building.
+          </p>
+
+          <div class="article-fact-box">
+            <div class="article-fact-box-title">KBI Hong Kong — Nine Years by the Numbers</div>
+            <div class="article-fact-list">
+              <div class="article-fact-item">Founded in 2016; first competition (IBCOL HK) launched in 2022</div>
+              <div class="article-fact-item">3 competition tracks by 2025: IBCOL HK, IDSOL HK, IQCOL HK</div>
+              <div class="article-fact-item">42 teams in IBCOL HK 2025; 38 teams in IDSOL HK 2025; 28 teams in IQCOL HK 2025 (first year)</div>
+              <div class="article-fact-item">300+ attendees at ETO HK 2025 Finals Day at HKUST</div>
+              <div class="article-fact-item">International placements: top-3 finishes at IBCOL international finals in two of four years</div>
+              <div class="article-fact-item">8 cohort years of alumni represented at 2023 Alumni Reunion</div>
+            </div>
+          </div>
+
+          <div style="margin-top:40px;padding:28px 32px;background:var(--mist);border:1px solid var(--stone);border-radius:var(--radius-lg);">
+            <div class="label-row" style="margin-bottom:12px;"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Join the Community</span></div>
+            <p style="font-family:'Inter',sans-serif;font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px;">KBI Hong Kong membership is free for students. Join the community that is building Hong Kong's next generation of blockchain, data science, and quantum computing talent.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="membership.html" class="btn btn-prussian">
+                Join KBI HK
+                <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="eto2026.html" class="btn btn-outline-prussian">ETO HK 2026 →</a>
+            </div>
+          </div>
+
+          <!-- Share bar -->
+          <div class="article-share-bar">
+            <span class="article-share-label">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?text=Nine%20Years%20of%20KBI%20Hong%20Kong%3A%20What%20We%20Have%20Learned&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M14 3a5.4 5.4 0 01-1.54.42 2.7 2.7 0 001.18-1.49 5.4 5.4 0 01-1.71.65A2.69 2.69 0 009.46 2a2.7 2.7 0 00-2.63 3.3A7.65 7.65 0 012 2.67a2.7 2.7 0 00.84 3.6 2.68 2.68 0 01-1.22-.34v.04A2.7 2.7 0 003.78 8.7a2.7 2.7 0 01-1.22.05 2.7 2.7 0 002.52 1.87A5.4 5.4 0 012 11.73 7.63 7.63 0 006.14 13c4.98 0 7.7-4.12 7.7-7.7l-.01-.35A5.5 5.5 0 0014 3Z" fill="currentColor"/></svg>
+              Twitter / X
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank" rel="noopener" class="share-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2V6zm5 0h2.9v1.1h.05C10.4 6.4 11.3 6 12.4 6 14.7 6 15 7.5 15 9.5V14h-3v-4c0-1 0-2.3-1.4-2.3S9 11 9 11v3H6V6z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Quick Links</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a href="membership.html" class="btn btn-yellow btn--sm" style="justify-content:center;">Join KBI HK →</a>
+              <a href="eto2026.html" class="btn btn-outline-prussian btn--sm" style="justify-content:center;">ETO HK 2026</a>
+              <a href="about.html" class="btn btn-prussian btn--sm" style="justify-content:center;">About KBI HK</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">In This Article</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Where We Started</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Seven Things We Learned</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--stone);display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">What We Got Wrong</a>
+              <a href="#" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--text-muted);padding:6px 0;display:block;transition:color 0.2s;" onmouseover="this.style.color='var(--prussian)'" onmouseout="this.style.color='var(--text-muted)'">Looking at 2026</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Related Articles</div>
+            <a href="news3.html" class="related-article-link">
+              <div class="related-article-title">KBI HK Alumni Spotlight: From Competition to Career</div>
+              <div class="related-article-meta">Community · 4 min read</div>
+            </a>
+            <a href="news5.html" class="related-article-link">
+              <div class="related-article-title">KBI HK Chapter Rebuild: A New Operational Structure for 2026</div>
+              <div class="related-article-meta">Press · 5 min read</div>
+            </a>
+            <a href="news.html" class="related-article-link">
+              <div class="related-article-title">All News &amp; Insights →</div>
+              <div class="related-article-meta">View archive</div>
+            </a>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Tags</div>
+            <div class="article-tag-cloud">
+              <span class="tag tag--cyan">Insight</span>
+              <span class="tag tag--stone">Community</span>
+              <span class="tag tag--stone">Reflection</span>
+              <span class="tag tag--stone">KBI HK History</span>
+              <span class="tag tag--mist">Leadership</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--night);padding:48px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.9375rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;">KBI Hong Kong</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 Königsberger Bridges Institute Hong Kong. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">About</a>
+        <a href="news.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">News</a>
+        <a href="events.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Events</a>
+        <a href="contact.html" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.35);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>

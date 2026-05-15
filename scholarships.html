@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarships &amp; Donations — KBI Hong Kong</title>
+  <meta name="description" content="KBI Hong Kong scholarship programmes for students, and how donors and sponsors can support our work building Hong Kong's emerging-technology talent pipeline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbi-hk.css">
+  <style>
+
+    /* ── HERO ── */
+    .schol-hero {
+      position: relative;
+      min-height: 540px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--prussian);
+    }
+    .schol-hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .schol-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,20,40,0.85) 0%,
+        rgba(0,49,83,0.70) 50%,
+        rgba(0,49,83,0.40) 100%
+      );
+    }
+    .schol-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 80px 40px 72px;
+    }
+    .schol-hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .schol-hero-eyebrow .u-rule--white { flex-shrink: 0; }
+    .schol-hero-tag {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .schol-hero-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.12;
+      max-width: 760px;
+      margin-bottom: 20px;
+    }
+    .schol-hero-heading em {
+      font-style: italic;
+      color: var(--yellow);
+    }
+    .schol-hero-sub {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+    .schol-hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .schol-hero-stat-strip {
+      position: relative;
+      z-index: 2;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+    }
+    .schol-hero-stats {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .schol-hero-stat {
+      padding: 28px 0;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .schol-hero-stat:last-child { border-right: none; }
+    .schol-hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .schol-hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ── MISSION STATEMENT ── */
+    .mission-strip {
+      background: var(--mist);
+      border-bottom: 1px solid var(--stone);
+      padding: 64px 40px;
+    }
+    .mission-strip-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .mission-strip-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-style: italic;
+      color: var(--prussian);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+    .mission-strip-attr {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── PRINCIPLE CARDS ── */
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .principle-card {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .principle-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--prussian);
+    }
+    .principle-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+    }
+    .principle-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .principle-card p {
+      font-size: 0.875rem;
+      color: var(--text-faint);
+      line-height: 1.75;
+    }
+
+    /* ── SCHOLARSHIP CARDS (redesigned) ── */
+    .schol-track {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .schol-card {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .schol-card:hover {
+      box-shadow: 0 12px 48px rgba(0,49,83,0.10);
+      transform: translateY(-3px);
+    }
+    .schol-card-sidebar {
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--prussian);
+      color: #fff;
+    }
+    .schol-card--access .schol-card-sidebar { background: var(--prussian); }
+    .schol-card--excellence .schol-card-sidebar { background: #1a4a6e; }
+    .schol-card--bursary .schol-card-sidebar { background: #0a3a5c; }
+
+    .schol-card-type {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+    .schol-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+    .schol-card-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .schol-card-amount-note {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+    .schol-card-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 20px;
+      background: rgba(255,209,102,0.15);
+      border: 1px solid rgba(255,209,102,0.35);
+      color: var(--yellow);
+    }
+    .schol-card-body {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+    .schol-card-desc {
+      font-size: 0.9375rem;
+      color: var(--text-faint);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .schol-card-criteria-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--prussian);
+      margin-bottom: 12px;
+    }
+    .schol-card-criteria {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+    .schol-card-criterion {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+    }
+    .criterion-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--mist);
+      border: 1.5px solid var(--prussian);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .criterion-icon::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--prussian);
+    }
+    .schol-card-footer {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--stone);
+    }
+    @media (max-width: 720px) {
+      .schol-card { grid-template-columns: 1fr; }
+      .schol-card-sidebar { padding: 28px 24px; }
+      .schol-card-amount { font-size: 2rem; }
+    }
+
+    /* ── STUDENT STORY PULL-QUOTE ── */
+    .story-strip {
+      background: var(--prussian);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .story-strip-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .story-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: rgba(255,209,102,0.3);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .story-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.625rem);
+      font-style: italic;
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .story-quote-source {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: center;
+    }
+    .story-quote-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,209,102,0.4);
+    }
+    .story-quote-name {
+      text-align: left;
+    }
+    .story-quote-name strong {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .story-quote-name span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .story-read-more {
+      margin-top: 36px;
+    }
+
+    /* ── HOW IT WORKS TIMELINE ── */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 48px;
+      position: relative;
+    }
+    .process-step {
+      padding: 32px 24px;
+      position: relative;
+      text-align: center;
+    }
+    .process-step::after {
+      content: '';
+      position: absolute;
+      top: 52px;
+      right: -1px;
+      width: 1px;
+      height: 40px;
+      background: var(--stone);
+    }
+    .process-step:last-child::after { display: none; }
+    .process-step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--prussian);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .process-step h4 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .process-step p {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      line-height: 1.65;
+    }
+    @media (max-width: 640px) {
+      .process-step::after { display: none; }
+    }
+
+    /* ── DONATION SECTION ── */
+    .donate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    @media (max-width: 900px) {
+      .donate-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+    .donate-card {
+      background: #fff;
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .donate-card:hover {
+      box-shadow: 0 12px 40px rgba(0,49,83,0.10);
+      transform: translateY(-3px);
+    }
+    .donate-card--featured {
+      background: var(--prussian);
+      border-color: var(--prussian);
+    }
+    .donate-card--featured::before {
+      content: 'Most Impactful';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--yellow);
+      color: var(--prussian);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .donate-card-tier {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--prussian);
+      margin-bottom: 8px;
+    }
+    .donate-card--featured .donate-card-tier { color: var(--yellow); }
+    .donate-card-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .donate-card--featured .donate-card-amount { color: #fff; }
+    .donate-card-desc {
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .donate-card--featured .donate-card-desc { color: rgba(255,255,255,0.7); }
+    .donate-card-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+    .donate-perk {
+      display: flex;
+      gap: 10px;
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+      align-items: flex-start;
+    }
+    .donate-card--featured .donate-perk { color: rgba(255,255,255,0.8); }
+    .donate-perk-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.12);
+      border: 1.5px solid rgba(34,197,94,0.4);
+      color: #22c55e;
+      font-size: 0.625rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .donate-card--featured .donate-perk-check {
+      background: rgba(255,209,102,0.15);
+      border-color: rgba(255,209,102,0.4);
+      color: var(--yellow);
+    }
+
+    /* ── TRANSPARENCY BOX ── */
+    .transparency-box {
+      background: var(--mist);
+      border: 1px solid var(--stone);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 700px) {
+      .transparency-box { grid-template-columns: 1fr; }
+    }
+    .transparency-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .transparency-box p {
+      font-size: 0.875rem;
+      color: var(--text-faint);
+      line-height: 1.75;
+    }
+    .transparency-commitment-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .commitment-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--prussian);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--prussian);
+      background: rgba(0,49,83,0.04);
+    }
+    .commitment-chip::before {
+      content: '✓';
+      font-size: 0.7rem;
+    }
+
+    /* ── SPONSOR CTA ── */
+    .sponsor-cta-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--stone);
+    }
+    @media (max-width: 720px) {
+      .sponsor-cta-split { grid-template-columns: 1fr; }
+    }
+    .sponsor-cta-photo {
+      position: relative;
+      min-height: 280px;
+    }
+    .sponsor-cta-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sponsor-cta-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,49,83,0.55);
+    }
+    .sponsor-cta-body {
+      background: var(--prussian);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sponsor-cta-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .sponsor-cta-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.625rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .sponsor-cta-text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-bar-inner">
+      <p><span class="ab-badge">New</span> ETO Hong Kong 2026 is open. Registration closes soon. <a href="https://forms.gle/7WwvpwKxkDXtRbK2A" target="_blank" rel="noopener">Register Interest &rarr;</a></p>
+    </div>
+    <button class="announcement-close" id="announcementClose" aria-label="Close announcement">&#x2715;</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav nav-transparent" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="KBI Hong Kong — home">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#003153"/><path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/></svg>
+        </div>
+        <div class="nav-wordmark"><span class="nav-wordmark-name">KBI Hong Kong</span><span class="nav-wordmark-sub">Königsberger Bridges Institute</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-about">About <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-about" role="menu">
+            <a href="about-who-we-are.html" role="menuitem">Who We Are</a>
+            <a href="about-history.html" role="menuitem">Our History</a>
+            <a href="about-impact.html" role="menuitem">Our Impact</a>
+            <a href="about-team.html" role="menuitem">Our Team</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="media.html" role="menuitem">Media &amp; Brand Kit</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dd-prog">Programmes <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown" id="dd-prog" role="menu">
+            <div class="nav-dropdown-label">Competitions</div>
+            <a href="competitions.html#ibcol" role="menuitem">IBCOL HK</a>
+            <a href="competitions.html#idsol" role="menuitem">IDSOL HK</a>
+            <a href="competitions.html#iqcol" role="menuitem">IQCOL HK</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">Flagship</div>
+            <a href="eto2026.html" role="menuitem">ETO HK 2026</a>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-label">More</div>
+            <a href="certifications.html" role="menuitem">Certifications</a>
+            <a href="collaborations.html" role="menuitem">Collaborations</a>
+            <a href="projects.html" role="menuitem">Tech Projects</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="hide-md"><a href="community.html">Community</a></li>
+        <li class="hide-md"><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="sponsors.html#enquiry" class="btn btn-outline-prussian btn--sm">Become a Sponsor</a>
+        <a href="membership.html" class="btn btn-yellow btn--sm">Join Membership</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <div class="nav-mobile-section-label">About</div>
+    <a href="about-who-we-are.html" class="nav-mobile-link">Who We Are</a>
+    <a href="about-history.html" class="nav-mobile-link">Our History</a>
+    <a href="about-impact.html" class="nav-mobile-link">Our Impact</a>
+    <a href="about-team.html" class="nav-mobile-link">Our Team</a>
+    <a href="media.html" class="nav-mobile-link">Media &amp; Brand Kit</a>
+    <div class="nav-mobile-section-label">Programmes</div>
+    <a href="eto2026.html" class="nav-mobile-link">ETO HK 2026</a>
+    <a href="competitions.html#ibcol" class="nav-mobile-sub">IBCOL — Blockchain</a>
+    <a href="competitions.html#idsol" class="nav-mobile-sub">IDSOL — Data Science</a>
+    <a href="competitions.html#iqcol" class="nav-mobile-sub">IQCOL — Quantum</a>
+    <a href="certifications.html" class="nav-mobile-sub">Certifications</a>
+    <a href="projects.html" class="nav-mobile-sub">Tech Projects</a>
+    <div class="nav-mobile-section-label">Navigate</div>
+    <a href="events.html" class="nav-mobile-link">Events</a>
+    <a href="community.html" class="nav-mobile-link">Community</a>
+    <a href="news.html" class="nav-mobile-link">News &amp; Insights</a>
+    <a href="scholarships.html" class="nav-mobile-link">Scholarships</a>
+    <a href="faq.html" class="nav-mobile-link">FAQ</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="sponsors.html#enquiry" class="btn btn-outline-white">Become a Sponsor</a>
+      <a href="membership.html" class="btn btn-yellow">Join Membership</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="schol-hero" aria-label="Scholarships and Donations page hero">
+    <img
+      class="schol-hero-photo"
+      src="https://sspark.genspark.ai/cfimages?u1=jH%2FsKQJQWcQ%2BztA7GWnHoKb1zovxcP%2BaLfLrzIvA3AVCHSdR5ANN%2FIAgGxh4%2FBNK17MumvScu0bsqiVuy8tcVJ4xX8UY7c0LGKUF5YK%2BD3xplkbsuGlvlkT8unzsCW8yki37hfrCQw%3D%3D&u2=MudXHgT%2FWeEYn7S1&width=2560"
+      alt="Graduation ceremony — scholarship recipients"
+    >
+    <div class="schol-hero-overlay" aria-hidden="true"></div>
+    <div class="schol-hero-content">
+      <div class="schol-hero-eyebrow">
+        <div class="u-rule u-rule--white" aria-hidden="true"></div>
+        <span class="schol-hero-tag">Support &amp; Access</span>
+      </div>
+      <h1 class="schol-hero-heading">
+        Talent doesn't come<br>from <em>privilege.</em>
+      </h1>
+      <p class="schol-hero-sub">Our scholarship programmes exist for one reason: to make sure that financial circumstances never determine who gets access to rigorous emerging-technology education in Hong Kong.</p>
+      <div class="schol-hero-ctas">
+        <a href="#scholarships" class="btn btn-yellow">Explore Scholarships</a>
+        <a href="#donate" class="btn btn-outline-white">Support a Student</a>
+      </div>
+    </div>
+    <div class="schol-hero-stat-strip" aria-label="Key scholarship statistics">
+      <div class="schol-hero-stats">
+        <div class="schol-hero-stat">
+          <div class="schol-hero-stat-num" data-counter="12" data-suffix="+">12+</div>
+          <div class="schol-hero-stat-label">Scholarships<br>awarded since 2021</div>
+        </div>
+        <div class="schol-hero-stat">
+          <div class="schol-hero-stat-num">100%</div>
+          <div class="schol-hero-stat-label">Of donations pass<br>directly to students</div>
+        </div>
+        <div class="schol-hero-stat">
+          <div class="schol-hero-stat-num">3</div>
+          <div class="schol-hero-stat-label">Award categories<br>available year-round</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MISSION STATEMENT ═══ -->
+  <div class="mission-strip" aria-label="Our scholarship mission">
+    <div class="mission-strip-inner">
+      <p class="mission-strip-quote">"Every scholarship we award is a direct investment in a student who demonstrates ability and commitment — regardless of what their family can afford."</p>
+      <p class="mission-strip-attr">— KBI Hong Kong Scholarship Committee</p>
+    </div>
+  </div>
+
+  <!-- ═══ OUR APPROACH ═══ -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="approach-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">Our Approach</span></div>
+      <h2 class="section-heading reveal" id="approach-heading">We Do Things Differently</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:620px;">Our scholarships are not marketing. They are not named trophies. They are a practical commitment to the students who make this organisation worth running.</p>
+
+      <div class="principle-grid">
+        <div class="principle-card reveal">
+          <div class="principle-card-icon" aria-hidden="true">🎯</div>
+          <h3>No Administrative Deduction</h3>
+          <p>100% of every scholarship donation reaches the recipient. We absorb administrative costs separately — your contribution is not diluted.</p>
+        </div>
+        <div class="principle-card reveal reveal-delay-1">
+          <div class="principle-card-icon" aria-hidden="true">🔒</div>
+          <h3>Full Confidentiality</h3>
+          <p>Every application is reviewed in full confidence. Recipients are never publicly identified without their explicit consent. Financial need disclosures are seen only by the committee.</p>
+        </div>
+        <div class="principle-card reveal reveal-delay-2">
+          <div class="principle-card-icon" aria-hidden="true">📊</div>
+          <h3>Donor Impact Reporting</h3>
+          <p>Donors receive an annual report detailing who their contribution supported, which programmes they participated in, and what they went on to do. Real accountability — not a thank-you letter.</p>
+        </div>
+        <div class="principle-card reveal reveal-delay-3">
+          <div class="principle-card-icon" aria-hidden="true">🤝</div>
+          <h3>Merit and Need Together</h3>
+          <p>We award on merit and on need — sometimes both. Our three award categories ensure that exceptional performers and financially constrained participants both have a path to support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SCHOLARSHIPS ═══ -->
+  <section class="section-wrap section-wrap--mist" id="scholarships" aria-labelledby="scholarships-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">For Students</span></div>
+      <h2 class="section-heading reveal" id="scholarships-heading">Three Ways<br>We Support You</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:600px;">All applications are reviewed confidentially. There is no competitive shortlist process — each scholarship is evaluated on its own terms.</p>
+
+      <div class="schol-track">
+
+        <!-- CARD 1: Access -->
+        <article class="schol-card schol-card--access reveal" aria-label="KBI HK Access Scholarship">
+          <div class="schol-card-sidebar">
+            <div>
+              <div class="schol-card-type">Need-Based · Annual</div>
+              <div class="schol-card-name">KBI HK Access Scholarship</div>
+            </div>
+            <div>
+              <div class="schol-card-amount">HK$5,000</div>
+              <div class="schol-card-amount-note">per recipient<br>usable across any KBI HK programme</div>
+              <div class="schol-card-badge">Applications Open</div>
+            </div>
+          </div>
+          <div class="schol-card-body">
+            <p class="schol-card-desc">
+              The Access Scholarship removes the financial barrier to participation in KBI HK's paid programmes — ISFRETIC certification training, competition entry fees, and event attendance. It is awarded on demonstrated financial need combined with active membership.
+              <br><br>
+              Recipients may apply the award to any KBI HK programme cost within the award year. We do not prescribe how it is used. Unused funds are not carried over to the following year.
+            </p>
+            <div class="schol-card-criteria-label">Who can apply</div>
+            <div class="schol-card-criteria">
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Active KBI HK member for at least 3 months</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Current secondary school or university student in Hong Kong</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Demonstrated financial need (supporting documentation required)</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Participation in at least one KBI HK programme or event</div>
+            </div>
+            <div class="schol-card-footer">
+              <span class="tag tag--stone">Need-Based</span>
+              <span class="tag tag--stone">Annual</span>
+              <a href="contact.html" class="btn btn-prussian btn--sm" style="margin-left:auto;">Apply via Contact Form</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2: Excellence -->
+        <article class="schol-card schol-card--excellence reveal reveal-delay-1" aria-label="KBI HK Excellence Award">
+          <div class="schol-card-sidebar">
+            <div>
+              <div class="schol-card-type">Merit-Based · Per Cycle</div>
+              <div class="schol-card-name">KBI HK Excellence Award</div>
+            </div>
+            <div>
+              <div class="schol-card-amount">HK$8,000</div>
+              <div class="schol-card-amount-note">per recipient · 2 awards per cycle<br>(secondary + university)</div>
+              <div class="schol-card-badge">Auto-Considered</div>
+            </div>
+          </div>
+          <div class="schol-card-body">
+            <p class="schol-card-desc">
+              The Excellence Award recognises outstanding competition performance — not just technical results, but the quality of analysis, rigour of research, and depth of collaboration a team demonstrates throughout the process.
+              <br><br>
+              Two awards are made per cycle: one for secondary school participants, one for university participants. No separate application is required. Every competition finalist is automatically considered by the judging committee. Recipients are publicly recognised at the annual KBI HK gathering.
+            </p>
+            <div class="schol-card-criteria-label">Who is considered</div>
+            <div class="schol-card-criteria">
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Participant in IBCOL HK, IDSOL HK, IQCOL HK, or ETO HK</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Active KBI HK member at time of competition</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Selection made by judging committee — no application required</div>
+            </div>
+            <div class="schol-card-footer">
+              <span class="tag tag--stone">Merit-Based</span>
+              <span class="tag tag--stone">Competition Award</span>
+              <span class="tag tag--sky" style="margin-left:auto;">No Application Needed</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3: Research Bursary -->
+        <article class="schol-card schol-card--bursary reveal reveal-delay-2" aria-label="KBI HK Research Bursary">
+          <div class="schol-card-sidebar">
+            <div>
+              <div class="schol-card-type">Project-Based · Rolling</div>
+              <div class="schol-card-name">KBI HK Research Bursary</div>
+            </div>
+            <div>
+              <div class="schol-card-amount">HK$3,000</div>
+              <div class="schol-card-amount-note">per project member<br>up to HK$12,000 per team of 4</div>
+              <div class="schol-card-badge">Rolling Applications</div>
+            </div>
+          </div>
+          <div class="schol-card-body">
+            <p class="schol-card-desc">
+              The Research Bursary supports KBI HK members pursuing approved research or technology development projects under the KBI HK Tech Projects programme. Funding covers direct project costs: software tools, computing resources, conference fees, and publication costs.
+              <br><br>
+              Teams of up to 4 members may apply jointly. Applications require a project proposal reviewed and approved by the KBI HK Projects committee. Rolling applications are accepted year-round while funds are available.
+            </p>
+            <div class="schol-card-criteria-label">Who can apply</div>
+            <div class="schol-card-criteria">
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Active KBI HK member, enrolled in a university programme</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Registered project under the KBI HK Tech Projects programme</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Project proposal reviewed and approved by committee</div>
+              <div class="schol-card-criterion"><div class="criterion-icon"></div>Teams of 1–4 members may apply together</div>
+            </div>
+            <div class="schol-card-footer">
+              <span class="tag tag--stone">Project-Based</span>
+              <span class="tag tag--stone">Rolling</span>
+              <a href="projects.html" class="btn btn-outline-prussian btn--sm" style="margin-left:auto;">View Tech Projects</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STUDENT STORY ═══ -->
+  <div class="story-strip" aria-label="Student scholarship story">
+    <div class="story-strip-inner">
+      <span class="story-quote-mark" aria-hidden="true">"</span>
+      <p class="story-quote-text">The Access Scholarship meant I could register for IBCOL without asking my parents for money they didn't have. I made the finals that year. I would not have been there otherwise.</p>
+      <div class="story-quote-source">
+        <img
+          class="story-quote-avatar"
+          src="https://sspark.genspark.ai/cfimages?u1=w0eeeey9lbMpkr40EcFM9JtbOQjA6FW%2BsrF1n3JJpqvpDxvPNZm5NFEbX9bsofkPePct3RY%2FsisqOOXKIHozKYzdQ6pR2XgPtGCFulsh0ZNLA%3D%3D&u2=%2BGA2I5GSdWp%2BPdE1&width=2560"
+          alt="Access Scholarship recipient"
+        >
+        <div class="story-quote-name">
+          <strong>2023 Access Scholarship Recipient</strong>
+          <span>IBCOL HK Finalist · Now studying Computer Science, HKU</span>
+        </div>
+      </div>
+      <div class="story-read-more">
+        <a href="about-impact.html" class="btn btn-outline-white btn--sm">Read More Alumni Stories →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HOW TO APPLY ═══ -->
+  <section class="section-wrap section-wrap--white" aria-labelledby="apply-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">The Process</span></div>
+      <h2 class="section-heading reveal" id="apply-heading">How to Apply</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:580px;">Applying for the Access Scholarship or Research Bursary takes less than 30 minutes. The Excellence Award requires no application at all.</p>
+
+      <div class="process-timeline reveal">
+        <div class="process-step">
+          <div class="process-step-num" aria-hidden="true">1</div>
+          <h4>Check Eligibility</h4>
+          <p>Review the criteria for the scholarship you want to apply for. If you are unsure, reach out — we would rather answer a question than lose a qualified applicant.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num" aria-hidden="true">2</div>
+          <h4>Prepare Your Documents</h4>
+          <p>For the Access Scholarship: a short personal statement and supporting documentation of financial need. For the Research Bursary: a project proposal (template provided on request).</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num" aria-hidden="true">3</div>
+          <h4>Submit via Contact Form</h4>
+          <p>Send your application through our contact form, marking it "Scholarship Application." Include your membership status, the scholarship you are applying for, and your attached documents.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num" aria-hidden="true">4</div>
+          <h4>Committee Review</h4>
+          <p>The Scholarship Committee reviews all applications within 3 weeks. You will be notified directly via email, regardless of outcome. All decisions are made confidentially.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;text-align:center;">
+        <a href="contact.html" class="btn btn-prussian">Apply Now via Contact Form</a>
+        <p style="font-size:0.8125rem;color:var(--text-faint);margin-top:16px;">Questions? Email us at <a href="mailto:hk@kbi.org" style="color:var(--prussian);font-weight:600;">hk@kbi.org</a> — we reply within 48 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DONATE ═══ -->
+  <section class="section-wrap section-wrap--mist" id="donate" aria-labelledby="donate-heading">
+    <div class="section-inner">
+      <div class="label-row"><div class="u-rule" aria-hidden="true"></div><span class="u-label">For Donors &amp; Supporters</span></div>
+      <h2 class="section-heading reveal" id="donate-heading">Back a Student.<br>Change a Trajectory.</h2>
+      <p class="section-body reveal reveal-delay-1" style="max-width:620px;">Scholarship donations are not brand exposure. They are a direct investment in a specific student, at a specific organisation, doing specific work. We tell you exactly where your money went — and what happened next.</p>
+
+      <div class="donate-grid">
+
+        <div class="donate-card reveal">
+          <div class="donate-card-tier">Supporter</div>
+          <div class="donate-card-amount">HK$500</div>
+          <p class="donate-card-desc">Helps cover one student's event access or training materials for a term. A meaningful first step that is genuinely felt.</p>
+          <div class="donate-card-perks">
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Named in our annual donor acknowledgement</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Annual impact report sent directly to you</div>
+          </div>
+          <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="width:100%;text-align:center;display:block;">Donate via Contact Form</a>
+        </div>
+
+        <div class="donate-card donate-card--featured reveal reveal-delay-1">
+          <div class="donate-card-tier">Scholar Sponsor</div>
+          <div class="donate-card-amount">HK$5,000</div>
+          <p class="donate-card-desc">Fully funds one Access Scholarship — giving a financially constrained student open access to every KBI HK programme for a full year.</p>
+          <div class="donate-card-perks">
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Named scholarship (at your discretion)</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Direct update from your scholarship recipient</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Annual impact report with programme outcomes</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Invitation to our annual community gathering</div>
+          </div>
+          <a href="contact.html" class="btn btn-yellow btn--sm" style="width:100%;text-align:center;display:block;">Enquire About This Tier</a>
+        </div>
+
+        <div class="donate-card reveal reveal-delay-2">
+          <div class="donate-card-tier">Programme Patron</div>
+          <div class="donate-card-amount">HK$20,000+</div>
+          <p class="donate-card-desc">Funds multiple scholarships and supports a named programme element — a workshop series, competition prize pool, or full research bursary cycle.</p>
+          <div class="donate-card-perks">
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Named programme element or award</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Featured in all programme materials and media coverage</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>All Scholar Sponsor benefits included</div>
+            <div class="donate-perk"><span class="donate-perk-check">✓</span>Bespoke impact reporting and follow-up meetings</div>
+          </div>
+          <a href="contact.html" class="btn btn-outline-prussian btn--sm" style="width:100%;text-align:center;display:block;">Discuss a Partnership</a>
+        </div>
+
+      </div>
+
+      <!-- Transparency Box -->
+      <div class="transparency-box reveal">
+        <div>
+          <h3>Our Commitment to Transparency</h3>
+          <p>We believe donors deserve to know exactly how their contribution is used. Every year, we publish an internal impact summary to all donors — not a glossy report, but a straightforward account of who was supported, what they did, and what they have gone on to do.</p>
+          <div class="transparency-commitment-list">
+            <span class="commitment-chip">Zero administrative deduction</span>
+            <span class="commitment-chip">Named recipient updates (with consent)</span>
+            <span class="commitment-chip">Annual donor report</span>
+            <span class="commitment-chip">Bespoke arrangements welcome</span>
+          </div>
+        </div>
+        <div>
+          <a href="contact.html" class="btn btn-prussian">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CORPORATE SPONSORS CTA ═══ -->
+  <section class="section-wrap section-wrap--white" aria-label="Corporate sponsorship link">
+    <div class="section-inner">
+      <div class="sponsor-cta-split reveal">
+        <div class="sponsor-cta-photo" aria-hidden="true">
+          <img
+            src="https://sspark.genspark.ai/cfimages?u1=hiFXAREbfmX9vm66ncsXFCOWZ6NOSr6fVMNLNx2uJPOm7xlLeUPFgVZqB1BZrOkao95BKn1edlZGYCTt4YDISWnVp9b5UlHtD4pA2o8yoq9WJ5s6XzvzKerC%2FxNit7vMK4Gq7%2BH89o0c4AyPwME%3D&u2=IFWKAVhnRHUHlzA%2B&width=2560"
+            alt="Competition finals presentations"
+          >
+          <div class="sponsor-cta-photo-overlay"></div>
+        </div>
+        <div class="sponsor-cta-body">
+          <div class="sponsor-cta-label">For Organisations</div>
+          <h2 class="sponsor-cta-heading">Looking for a Formal Sponsorship Arrangement?</h2>
+          <p class="sponsor-cta-text">Corporate and institutional sponsors have access to a full range of partnership tiers, co-branding opportunities, and direct recruitment access to our talent pipeline. Visit our sponsors page for a full breakdown.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="sponsors.html" class="btn btn-yellow">View Sponsorship Tiers →</a>
+            <a href="contact.html" class="btn btn-outline-white btn--sm">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="22" height="22" rx="5" fill="#003153"/>
+              <path d="M6 5h2.2v5.2L13.2 5H16l-5.2 5.6L16.2 17H13.4l-4-5.2-1.2 1.3V17H6V5z" fill="#3CB4FF"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">KBI Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Building Hong Kong's pipeline of emerging technology talent through competitions, research, and community.</p>
+        <p class="footer-copyright">&copy; 2026 KBI Hong Kong. All rights reserved.<br>A chapter of the Königsberger Bridges Institute.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 class="footer-col-heading">About</h3>
+          <ul role="list">
+            <li><a href="about-who-we-are.html">Who We Are</a></li>
+            <li><a href="about-history.html">Our History</a></li>
+            <li><a href="about-impact.html">Our Impact</a></li>
+            <li><a href="about-team.html">Our Team</a></li>
+            <li><a href="media.html">Media &amp; Brand Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Programmes</h3>
+          <ul role="list">
+            <li><a href="eto2026.html">ETO HK 2026</a></li>
+            <li><a href="competitions.html#ibcol">IBCOL HK</a></li>
+            <li><a href="competitions.html#idsol">IDSOL HK</a></li>
+            <li><a href="competitions.html#iqcol">IQCOL HK</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="projects.html">Tech Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Community</h3>
+          <ul role="list">
+            <li><a href="events.html">Events</a></li>
+            <li><a href="community.html">Community Hub</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="sisters.html">Sibling Organisations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-heading">Resources</h3>
+          <ul role="list">
+            <li><a href="news.html">News &amp; Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="sponsors.html">Sponsors &amp; Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-bottom-text">KBI Hong Kong operates as a student-led academic chapter of the Königsberger Bridges Institute. We are committed to rigour, curiosity, integrity, and inclusion in emerging-technology education. We do not endorse speculative or financially motivated use of the technologies we teach.</p>
+        <div class="footer-bottom-badge">
+          <div class="footer-bottom-badge-dot"></div>
+          KBI Chapter · Est. 2016
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kbi-hk.js"></script>
+</body>
+</html>
